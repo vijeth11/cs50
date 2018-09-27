@@ -8,3 +8,12 @@ def index(request):
     }
     #return HttpResponse("hello world")
     return render(request,"flights/index.html",context)
+def flight(request,flightid):
+    try:
+        flight=Flight.objects.get(pk=flightid)
+    except Flight.DoesNotExist:
+        raise Http404("Flight does not exist.")
+    context={
+        "flight":flight
+    }
+    return render(request,"flights/flight.html",context)
