@@ -9,7 +9,7 @@
 <ul>
     {% for flight in flights %}
     <li>
-        {{flight}}
+        <a href="{% url 'flight' flight.id%}">{{flight}}</a>
     </li>
     {% endfor %}
 </ul>
