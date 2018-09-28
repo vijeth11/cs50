@@ -14,3 +14,11 @@ class Flight(models.Model):
 
     def __str__(self):
         return str(self.id) +" - "+str(self.origin)+" to "+str(self.destination)
+
+class Passenger(models.Model):
+    first=models.CharField(max_length=64)
+    last= models.CharField(max_length=64)
+    flights=models.ManyToManyField(Flight, blank=True, related_name="passengers")
+
+    def __str__(self):
+        return self.first+" "+self.last
