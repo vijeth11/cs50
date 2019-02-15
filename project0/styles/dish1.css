@@ -1,0 +1,28 @@
+div
+{
+    border:0.5px black solid;
+}
+
+.row
+{
+    margin:0;
+}
+div>.row{
+    padding:5vh;
+    align-items: center;
+    
+}
+
+h1 {
+   padding-bottom:4vh; 
+}
+#discription{
+ text-align: left;
+ align-content: center;   
+}
+
+#about{
+    padding:5vh;
+    padding-top: 10vh;
+    align-items: center;
+}
