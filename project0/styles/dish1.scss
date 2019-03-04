@@ -1,0 +1,12 @@
+
+$padding-value: 5vh;
+
+%about-part{
+    padding:$padding-value;
+    padding-top: 10vh;
+    align-items: center;
+}
+
+#about{
+    @extend %about-part;
+}
