@@ -1,6 +1,6 @@
 div
 {
-    border:1.0px black solid;
+    border:0.0px black solid;
 }
 
 .row
@@ -21,7 +21,9 @@ h1 {
  align-content: center;   
 }
 
-
+#ingredients{
+   
+}
 
 @media only screen and (max-width: 900px) {
     
