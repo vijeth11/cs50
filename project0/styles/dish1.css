@@ -1,6 +1,6 @@
 div
 {
-    border:0.0px black solid;
+    border:1.0px black solid;
 }
 
 .row
@@ -22,7 +22,7 @@ h1 {
 }
 
 #ingredients{
-   
+   visibility: hidden;
 }
 
 @media only screen and (max-width: 900px) {
