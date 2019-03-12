@@ -21,6 +21,9 @@ h1 {
  align-content: center;   
 }
 
+#ingredients{
+    visibility: hidden;
+ }
 
 
 @media only screen and (max-width: 900px) {

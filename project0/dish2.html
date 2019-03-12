@@ -10,6 +10,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./styles/dish2.css">
     <link rel="stylesheet" href="./styles/dish2-sass.css">
 </head>
@@ -34,7 +36,7 @@
             </li>
         </ul>
     </nav>
-    <div class="row" id="about">
+    <div class="row w3-animate-left " id="about">
         <div class="col-md-4 col-sm-4">
             <img src="./src/images/onion rings.jpg" alt="Onion Rings" width="400px" style="object-fit: cover;
                padding-left: 5vh;">
@@ -58,7 +60,7 @@
         <div class="col-md-4 col-sm-4">
 
         </div>
-        <div class="col-md-8 col-sm-8" style="height:fit-content;">
+        <div class="col-md-8 col-sm-8" style="height:fit-content;" id="ingredients">
             <div class="row">
                 <h1>Ingridients:</h1>
                 <div class="table-responsive">
@@ -120,7 +122,7 @@
         <div class="col-md-4 col-sm-4">
 
         </div>
-        <div class="col-md-8 col-sm-8" style="height:fit-content;">
+        <div id="recipie1" class="col-md-8 col-sm-8" style="height:fit-content;">
             <div class="row">
                 <div class="container text-align-center text-justify" id="discription">
                     <h1>Recipie:</h1>
@@ -149,5 +151,31 @@
         </div>
     </div>
 </body>
-
+<script>
+    $(document).ready(function() {
+  var i = $("#ingredients");
+var d = $("#recipie1");
+  var pos1 = i.offset();
+var pos2 = d.offset();					   
+  $(window).scroll(function() {
+      var windowpos = $(window).scrollTop();
+      if (pos1.top-windowpos <=250 ) {
+          i.addClass("w3-animate-right");
+    i.css("visibility","visible");
+      } else {
+          i.removeClass("w3-animate-right");	
+    i.css("visibility","hidden");
+    
+      }
+   
+  if (pos2.top-windowpos <= 350 ) {
+          d.addClass("w3-animate-right");
+    d.css("visibility","visible");
+      } else {
+          d.removeClass("w3-animate-right");	     
+    d.css("visibility","hidden");
+      }
+  });
+});
+  </script>
 </html>
