@@ -25,6 +25,16 @@ h1 {
    visibility: hidden;
 }
 
+img.sticky{
+    position: -webkit-sticky;
+    position: sticky;
+    object-fit: cover;
+    top: 35;
+    padding-left: 5vh;
+    width: 400px; 
+    padding-top: 5vh; 
+}
+
 @media only screen and (max-width: 900px) {
     
     .col-sm-4 {
