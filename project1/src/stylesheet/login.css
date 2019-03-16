@@ -31,3 +31,19 @@
     background-image: linear-gradient(to right, #B3FFAB 0%, #12FFF7 51%, #B3FFAB 100%)
 }
 .btn-grad:hover { background-position: right center; }
+
+
+
+@keyframes slide {
+    from { background-color: red; top: 40%; }
+    to { background-color: blue; top: 10%; }
+  }
+  
+  .animated {
+      position: absolute;
+      left: 35%;
+      background-color: red;
+      animation-duration: 2s;
+      animation-name: slide;
+      animation-fill-mode: forwards;       
+  }

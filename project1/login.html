@@ -57,7 +57,10 @@
 
     </div>
 
-    <div style="position:absolute; top: 30%; left:40%;" id="signup" class="w3-animate-opacity">
+    <div  class="animated text-center">
+            <img src="./src/images/bibiloethca.png">
+          </div>
+    <div style="position:absolute; top: 30%; left:38%;visibility:hidden" id="signup" class="">
         <div class="container">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
@@ -100,7 +103,15 @@
 
 </body>
 <script>
-
+$(document).ready(function(){
+    setTimeout(function() 
+  {
+    console.log("after 2 sec");
+    $("#signup").css({"visibility":"visible"});
+    $("#signup").addClass("w3-animate-opacity");
+  }, 1400);
+ 
+});
 $(".card").on("click", "#register", function(){
     $('h5').text("Register");
     $("#signup").removeClass("w3-animate-opacity");

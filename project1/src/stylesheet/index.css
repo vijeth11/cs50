@@ -9,3 +9,9 @@
     background: rgba(12, 139, 40, 2.0);
 }
 
+
+  .animated {
+      position: absolute;
+      left: 35%;
+      top: 40%; 
+  }
