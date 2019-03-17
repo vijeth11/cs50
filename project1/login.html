@@ -62,7 +62,7 @@
           </div>
     <div style="position:absolute; top: 30%; left:38%;visibility:hidden" id="signup" class="">
         <div class="container">
-            <div class="card" style="width: 18rem;">
+            <div class="card" >
                 <div class="card-body">
                     <h5 class="card-title" style="text-align:center">Login</h5>
                     <form >
@@ -80,16 +80,16 @@
                                 
                         </div>
                         <div style="text-align:center">
-                            <button type="submit" id="submit" class=" btn btn-block btnsignin btn-grad">Submit</button>
+                            <button type="submit" id="submit" onclick="gotosearchpage()"  class =" btn btn-block btnsignin btn-grad">Submit</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer" id="footer">
                         <div class="row">
-                            <div class="col-md-8 col-sm-8" tyle="text-align:left">
+                            <div class="col-md-7 col-sm-7" tyle="text-align:left">
                                 <a href="#">forgot password</a>
                             </div>
-                            <div class="col-md-4 col-sm-4" style="text-align:right">
+                            <div class="col-md-5 col-sm-5" style="text-align:right">
                                 <a href=# id="register">register</a>
                             </div>
     
@@ -102,7 +102,7 @@
 
 
 </body>
-<script>
+<script type="text/javascript" >
 $(document).ready(function(){
     setTimeout(function() 
   {
@@ -110,7 +110,7 @@ $(document).ready(function(){
     $("#signup").css({"visibility":"visible"});
     $("#signup").addClass("w3-animate-opacity");
   }, 1400);
- 
+  
 });
 $(".card").on("click", "#register", function(){
     $('h5').text("Register");
@@ -135,10 +135,21 @@ $("#submit").click(function (){
     $("#signup").addClass("w3-animate-opacity");
     $('#footer').css({'visibility':'visible'});
     $('#confirmpassword div').remove();
-    if (!$('#register').length) {
-        $('.card').append(" <div class='card-footer' id='footer'><div class='row'><div class='col-md-8 col-sm-8' style='text-align:left'><a href='#'>forgot password</a></div><div class='col-md-4 col-sm-4' style='text-align:right'><a href='#' id='register'>register</a></div></div>");
-}
    
 });
+
+function gotosearchpage(){
+    console.log("function is called");
+    if (!$('#register').length) {
+        $('.card').append(" <div class='card-footer' id='footer'><div class='row'><div class='col-md-8 col-sm-8' style='text-align:left'><a href='#'>forgot password</a></div><div class='col-md-4 col-sm-4' style='text-align:right'><a href='#' id='register'>register</a></div></div>");
+    }
+    else{
+        console.log("last click");
+        setTimeout(function() {
+        window.location.href = "http://127.0.0.1:5500/project1/Searchpage.html";
+    }, 2000);
+ 
+    }
+}
 </script>
 </html>

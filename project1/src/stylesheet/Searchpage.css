@@ -18,11 +18,33 @@
 
   .searchbar{
       position:absolute;
-      top: 30%;
+      top: 32%;
       opacity: 1;
   }
 
   .table{
       position: absolute;
-      top:45%;
+      top:43%;
   }
+
+  #secondcolumn{
+    text-align: center;
+  }
+
+  #jumbotroncontainer{
+      position: absolute;
+      top:50%;
+      left:25%;
+      text-align: center;
+  }
+
+  #qoutes {
+    height: 100px;
+    width:600px;
+    align-content: center;
+    background-color: white;
+    padding-top:5vh;
+    padding-left:10vh;
+    padding-right:10vh;
+}
+

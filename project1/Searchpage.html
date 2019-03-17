@@ -48,34 +48,46 @@
     <nav class="navbar navbar-light bg-light justify-content-center searchbar">
             <form class="form-inline">
               <i class="fas fa-search"></i>
-              <input class="form-control mr-md-2" type="search" placeholder="Search" aria-label="Search" style="border-radius:25px;width:300px">
+              <input class="form-control mr-md-2" id= "searchinput" type="search" placeholder="Search" aria-label="Search" style="border-radius:25px;width:300px">
              
             </form>
           </nav>
+    
 
-          <table class="table ">
+    <div class="jumbotron" id ="jumbotroncontainer">
+        <div class="container" id="qoutes">
+            <span style="text-align:center;" >
+                    
+                    “The library is the temple of learning, and learning has liberated more people than all the wars in history.” 
+                    <br>
+                        ― Carl T. Rowan
+                        
+            </span> 
+        </div>
+    </div>
+
+          <table class="table" id="bookdetails" style="visibility:hidden">
                 <thead class="thead-dark">
                   <tr> 
-                    
-                    <th scope="col"></th>
-                    <th scope="col">First</th>                    
-                    <th scope="col"></th>
-                    <th scope="col">Last</th>                   
+                    <th scope="col" >First</th>                    
+                    <th scope="col" id="secondcolumn">Last</th>                   
                   </tr>
                 </thead>
                 <tbody class="bg-light">
                   <tr>
                     <td>Otto</td>
-                    <td></td>
-                    <td></td>
-                    <td>@mdo</td>
+                    <td id="secondcolumn">@mdo</td>
                   </tr>
                 </tbody>
             </table>
 
    </body>
    <script>
-     
+     $("#searchinput").click(function () {
+           console.log("clicked on the input text");
+           $("#jumbotroncontainer").css({"visibility":"hidden"});
+           $("#bookdetails").css({"visibility":"visible"});
+     });
    
    </script>
 </html>
