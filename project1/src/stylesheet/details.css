@@ -1,0 +1,22 @@
+.navbar{
+    position:absolute;
+    width:100%;
+    z-index:10;
+    max-width:100%;
+    opacity: 1.0;
+}
+.login{
+    background: rgba(12, 139, 40, 2.0);
+}
+
+body{
+    background-image: url("../images/library2.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  .animated {
+      position: absolute;
+      left: 35%;
+      top: 10%; 
+  }
