@@ -20,3 +20,14 @@ body{
       left: 35%;
       top: 10%; 
   }
+
+  #jumbotroncontainer{
+      position: absolute;
+      top:30%;
+      padding-top: 5vh;
+      width:100%;
+  }
+
+  div{
+      border: 1.0px black solid;
+  }
