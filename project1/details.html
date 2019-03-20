@@ -77,18 +77,18 @@
           <img src="./src/images/userimage.png" alt="..." style="width:50px; height:50px;border-radius:50px">
         </div>
         <div class="col-md-10 col-sm-10">
-          <div style="padding-top:2vh"><span>
+          <div style="padding-top:1vh;"><span>
               <h3 class="d-inline">Your name</h3>&nbsp; &nbsp; <span style="font-size: 12px;">-- Mon 23-3-2019 12:00 AM
               </span>
             </span></div>
-
+          
           <span>
-            <h4>Rating:</h4> <input id="input-1" name="input-1" class="rating rating-loading" value="3" data-min="0"
-              data-max="5" data-step="0.5" data-readonly="true" data-size="xs" data-show-clear="false"
-              data-show-caption="false">
+             <input id="input-1" name="input-1" class="rating rating-loading" value="3.5" data-min="0"
+              data-max="5" data-step="0.5" data-readonly="true" data-size="xm" data-show-clear="false"
+              data-show-caption="false" >
           </span>
-          <br>
-          <p style="padding-bottom:1vh;">
+          
+          <p style="padding-top:2vh;padding-bottom:1vh;">
             This Library is the best part of my UCL spaces experience. it is clean, well kept with large desks and big
             wondows for
             natural light. It would be amazing if you prolonged the opening hours during the day and also weekends. it
@@ -102,8 +102,13 @@
           <h3> Your Comments</h3>
           <span>
             <h5>Rating: </h5>
-            <input id="input-1" name="input-1" class="rating rating-loading" value="0" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-caption="false">
+            <input id="input-2" name="input-2" class="rating rating-loading" value="0" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-caption="false">
           </span>
+           
+          <div class="form-group" style="padding-top:2vh">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="7" id="comment" placeholder="comment"></textarea>
+          </div>
         </div>
       </div>
       <br>
@@ -116,7 +121,7 @@
   $(document).ready(function () {
 
     $('#title').css({ 'padding-top': '3vh' });
-    console.log(("#input-1").value);
+    console.log(("#input-2").attr("value"));
   });
 
 </script>
