@@ -1,0 +1,48 @@
+.navbar{
+    position:absolute;
+    width:100%;
+    z-index:10;
+    max-width:100%;
+    opacity: 0.5;
+}
+.login{
+    background: rgba(12, 139, 40, 2.0);
+}
+
+
+  .animated {
+      position: absolute;
+      left: 35%;
+      top: 10%; 
+  }
+
+  .searchbar{
+      position:absolute;
+      top: 32%;
+      opacity: 1;
+  }
+
+  .table{
+      position: absolute;
+      top:43%;
+  }
+
+  
+
+  #jumbotroncontainer{
+      position: absolute;
+      top:50%;
+      left:25%;
+      text-align: center;
+  }
+
+  #qoutes {
+    height: 100px;
+    width:600px;
+    align-content: center;
+    background-color: white;
+    padding-top:5vh;
+    padding-left:10vh;
+    padding-right:10vh;
+}
+
