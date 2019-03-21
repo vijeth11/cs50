@@ -1,4 +1,9 @@
-from flask import Flask,render_template
+import os
+try:
+   from flask import Flask,render_template
+except ImportError:
+    os.system('pip3 install flask')
+    os.system('pip3 install django')
 app = Flask(__name__)
 
 
