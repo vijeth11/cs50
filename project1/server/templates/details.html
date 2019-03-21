@@ -1,0 +1,129 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bibilo Ethica</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/details.css') }}">
+</head>
+
+<body style="background-image: url('/static/images/library2.jpg')">
+
+  <div>
+    <nav class="navbar navbar-light bg-light nav justify-content-end nav-pills">
+      <li class="nav-item">
+        <a class="btn btn-danger " href="index.html" role="button">Logout</a>
+      </li>
+    </nav>
+  </div>
+
+  <div id="titile" class=" animated text-center ">
+    <img src="{{url_for('static',filename='images/bibiloethca.png') }}">
+  </div>
+
+  <div class="row" id="jumbotroncontainer">
+    <div class="col-md-2 col-sm-2"></div>
+    <div class="col-md-8 col-sm-8">
+      <div class="row" style="background:white;">
+        <div class="col-md-6 col-sm-6 text-center">
+          <img src="{{ url_for('static',filename='images/bookcover.png') }}" alt="..." style="width:200px; height:200px;" class="img-thumbnail">
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div style="padding-top:7vh">
+            <span>
+              ISBN number :
+            </span>
+            <br>
+            <span>
+              Title :
+            </span>
+            <br>
+            <span>
+              Author :
+            </span>
+            <br>
+            <span>
+              Publication Year :
+            </span>
+            <br>
+            <span>
+              Rating :
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row" style="background:white;">
+        <div class="col-md-2 col-sm-2 my-auto justify-content-center h-100 d-flex">
+          <img src="{{ url_for('static',filename='images/userimage.png') }}" alt="..." style="width:50px; height:50px;border-radius:50px">
+        </div>
+        <div class="col-md-10 col-sm-10">
+          <div style="padding-top:1vh;"><span>
+              <h3 class="d-inline">Your name</h3>&nbsp; &nbsp; <span style="font-size: 12px;">-- Mon 23-3-2019 12:00 AM
+              </span>
+            </span></div>
+          
+          <span>
+             <input id="input-1" name="input-1" class="rating rating-loading" value="3.5" data-min="0"
+              data-max="5" data-step="0.5" data-readonly="true" data-size="xm" data-show-clear="false"
+              data-show-caption="false" >
+          </span>
+          
+          <p style="padding-top:2vh;padding-bottom:1vh;">
+            This Library is the best part of my UCL spaces experience. it is clean, well kept with large desks and big
+            wondows for
+            natural light. It would be amazing if you prolonged the opening hours during the day and also weekends. it
+            is perfect!
+          </p>
+        </div>
+      </div>
+      <br>
+      <div class="row" style="background:white;">
+        <div class="col-sm-12 col-md-12">
+          <h3> Your Comments</h3>
+          <span>
+            <h5>Rating: </h5>
+            <input id="input-2" name="input-2" class="rating rating-loading" value="0" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-caption="false">
+          </span>
+           
+          <div class="form-group" style="padding-top:2vh">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="7" id="comment" placeholder="comment"></textarea>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-2 col-sm-2"></div>
+  </div>
+
+</body>
+<script>
+  $(document).ready(function () {
+
+    $('#title').css({ 'padding-top': '3vh' });
+    console.log(("#input-2").attr("value"));
+  });
+
+</script>
+
+</html>
