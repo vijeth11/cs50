@@ -27,7 +27,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="stylesheet" href="./src/stylesheet/login.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/login.css') }}" />
   </head>
 
   <body>
@@ -36,7 +36,7 @@
         class="navbar navbar-light bg-light nav justify-content-end nav-pills"
       >
         <li class="nav-item">
-          <a class="btn btn-success login" href="login.html" role="button"
+          <a class="btn btn-success login" href="/books/login.html" role="button"
             >Login</a
           >
         </li>
@@ -50,28 +50,28 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="./src/images/library1.jpg"
+              src="{{ url_for('static',filename='images/library1.jpg') }}"
               style="width:100%;height:100%"
               alt="library1"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="./src/images/library2.jpg"
+              src="{{ url_for('static',filename='images/library2.jpg') }}"
               style="width:100%;height:100%"
               alt="library2"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="./src/images/library3.jpg"
+              src=" {{ url_for('static',filename='images/library3.jpg') }}"
               style="width:100%;height:100%"
               alt="library3"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="./src/images/library 4.jpg"
+              src=" {{ url_for('static',filename='images/library 4.jpg') }}"
               style="width:100%;height:100%"
               alt="library4"
             />
@@ -99,7 +99,7 @@
     </div>
 
     <div class="animated text-center">
-      <img src="./src/images/bibiloethca.png" />
+      <img src="{{ url_for('static',filename='images/bibiloethca.png') }}" />
     </div>
     <div
       style="position:absolute; top: 30%; left:38%;visibility:hidden;padding-top: 5vh"
