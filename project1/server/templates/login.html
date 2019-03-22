@@ -170,16 +170,7 @@
         $("#signup").addClass("w3-animate-opacity");
       }, 1400);
     });
-    $(".card").on("click", "#register", function() {
-      $("h5").text("Register");
-      $("#signup").removeClass("w3-animate-opacity");
-      $("#signup").addClass("w3-animate-top");
-      console.log("register clicked 1");
-      $("#confirmpassword").append(
-        "<div><label for='exampleInputPassword2'>Confirm Password</label><input type='password' class='form-control' id='exampleInputPassword2'placeholder='Password' data-toggle='popover' data-trigger='focus' title='Password Error' data-content='Password does not match'></div>"
-      );
-      $("#footer").remove("");
-    });
+    
     $("#register").click(function() {
       $("h5").text("Register");
       console.log("register clicked");

@@ -77,10 +77,10 @@
                 <tbody class="bg-light">
                 {% for test in tests %}
                   <tr>
-                    <td>{{ test[0] }}</td>
+                    <td><a href="details.html?value={{ test[0] }}">{{ test[0] }}</a></td>
                     <td>{{ test[1] }}</td>
                     <td>{{ test[2] }}</td>
-                    <td><a href="details.html?value={{ test[3] }}">{{ test[3] }}</a></td>
+                    <td>{{ test[3] }}</td>
                   </tr>
                 {% endfor %}
                 </tbody>
