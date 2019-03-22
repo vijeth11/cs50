@@ -1,6 +1,6 @@
 import os
 try:
-   from flask import Flask,render_template
+   from flask import Flask,render_template,redirect,request
 except ImportError:
     os.system('pip3 install flask')
     os.system('pip3 install django')
@@ -20,7 +20,13 @@ def david():
 @app.route('/books/<string:name>')
 def book_index(name=''):
     print(name);
+    test=[["Otto","hello","world","1234"],["second","value","test","1235"]]
     if name == '':
         return render_template("index.html")
+    if "Search" in name:
+        return render_template(f"{name}",tests=test)
+    if "details" in name:
+        value=request.args.get('value')
+        return render_template(f"{name}", value=value)
     return render_template(f"{name}")
 

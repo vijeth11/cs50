@@ -48,7 +48,7 @@
     <nav class="navbar navbar-light bg-light justify-content-center searchbar">
             <form class="form-inline">
               <i class="fas fa-search"></i>
-              <input class="form-control mr-md-2" id= "searchinput" type="search" placeholder="Search" aria-label="Search" style="border-radius:25px;width:300px">
+              <input class="form-control mr-md-2" onkeyup="myFunction()" id= "searchinput" type="search" placeholder="Search" aria-label="Search" style="border-radius:25px;width:300px">
              
             </form>
           </nav>
@@ -75,12 +75,14 @@
                   </tr>
                 </thead>
                 <tbody class="bg-light">
+                {% for test in tests %}
                   <tr>
-                    <td>Otto</td>
-                    <td>hello</td>
-                    <td>world</td>
-                    <td><a href="details.html"> @mdo</a></td>
+                    <td>{{ test[0] }}</td>
+                    <td>{{ test[1] }}</td>
+                    <td>{{ test[2] }}</td>
+                    <td><a href="details.html?value={{ test[3] }}">{{ test[3] }}</a></td>
                   </tr>
+                {% endfor %}
                 </tbody>
             </table>
 
@@ -91,6 +93,28 @@
            $("#jumbotroncontainer").css({"visibility":"hidden"});
            $("#bookdetails").css({"visibility":"visible"});
      });
-   
+
+     function myFunction() {
+       console.log("my function");
+        var input, filter, table, tr, td, i, txtValue, j;
+        input = document.getElementById("searchinput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("bookdetails");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td");
+          for(j =0; j < td.length;j++){
+          if (td[j]) {
+            txtValue = td[j].textContent || td[j].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+              break;
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+          }
+        }
+      }
    </script>
 </html>

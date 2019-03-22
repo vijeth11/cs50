@@ -48,7 +48,7 @@
     <nav class="navbar navbar-light bg-light justify-content-center searchbar">
             <form class="form-inline">
               <i class="fas fa-search"></i>
-              <input class="form-control mr-md-2" id= "searchinput" type="search" placeholder="Search" aria-label="Search" style="border-radius:25px;width:300px">
+              <input class="form-control mr-md-2" id= "searchinput" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search" style="border-radius:25px;width:300px">
              
             </form>
           </nav>
@@ -81,6 +81,12 @@
                     <td>world</td>
                     <td><a href="details.html"> @mdo</a></td>
                   </tr>
+                  <tr>
+                    <td>hellen</td>
+                    <td>keller</td>
+                    <td>test</td>
+                    <td><a href="details.html"> @setup</a></td>
+                  </tr>
                 </tbody>
             </table>
 
@@ -91,6 +97,24 @@
            $("#jumbotroncontainer").css({"visibility":"hidden"});
            $("#bookdetails").css({"visibility":"visible"});
      });
-   
+     function myFunction() {
+       console.log("my function");
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchinput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("bookdetails");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
    </script>
 </html>
