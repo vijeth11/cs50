@@ -45,28 +45,31 @@
     <div class="col-md-8 col-sm-8">
       <div class="row" style="background:white;">
         <div class="col-md-6 col-sm-6 text-center">
-          <img src="{{ url_for('static',filename='images/bookcover.png') }}" alt="..." style="width:200px; height:200px;" class="img-thumbnail">
+          <img src="{{ image }}" alt="..." style="width:250px; height:250px;" class="img-thumbnail">
         </div>
         <div class="col-md-6 col-sm-6">
           <div style="padding-top:7vh">
             <span>
-              ISBN number :  {{ test[0] }}
+              ISBN number :  {{ test[1] }}
             </span>
             <br>
             <span>
-              Title : {{ test[1] }}
+              Title : {{ test[2] }}
             </span>
             <br>
             <span>
-              Author : {{ test[2] }}
+              Author : {{ test[3] }}
             </span>
             <br>
             <span>
-              Publication Year : {{ test[3] }}
+              Publication Year : {{ test[4] }}
             </span>
             <br>
             <span>
               Rating :
+              <input id="input-1" name="input-1" class="rating rating-loading" value="{{ rating }}" data-min="0"
+              data-max="5" data-step="0.5" data-readonly="true" data-size="sm" data-show-clear="false"
+              data-show-caption="true" >
             </span>
           </div>
         </div>
