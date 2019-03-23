@@ -26,6 +26,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/login.css') }}" />
   </head>
@@ -171,6 +172,17 @@
       }, 1400);
     });
     
+    $(".card").on("click", "#register", function() {
+      $("h5").text("Register");
+      $("#signup").removeClass("w3-animate-opacity");
+      $("#signup").addClass("w3-animate-top");
+      console.log("register clicked 1");
+      $("#confirmpassword").append(
+        "<div><label for='exampleInputPassword2'>Confirm Password</label><input type='password' class='form-control' id='exampleInputPassword2'placeholder='Password' data-toggle='popover' data-trigger='focus' title='Password Error' data-content='Password does not match'></div>"
+      );
+      $("#footer").remove("");
+    });
+
     $("#register").click(function() {
       $("h5").text("Register");
       console.log("register clicked");
@@ -194,6 +206,7 @@
             form.addEventListener(
               "submit",
               function(event) {
+                form.classList.remove("was-validated");
                 if (form.checkValidity() === false || (document.getElementById("exampleInputPassword2")!=null && document.getElementById("exampleInputPassword2").value!=document.getElementById("exampleInputPassword1").value)) {
                 
                  if(document.getElementById("exampleInputPassword2").value!=document.getElementById("exampleInputPassword1").value)
@@ -204,23 +217,43 @@
                   event.stopPropagation();
                 }
                 else{
-                form.classList.add("was-validated");
-                $("h5").text("Login");
-                $("#signup").removeClass("w3-animate-top");
-                $("#signup").addClass("w3-animate-opacity");
-                $("#footer").css({ visibility: "visible" });
-                $("#confirmpassword div").remove();
+                event.preventDefault();
+                event.stopPropagation();
                 console.log("click 1");
                 console.log(document.getElementById("exampleInputPassword1").value);
                 if (!$("#register").length) {
-                  $(".card").append(
-                    " <div class='card-footer' id='footer'><div class='row'><div class='col-md-7 col-sm-7' style='text-align:left'><a href='#'>forgot password</a></div><div class='col-md-5 col-sm-5' style='text-align:right'><a href='#' id='register'>register</a></div></div>"
-                  );
+                  $.ajax({
+                        type: "POST",
+                        url:  "/register",
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify({
+                        username: $("#exampleInputEmail1").val(),
+                        password: $("#exampleInputPassword1").val(),
+                        confirmpassword: $("#exampleInputPassword2").val()
+                        }),
+                        success: function(response) {
+                                  console.log(response);
+                                  form.classList.add("was-validated");
+                                  $(".card").append(
+                                             " <div class='card-footer' id='footer'><div class='row'><div class='col-md-7 col-sm-7' style='text-align:left'><a href='#'>forgot password</a></div><div class='col-md-5 col-sm-5' style='text-align:right'><a href='#' id='register'>register</a></div></div>"
+                                           );
+                        },
+                         error: function(response) {
+                                 console.log(response);
+                        }
+                  });
+                 
                 } else {
                   setTimeout(function() {
                     window.location.href = "Searchpage.html";
                   }, 1);
                 }
+                $("h5").text("Login");
+                $("#signup").removeClass("w3-animate-top");
+                $("#signup").addClass("w3-animate-opacity");
+                $("#footer").css({ visibility: "visible" });
+                $("#confirmpassword div").remove();
               }
               },
               false
