@@ -1,7 +1,7 @@
 import json
 import os
 try:
-   from flask import Flask,render_template,redirect,request,abort
+   from flask import Flask, render_template, redirect, request, abort, session, url_for
    import csv
    import psycopg2
    import requests
@@ -10,7 +10,7 @@ except ImportError:
     os.system('pip3 install django')
     os.system('pip3 install psycopg2-binary')
     os.system('pip3 install requests')
-    from flask import Flask, render_template, redirect, request,abort
+    from flask import Flask, render_template, redirect, request,abort,session,url_for
     import csv
     import psycopg2
     import requests
@@ -29,7 +29,7 @@ else:
 
 
 app = Flask(__name__)
-
+app.secret_key = 'ytsfthjasidjusfhebksl'
 
 # with open('books.csv') as csvfile:
 #     readCSV = csv.reader(csvfile)
@@ -85,7 +85,7 @@ def register():
 
 @app.route('/books/signin',methods=["POST"])
 def signin():
-    print(request.json["username"])
+
     if request.json["username"]!="" and request.json['password']!="":
         try:
             print("select count(*) from users where username='"+request.json["username"]+"' and password='"+request.json['password']+"';")
@@ -99,6 +99,8 @@ def signin():
         except:
             return json.dumps({'error':"database error"}), 400, {'ContentType':'application/json'}
         if data[0][0] > 0 :
+            session['username'] = request.json["username"]
+            session['password'] = request.json['password']
             return json.dumps({'success':"success test"}), 200, {'ContentType':'application/json'}
         else:
             return json.dumps({'error': "please register"}), 400, {'ContentType': 'application/json'}
@@ -118,3 +120,23 @@ def apicall(isbn):
     except:
         return json.dumps({'error': "no book found"})
     return json.dumps({'error': "no book found"})
+
+
+@app.route('/books/comment',methods=["POST"])
+def comment():
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        cur = conn.cursor()
+        cur.execute("select id from users where username='"+session['username']+"'and password='"+session['password']+"';")
+        userid=cur.fetchall()
+        isbn=request.json['isbn']
+        isbn=(isbn.split(":")[1]).strip()
+        cur.execute("select id from books where isbn='"+isbn+"';")
+        bookid=cur.fetchall()
+        cur.execute("insert into comments (userid,bookid,comments,rating) values ("+str(userid[0][0])+","+str(bookid[0][0])+",'"+request.json['comment']+"',"+str(request.json['rating'])+");")
+        conn.commit()
+        cur.close()
+        conn.close()
+        return json.dumps({'success':"success test"}), 200, {'ContentType':'application/json'}
+    except:
+        return json.dumps({'error': "database error"}), 400, {'ContentType': 'application/json'}

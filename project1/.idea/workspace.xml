@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d977367-54f9-4c00-b7e7-e8d2ec55eb84" name="Default Changelist" comment="" />
+    <list default="true" id="8d977367-54f9-4c00-b7e7-e8d2ec55eb84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/server/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/templates/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/templates/details.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="937">
-              <caret line="118" column="53" selection-start-line="118" selection-start-column="53" selection-end-line="118" selection-end-column="53" />
+            <state relative-caret-position="189">
+              <caret line="143" column="94" selection-start-line="143" selection-start-column="94" selection-end-line="143" selection-end-column="94" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -107,12 +110,12 @@
       <updated>1553277492072</updated>
       <workItem from="1553277507669" duration="1230000" />
       <workItem from="1553279733098" duration="12657000" />
-      <workItem from="1553398642141" duration="10373000" />
+      <workItem from="1553398642141" duration="14040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24260000" />
+    <option name="totallyTimeSpent" value="27927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="27" y="47" width="1346" height="688" extended-state="0" />
@@ -157,8 +160,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="937">
-          <caret line="118" column="53" selection-start-line="118" selection-start-column="53" selection-end-line="118" selection-end-column="53" />
+        <state relative-caret-position="189">
+          <caret line="143" column="94" selection-start-line="143" selection-start-column="94" selection-end-line="143" selection-end-column="94" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

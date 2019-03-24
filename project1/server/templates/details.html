@@ -11,6 +11,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
@@ -49,7 +50,7 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <div style="padding-top:7vh">
-            <span>
+            <span id="isbn">
               ISBN number :  {{ test[1] }}
             </span>
             <br>
@@ -110,11 +111,12 @@
            
           <div class="form-group" style="padding-top:2vh">
             <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="7" id="comment" placeholder="comment"></textarea>
+            <textarea id="textarea" class="form-control" rows="7" id="comment" placeholder="comment"></textarea>
           </div>
           <div style="text-align:right;padding-bottom: 2vh;">
             <button type="submit"
             id="submit"
+            onclick="submitcomment()"
             class=" btn btn-success btnsignin ">Submit</button>
           </div>
         </div>
@@ -132,6 +134,29 @@
     console.log(("#input-2").attr("value"));
   });
 
+  function submitcomment(){
+    console.log($("#input-2").val())
+    console.log($("#isbn").text())
+    $.ajax({
+                        type: "POST",
+                        url:  "/books/comment",
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify({
+                        isbn: $("#isbn").text(),
+                        comment: $("#textarea").val(),
+                        rating: $("#input-2").val()
+                        }),
+                        success: function(response){
+                          setTimeout(function () {
+                            window.location.href = "Searchpage.html";
+                          }, 1);
+                        },
+                        error: function(response) {
+                          alert(response["responseText"]);
+                        }
+                      });
+  }
 </script>
 
 </html>
