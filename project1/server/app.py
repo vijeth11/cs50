@@ -78,7 +78,7 @@ def register():
             cur.close()
             conn.close()
         except:
-            return json.dumps({'error':"database error"}), 400, {'ContentType':'application/json'}
+            return json.dumps({'error':"database error or user already exists please try again"}), 400, {'ContentType':'application/json'}
         return json.dumps({'success':"success test"}), 200, {'ContentType':'application/json'}
     else:
         return json.dumps({'error':"please fill all the fields"}), 400, {'ContentType':'application/json'}
@@ -104,3 +104,17 @@ def signin():
             return json.dumps({'error': "please register"}), 400, {'ContentType': 'application/json'}
     else:
         return json.dumps({'error':"please fill all the fields"}), 400, {'ContentType':'application/json'}
+
+@app.route('/api/<isbn>')
+def apicall(isbn):
+    try:
+        res = requests.get("https://www.goodreads.com/book/review_counts.json",
+                       params={"key": "Yo1A6BgkiRzw3D3U1RFw", "isbns": isbn})
+        result = res.json()
+        for t in test:
+            if t[1]==isbn:
+                book =t
+                return json.dumps({ "title": book[2],"author": book[3],"year": book[4],"isbn": book[1],"review_count": result["books"][0]["reviews_count"],"average_score": result["books"][0]["average_rating"]})
+    except:
+        return json.dumps({'error': "no book found"})
+    return json.dumps({'error': "no book found"})

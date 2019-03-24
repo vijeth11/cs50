@@ -253,6 +253,9 @@
                          error: function(response) {
                                  console.log(response);
                                  alert(response["responseText"]);
+                                 $("#exampleInputEmail1").val("");
+                                 $("#exampleInputPassword1").val("");
+                                 $("#exampleInputPassword2").val("");
                         }
                   });
                  
