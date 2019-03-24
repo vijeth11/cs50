@@ -1,6 +1,7 @@
+import json
 import os
 try:
-   from flask import Flask,render_template,redirect,request
+   from flask import Flask,render_template,redirect,request,abort
    import csv
    import psycopg2
    import requests
@@ -9,7 +10,7 @@ except ImportError:
     os.system('pip3 install django')
     os.system('pip3 install psycopg2-binary')
     os.system('pip3 install requests')
-    from flask import Flask, render_template, redirect, request
+    from flask import Flask, render_template, redirect, request,abort
     import csv
     import psycopg2
     import requests
@@ -65,3 +66,41 @@ def book_index(name=''):
         return render_template(f"{name}", value=value,test=book,rating=result["books"][0]["average_rating"],image="http://covers.openlibrary.org/b/isbn/"+str(value)+"-M.jpg" )
     return render_template(f"{name}")
 
+@app.route('/books/register',methods=["POST"])
+def register():
+    print(request.json["username"])
+    if request.json["username"]!="" and request.json['password']!="" and request.json["confirmpassword"]!="":
+        try:
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            cur = conn.cursor()
+            cur.execute("insert into users (username,password) values ('"+request.json["username"]+"','"+request.json['password']+"');")
+            conn.commit()
+            cur.close()
+            conn.close()
+        except:
+            return json.dumps({'error':"database error"}), 400, {'ContentType':'application/json'}
+        return json.dumps({'success':"success test"}), 200, {'ContentType':'application/json'}
+    else:
+        return json.dumps({'error':"please fill all the fields"}), 400, {'ContentType':'application/json'}
+
+@app.route('/books/signin',methods=["POST"])
+def signin():
+    print(request.json["username"])
+    if request.json["username"]!="" and request.json['password']!="":
+        try:
+            print("select count(*) from users where username='"+request.json["username"]+"' and password='"+request.json['password']+"';")
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            cur = conn.cursor()
+            cur.execute("select count(*) from users where username='"+request.json["username"]+"' and password='"+request.json['password']+"';")
+            data =cur.fetchall()
+            cur.close()
+            conn.close()
+            print("data "+str(data))
+        except:
+            return json.dumps({'error':"database error"}), 400, {'ContentType':'application/json'}
+        if data[0][0] > 0 :
+            return json.dumps({'success':"success test"}), 200, {'ContentType':'application/json'}
+        else:
+            return json.dumps({'error': "please register"}), 400, {'ContentType': 'application/json'}
+    else:
+        return json.dumps({'error':"please fill all the fields"}), 400, {'ContentType':'application/json'}

@@ -16,6 +16,7 @@
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -26,7 +27,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/login.css') }}" />
   </head>
@@ -188,6 +189,7 @@
       console.log("register clicked");
       $("#signup").removeClass("w3-animate-opacity");
       $("#signup").addClass("w3-animate-top");
+      $("#exampleInputPassword1").val("");
       $("#confirmpassword").append(
         "<div><label for='exampleInputPassword2'>Confirm Password</label><input type='password' class='form-control' id='exampleInputPassword2'placeholder='Password' data-toggle='popover' data-trigger='focus' title='Password Error' data-content='Password does not match'></div>"
       );
@@ -213,6 +215,7 @@
                   $('#exampleInputPassword2').popover('show')
                  
                   console.log("testing password error");
+                  form.classList.add("is-invalid");
                   event.preventDefault();
                   event.stopPropagation();
                 }
@@ -224,7 +227,7 @@
                 if (!$("#register").length) {
                   $.ajax({
                         type: "POST",
-                        url:  "/register",
+                        url:  "/books/register",
                         contentType: "application/json",
                         dataType: "json",
                         data: JSON.stringify({
@@ -238,22 +241,48 @@
                                   $(".card").append(
                                              " <div class='card-footer' id='footer'><div class='row'><div class='col-md-7 col-sm-7' style='text-align:left'><a href='#'>forgot password</a></div><div class='col-md-5 col-sm-5' style='text-align:right'><a href='#' id='register'>register</a></div></div>"
                                            );
-                        },
-                         error: function(response) {
-                                 console.log(response);
-                        }
-                  });
-                 
-                } else {
-                  setTimeout(function() {
-                    window.location.href = "Searchpage.html";
-                  }, 1);
-                }
-                $("h5").text("Login");
+                                           $("h5").text("Login");
+                                           form.classList.add("was-validated");
                 $("#signup").removeClass("w3-animate-top");
                 $("#signup").addClass("w3-animate-opacity");
                 $("#footer").css({ visibility: "visible" });
                 $("#confirmpassword div").remove();
+                $("#exampleInputEmail1").val("");
+                $("#exampleInputPassword1").val("");
+                        },
+                         error: function(response) {
+                                 console.log(response);
+                                 alert(response["responseText"]);
+                        }
+                  });
+                 
+                } else {
+                  $.ajax({
+                        type: "POST",
+                        url:  "/books/signin",
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify({
+                        username: $("#exampleInputEmail1").val(),
+                        password: $("#exampleInputPassword1").val()
+                        }),
+                        success: function(response) {
+                                  console.log(response);
+                                  form.classList.add("was-validated");
+                                  setTimeout(function () {
+                            window.location.href = "Searchpage.html";
+                          }, 1);
+                        },
+                         error: function(response) {
+                                 console.log(response);
+                                 alert(response["responseText"]);
+                                 $("#exampleInputEmail1").val("");
+                                 $("#exampleInputPassword1").val("");
+                        }
+                  });
+                 
+                }
+                
               }
               },
               false
