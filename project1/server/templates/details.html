@@ -32,7 +32,7 @@
   <div>
     <nav class="navbar navbar-light bg-light nav justify-content-end nav-pills">
       <li class="nav-item">
-        <a class="btn btn-danger " href="index.html" role="button">Logout</a>
+        <a class="btn btn-danger " href="logout" role="button">Logout</a>
       </li>
     </nav>
   </div>
@@ -75,6 +75,7 @@
           </div>
         </div>
       </div>
+      {% for comment in comments %}
       <br>
       <div class="row" style="background:white;">
         <div class="col-md-2 col-sm-2 my-auto justify-content-center h-100 d-flex">
@@ -82,25 +83,25 @@
         </div>
         <div class="col-md-10 col-sm-10">
           <div style="padding-top:1vh;"><span>
-              <h3 class="d-inline">Your name</h3>&nbsp; &nbsp; <span style="font-size: 12px;">-- Mon 23-3-2019 12:00 AM
+              <h3 class="d-inline">{{comment[0]}}</h3>&nbsp; &nbsp; <span style="font-size: 12px;">-- Mon 23-3-2019 12:00 AM
               </span>
             </span></div>
           
           <span>
-             <input id="input-1" name="input-1" class="rating rating-loading" value="3.5" data-min="0"
+             <input id="input-1" name="input-1" class="rating rating-loading" value="{{comment[2]}}" data-min="0"
               data-max="5" data-step="0.5" data-readonly="true" data-size="xm" data-show-clear="false"
               data-show-caption="false" >
           </span>
           
           <p style="padding-top:2vh;padding-bottom:1vh;">
-            This Library is the best part of my UCL spaces experience. it is clean, well kept with large desks and big
-            wondows for
-            natural light. It would be amazing if you prolonged the opening hours during the day and also weekends. it
-            is perfect!
+            {{comment[1]}}
           </p>
         </div>
       </div>
       <br>
+      {% endfor %}
+      <br>
+      {% if commentboxshow==True %}
       <div class="row" style="background:white;">
         <div class="col-sm-12 col-md-12">
           <h3> Your Comments</h3>
@@ -121,6 +122,7 @@
           </div>
         </div>
       </div>
+      {% endif %}
       <br>
     </div>
     <div class="col-md-2 col-sm-2"></div>

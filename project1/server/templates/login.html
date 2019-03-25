@@ -247,7 +247,6 @@
                 $("#signup").addClass("w3-animate-opacity");
                 $("#footer").css({ visibility: "visible" });
                 $("#confirmpassword div").remove();
-                $("#exampleInputEmail1").val("");
                 $("#exampleInputPassword1").val("");
                         },
                          error: function(response) {
@@ -277,10 +276,21 @@
                           }, 1);
                         },
                          error: function(response) {
-                                 console.log(response);
-                                 alert(response["responseText"]);
-                                 $("#exampleInputEmail1").val("");
+                                 $("#signup").removeClass("w3-animate-opacity");
+                                 setTimeout(function() {
+                                 $("#signup").addClass("w3-animate-opacity");
+                                 $("h5").text("Register");
                                  $("#exampleInputPassword1").val("");
+                                 $("#exampleInputPassword1").val("");
+                                 $("#confirmpassword").append(
+                                           "<div><label for='exampleInputPassword2'>Confirm Password</label><input type='password' class='form-control' id='exampleInputPassword2'placeholder='Password' data-toggle='popover' data-trigger='focus' title='Password Error' data-content='Password does not match'></div>"
+                                  );
+                                 $("#footer").remove("");
+                                 },200);
+                                 
+                                 console.log(response);                     
+                                 
+                                 
                         }
                   });
                  

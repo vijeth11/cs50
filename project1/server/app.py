@@ -59,11 +59,23 @@ def book_index(name=''):
         res = requests.get("https://www.goodreads.com/book/review_counts.json",
                         params={"key": "Yo1A6BgkiRzw3D3U1RFw", "isbns": str(value)})
         result=res.json()
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        cur = conn.cursor()
+        cur.execute(" select count(*) from comments where userid =(select id from users where username='"+session['username']+"')and bookid = (select id from books where isbn = '"+value+"');")
+        commentavailable = cur.fetchall()
+        if (commentavailable[0][0]>0):
+            commentavailable=False
+        else:
+            commentavailable=True
+        cur.execute("select u.username ,c.comments,c.rating from users as u , comments as c where c.bookid = (select id from books where isbn='"+value+"') and u.id = c.userid;")
+        comments=cur.fetchall()
+        cur.close()
+        conn.close()
         for t in test:
             if t[1]==value:
                 book=t
                 break
-        return render_template(f"{name}", value=value,test=book,rating=result["books"][0]["average_rating"],image="http://covers.openlibrary.org/b/isbn/"+str(value)+"-M.jpg" )
+        return render_template(f"{name}", value=value,test=book,rating=result["books"][0]["average_rating"],image="http://covers.openlibrary.org/b/isbn/"+str(value)+"-M.jpg",commentboxshow=commentavailable, comments=comments )
     return render_template(f"{name}")
 
 @app.route('/books/register',methods=["POST"])
@@ -140,3 +152,10 @@ def comment():
         return json.dumps({'success':"success test"}), 200, {'ContentType':'application/json'}
     except:
         return json.dumps({'error': "database error"}), 400, {'ContentType': 'application/json'}
+
+@app.route('/books/logout')
+def logout():
+    session.pop('username',None)
+    session.pop('password',None)
+    session.clear()
+    return redirect('/books/index.html')
