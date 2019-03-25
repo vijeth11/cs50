@@ -1,49 +1,60 @@
-.navbar{
-    position:absolute;
-    width:100%;
-    z-index:10;
-    max-width:100%;
-    opacity: 0.5;
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  max-width: 100%;
+  opacity: 0.5;
 }
-.login{
-    background: rgba(12, 139, 40, 2.0);
-}
-
-#exampleInputEmail1{
-    border-radius: 25px;
-}
-#exampleInputPassword1{
-    border-radius: 25px;
+.login {
+  background: rgba(12, 139, 40, 2);
 }
 
-#exampleInputPassword2{
-    border-radius: 25px;
+#exampleInputEmail1 {
+  border-radius: 25px;
 }
-.btnsignin{
+#exampleInputPassword1 {
+  border-radius: 25px;
+}
+
+#exampleInputPassword2 {
+  border-radius: 25px;
+}
+.btnsignin {
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
- /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   border-radius: 25px;
 }
 .btn-grad {
-    background-image: linear-gradient(to right, #B3FFAB 0%, #12FFF7 51%, #B3FFAB 100%)
+  background-image: linear-gradient(
+    to right,
+    #b3ffab 0%,
+    #12fff7 51%,
+    #b3ffab 100%
+  );
 }
-.btn-grad:hover { background-position: right center; }
-
-
+.btn-grad:hover {
+  background-position: right center;
+}
 
 @keyframes slide {
-    from { background-color: red; top: 40%; }
-    to { background-color: blue; top: 10%; }
+  from {
+    background-color: red;
+    top: 40%;
   }
-  
-  .animated {
-      position: absolute;
-      left: 35%;
-      background-color: red;
-      animation-duration: 2s;
-      animation-name: slide;
-      animation-fill-mode: forwards;       
+  to {
+    background-color: blue;
+    top: 10%;
   }
+}
+
+.animated {
+  position: absolute;
+  left: 35%;
+  background-color: red;
+  animation-duration: 2s;
+  animation-name: slide;
+  animation-fill-mode: forwards;
+}

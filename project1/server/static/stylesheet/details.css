@@ -1,39 +1,37 @@
-.navbar{
-    position:absolute;
-    width:100%;
-    z-index:10;
-    max-width:100%;
-    opacity: 1.0;
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  max-width: 100%;
+  opacity: 1;
 }
 
-
-body{
-    
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-  .animated {
-      position: absolute;
-      left: 35%;
-      top: 10%; 
-  }
+.animated {
+  position: absolute;
+  left: 35%;
+  top: 10%;
+}
 
-  #jumbotroncontainer{
-      position: absolute;
-      top:30%;
-      padding-top: 5vh;
-      width:100%;
-  }
+#jumbotroncontainer {
+  position: absolute;
+  top: 30%;
+  padding-top: 5vh;
+  width: 100%;
+}
 
-  div{
-      border: 0.0px black solid;
-  }
+div {
+  border: 0px black solid;
+}
 
-  .btnsignin{
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
-    border-radius: 25px;
-  }
+.btnsignin {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  border-radius: 25px;
+}
