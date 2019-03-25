@@ -159,3 +159,6 @@ def logout():
     session.pop('password',None)
     session.clear()
     return redirect('/books/index.html')
+
+if __name__ == '__main__':
+   app.run()
