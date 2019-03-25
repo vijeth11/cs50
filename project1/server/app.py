@@ -39,11 +39,7 @@ app.secret_key = 'ytsfthjasidjusfhebksl'
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
-
-@app.route('/david')
-def david():
-    return "hell david"
+    return redirect("/books")
 
 
 @app.route('/books')
