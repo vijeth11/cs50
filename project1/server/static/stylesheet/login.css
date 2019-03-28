@@ -1,3 +1,10 @@
+html, body
+{
+  height: 100%;
+  margin:0;
+  padding:0;
+}
+
 .navbar {
   position: absolute;
   width: 100%;
@@ -5,6 +12,7 @@
   max-width: 100%;
   opacity: 0.5;
 }
+
 .login {
   background: rgba(12, 139, 40, 2);
 }
@@ -27,34 +35,102 @@
   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   border-radius: 25px;
 }
-.btn-grad {
-  background-image: linear-gradient(
-    to right,
-    #b3ffab 0%,
-    #12fff7 51%,
-    #b3ffab 100%
-  );
-}
-.btn-grad:hover {
-  background-position: right center;
-}
 
 @keyframes slide {
-  from {
-    background-color: red;
-    top: 40%;
+  from
+  {
   }
-  to {
-    background-color: blue;
+  to 
+  {
     top: 10%;
   }
 }
 
+/* #login_overlay_mainContainer
+{
+  width: 25%;
+} */
+
 .animated {
-  position: absolute;
-  left: 35%;
-  background-color: red;
   animation-duration: 2s;
   animation-name: slide;
   animation-fill-mode: forwards;
+}
+
+#login_overlay
+{
+  padding:4% 0; 
+  cursor: pointer;
+}
+
+#login_overlay > a > i
+{
+  padding-right:1%;
+}
+#login_overlay:hover
+{
+  color: rgb(223, 223, 223);
+}
+
+#login_overlay > a > span
+{
+  font-size: bold;
+}
+
+#login_overlay_Card
+{
+  color:black;
+}
+
+#login_overlay_Card > h5
+{
+  margin: 0;
+  padding: 0;
+  padding: 5%;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: #4C4477;
+}
+
+
+@media (min-width: 576px) 
+{
+  #login_overlay_mainContainer
+{
+  width: 70%;
+}
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #login_overlay_mainContainer
+{
+  width: 55%;
+}
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  #login_overlay_mainContainer
+{
+  width: 42%;
+}
+}
+
+@media (min-width: 1650px) { 
+  #login_overlay_mainContainer
+{
+  width: 30%;
+}
+}
+
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+  #login_overlay_mainContainer
+  {
+    width: 25%;
+  }
 }

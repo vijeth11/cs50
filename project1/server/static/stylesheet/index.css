@@ -9,6 +9,7 @@
 
 /* // Extra large devices (large desktops, 1200px and up) */
 /* @media (min-width: 1200px) { ... } */
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 html, body
 {
@@ -36,12 +37,6 @@ div
 }
 .login {
   background: rgba(12, 139, 40, 2);
-}
-
-.animated {
-  position: absolute;
-  left: 35%;
-  top: 40%;
 }
 
 .carousel_bg
