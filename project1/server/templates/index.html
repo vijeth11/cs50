@@ -31,7 +31,7 @@
         </div>
         <div class="row align-item-center" style="padding:0;">
             <div class="col-12">
-              <button type="button" class="btn btn-success" style="padding:1% 2%;" href="/books/login.html">
+              <button type="button" class="btn btn-success" style="padding:1% 2%;" onclick="login()">
                   <span><b>Get Started</b></span>
               </button>
             </div>
@@ -82,6 +82,10 @@
             top: "40%"
         });
     });
+
+    function login(){
+      window.location.href="/books/login.html"
+    }
 </script>
 
 </html>
