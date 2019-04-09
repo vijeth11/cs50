@@ -30,6 +30,7 @@ else:
 
 app = Flask(__name__)
 app.secret_key = 'ytsfthjasidjusfhebksl'
+app.templates_auto_reload = True
 
 # with open('books.csv') as csvfile:
 #     readCSV = csv.reader(csvfile)
@@ -157,4 +158,6 @@ def logout():
     return redirect('/books/index.html')
 
 if __name__ == '__main__':
+   app.config['TEMPLATES_AUTO_RELOAD'] = True
+   app.config['DEVELOPMENT'] = True
    app.run()
