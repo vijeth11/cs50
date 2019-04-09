@@ -12,5 +12,10 @@ hope you like it.
 
 # Project 1
 
-Web Programming with Python and JavaScript
+Created a website called bibilo etheca which is an online library where users can add their ratings and comments.
+
+### To run in local system:
+    1. clone the repository
+    2. point the path to server folder in command promt and run flask run --reload for development or flask run for prod or python app.py        --relodad
+    
 
