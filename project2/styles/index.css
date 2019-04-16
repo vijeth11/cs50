@@ -1,0 +1,115 @@
+.header {
+    padding-top: 2vh; 
+    padding-bottom: 30vh;
+    background-image: url("../src/night-sky-2008408_1920.jpg");
+    font-size: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  div {
+    border: 1px black solid;
+  }
+  input[type="text"]
+{
+    background: transparent;
+    border:0px;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height:25px;
+    border-radius: 25px;
+    color: white;
+}
+
+.search-box{
+  border-radius:25px;
+  height:25px;
+  width:15px;
+  border:1px white solid
+}
+
+.fa-search{
+  color:white;
+}
+
+input[type="text"]::placeholder { /* Firefox, Chrome, Opera */ 
+  color: white; 
+  align-content: center;
+} 
+
+input[type="text"]::-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+  color: white; 
+  align-content: center;
+} 
+
+input[type="text"]::-ms-input-placeholder { /* Microsoft Edge */ 
+  color: white; 
+  align-content: center;
+} 
+  /*.navbar {max-height:50px !important;}*/
+
+
+
+
+input[type="text"]:hover, 
+input[type="text"]:focus, 
+input[type="text"]:active  {
+  background: transparent;
+  color: white;
+  outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.icon{
+  width:100px;
+  height:100px;
+  position: absolute;
+  margin:-50px 0 0 85px;
+ 
+}
+
+.cool-link {
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+}
+
+.cool-link:hover::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ef3e3b;
+  color:#ef3e3b;
+  
+}
+
+.cool-link::after {
+  width: 100%;
+}
+
+.custom-nav
+{
+  font-size: 33;
+  color:#ef3e3b;
+}
+
+.nav-link:hover{
+  color: #ef3e3b;
+}
+.active:hover{
+  color:#ef3e3b;
+}
+.active::after{
+  color:#ef3e3b;
+}
+.active.cool-link{
+  color: #ef3e3b;
+  background: #ef3e3b;
+  background-position: bottom;
+}
