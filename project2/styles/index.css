@@ -9,7 +9,7 @@
   }
 
   div {
-    border: 1px black solid;
+    border: 0px black solid;
   }
   input[type="text"]
 {
@@ -76,16 +76,16 @@ input[type="text"]:active  {
 .cool-link {
   display: inline-block;
   color: black;
-  text-decoration: none;
 }
 
 .cool-link:hover::after {
   content: '';
   display: block;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background: #ef3e3b;
   color:#ef3e3b;
+  text-decoration: underline #ef3e3b;
   
 }
 
@@ -109,7 +109,5 @@ input[type="text"]:active  {
   color:#ef3e3b;
 }
 .active.cool-link{
-  color: #ef3e3b;
-  background: #ef3e3b;
-  background-position: bottom;
+ color: #ef3e3b;
 }
