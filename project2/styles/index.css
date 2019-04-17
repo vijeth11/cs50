@@ -66,10 +66,10 @@ input[type="text"]:active  {
 }
 
 .icon{
-  width:100px;
-  height:100px;
+  width:120px;
+  height:120px;
   position: absolute;
-  margin:-50px 0 0 85px;
+  margin:-62px 0 0 125px;
  
 }
 
@@ -111,4 +111,21 @@ input[type="text"]:active  {
 }
 .active.cool-link{
  color: #ef3e3b;
+}
+
+.information{
+  margin:4px 0 0 105px;
+}
+
+.imagecontainer {
+  padding-left:0vh;
+  padding-right:30vh;  
+  display: grid;
+  grid-template-columns:auto auto auto auto ;
+  grid-template-rows: auto auto auto ;
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+.rounded{
+  justify-self: center;
 }
