@@ -150,3 +150,7 @@ input[type="text"]:active  {
 .fa-linkedin-square{
   color:#0077B5;
 }
+
+.row.remove-margin{
+  margin-right: 0;
+}
