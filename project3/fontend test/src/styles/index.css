@@ -1,0 +1,11 @@
+div {
+    border: 1px black solid;
+  }
+
+.navbar-brand{
+    color: white;
+    font-size: 16;
+}
+.col-md-4,.col-sm-4{
+    padding-right: 0px;
+}
