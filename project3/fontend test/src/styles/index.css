@@ -9,3 +9,6 @@ div {
 .col-md-4,.col-sm-4{
     padding-right: 0px;
 }
+.card-header{
+    padding: 0 0;
+}
