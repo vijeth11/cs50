@@ -16,20 +16,41 @@
                    <div class="accordion" id="accordionExample">
                             <div class="card">
                               <div class="card-header bg-dark" id="headingOne">
-                                <h2 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                   <a class="navbar-brand" href="#">
+                                <h2 onclick="changeIcon()" class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  <div style="display:inline-block" >
+                                   <a class="navbar-brand align-bottom" href="#">
+                                     
                                         <img src="./src/images/image1.jpg" width="50" height="50" class="rounded-circle" alt="" >
-                                        Bootstrap
-                                    </a> 
-                                    <span style="padding-left: 23vh;">hello</span>
+                                    
+                                           <span style="vertical-align:bottom">Bootstrap</span>                                   
+                                    </a>
+                                  </div>
+                                  <div style="display:inline-block;padding-left: 39vh;"> 
+                                    <span><i id="angledown" class="fa fa-angle-up" style="color:white" aria-hidden="true"></i></span>
+                                  </div>
                                 </h2>
                                  
                               </div>
                           
                               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
+                                  <div class="card panel panel-primary">
+                                      <div class="panel-body" style="max-height: 90%;overflow-y: scroll;">
+                                      <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                      </ul>
+                                      </div>
+                                    </div>
                               </div>
                             </div>
                         </div>
@@ -39,4 +60,16 @@
               </div>
         </div>
     </body>
+
+
+    <script type="text/javascript">
+     function changeIcon()
+     {
+       var icon = document.getElementById("angledown");
+       if(icon.className=="fa fa-angle-up")
+          icon.className= "fa fa-angle-down";
+       else
+          icon.className="fa fa-angle-up";
+     }
+    </script>
 </html>
