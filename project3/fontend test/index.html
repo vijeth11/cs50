@@ -14,10 +14,10 @@
        <div class="row" id="chatapp">
            <div class="col-sm-4 col-md-4">
                <div class="row">
-                <div class="col-sm-12 col-md-12">
-                <div class="accordion" id="accordionExample">
+                <div class="col-sm-12 col-md-12" >
+                <div class="accordion" id="accordionExample" >
                         <div class="card">
-                          <div class="bg-dark" onclick="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <div class="bg-dark" style="padding-bottom: 4vh;"onclick="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                               <div style="display:inline-block" >
                                <a class="navbar-brand align-bottom" href="#">
                                  
@@ -40,14 +40,21 @@
                 </div>
                 </div>
                 <div class="row"> 
-                    <div class="col-sm-12 col-md-12">
-                         
+                    <div class="col-sm-12 col-md-12 bg-dark" >
+                            <form class=" my-2 my-lg-0" style="padding-left:2vh">
+                                    <div class="input-group search-box">
+                                      <span class="input-group-addon" id="start-date" style="font-size: 0.5rem;"><span class="fa fa-search fa-2x"
+                                          style="padding-top:0.55vh;padding-left:1vh"></span></span>
+                                      <input type="text" class="form-control" size="13" placeholder="Search contacts ..." aria-describedby="start-date">
+                                    </div>
+                            
+                                  </form>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card panel panel-primary">
-                                <div class="panel-body" style="max-height: 80%;overflow-y: scroll;">
+                                <div class="panel-body" style="max-height: 75%;overflow-y: scroll;">
                                 <ul class="list-group list-group-flush">
                                   <li class="list-group-item">Cras justo odio</li>
                                   <li class="list-group-item">Dapibus ac facilisis in</li>
