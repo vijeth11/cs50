@@ -17,7 +17,7 @@
                 <div class="col-sm-12 col-md-12" >
                 <div class="accordion" id="accordionExample" >
                         <div class="card">
-                          <div class="bg-dark" style="padding-bottom: 4vh;"onclick="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <div class="bg-dark" style="padding-bottom: 4vh;"onclick="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne">
                               <div style="display:inline-block" >
                                <a class="navbar-brand align-bottom" href="#">
                                  
@@ -27,12 +27,12 @@
                                 </a>
                               </div>
                               <div style="display:inline-block;padding-left: 40vh;"> 
-                                <span><i id="angledown" class="fa fa-angle-up" style="color:white" aria-hidden="true"></i></span>
+                                <span><i id="angledown" class="fa fa-angle-down" style="color:white" aria-hidden="true"></i></span>
                               </div>
                             </div>
                              
                       
-                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card panel panel-primary">                                        
                                         <ul class="list-group list-group-flush">
                                           <li class="list-group-item">Cras justo odio</li>
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card panel panel-primary">
-                                <div class="panel-body" style="max-height: 74%;overflow-y: scroll;">
+                                <div class="panel-body" style="max-height: 70%;overflow-y: scroll;" id="contactList">
                                 <ul class="list-group list-group-flush">
                                   <li class="list-group-item">Cras justo odio</li>
                                   <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -79,11 +79,11 @@
                             </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 bg-dark" style="padding-bottom:0;padding-left:2vh;padding-top:2vh;">
-                        <div style="display:inline-block;text-align: center">
+                    <div class="col-sm-12 col-md-12 bg-dark" style="padding-bottom:0;padding-left:2vh;">
+                        <div style="display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
                             <span style="color:white">Add new Contact</span>
                         </div>
-                        <div style="display:inline-block;text-align:center">
+                        <div style="display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
                             <span style="color:white">Add New Group</span>
                         </div>
                     </div>
@@ -101,10 +101,19 @@
      function changeIcon()
      {
        var icon = document.getElementById("angledown");
-       if(icon.className=="fa fa-angle-up")
-          icon.className= "fa fa-angle-down";
-       else
-          icon.className="fa fa-angle-up";
+       var contactList = document.getElementById("contactList");
+       if(icon.className=="fa fa-angle-up"){
+          icon.className= "fa fa-angle-down";          
+       }
+       else{         
+          icon.className="fa fa-angle-up";            
+       }
+       if(icon.className=="fa fa-angle-up"){
+          contactList.style.maxHeight="54%";         
+       }
+       else{
+        contactList.style.maxHeight="70%";                 
+       }
      }
     </script>
 </html>
