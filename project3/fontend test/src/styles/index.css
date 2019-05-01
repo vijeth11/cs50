@@ -5,10 +5,22 @@ div {
 .navbar-brand{
     color: white;
     font-size: 16;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 3vh;
 }
 .col-md-4,.col-sm-4{
-    padding-right: 0px;
+    padding-right: 0;
+    padding-left:0;
+}
+.col-md-12,.col-sm-12{
+    padding-right: 0;
+   
 }
 .card-header{
     padding: 0 0;
+}
+.row{
+    margin-right: 0;
 }
