@@ -84,3 +84,7 @@ input[type="text"]:active  {
   margin:-62px 0 0 125px;
  
 }
+.col-sm-8, .col-md-8{
+  padding-right: 0;
+  padding-left: 0;
+}
