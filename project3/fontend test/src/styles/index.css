@@ -25,7 +25,7 @@ div {
     margin-right: 0;
 }
 
-input[type="text"]
+.searchBox
 {
     background: transparent;
     border:0px;
@@ -47,17 +47,17 @@ input[type="text"]
   color:white;
 }
 
-input[type="text"]::placeholder { /* Firefox, Chrome, Opera */ 
+.searchBox::placeholder { /* Firefox, Chrome, Opera */ 
   color: white; 
   align-content: center;
 } 
 
-input[type="text"]::-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+.searchBox::-ms-input-placeholder { /* Internet Explorer 10-11 */ 
   color: white; 
   align-content: center;
 } 
 
-input[type="text"]::-ms-input-placeholder { /* Microsoft Edge */ 
+.searchBox::-ms-input-placeholder { /* Microsoft Edge */ 
   color: white; 
   align-content: center;
 } 
@@ -66,9 +66,9 @@ input[type="text"]::-ms-input-placeholder { /* Microsoft Edge */
 
 
 
-input[type="text"]:hover, 
-input[type="text"]:focus, 
-input[type="text"]:active  {
+  .searchBox:hover, 
+  .searchBox:focus, 
+  .searchBox:active  {
   background: grey;
   color: white;
   outline: none;
