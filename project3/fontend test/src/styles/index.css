@@ -25,6 +25,9 @@ div {
     margin-right: 0;
 }
 
+.searchIcon {
+  
+}
 .searchBox
 {
     background: transparent;
@@ -66,10 +69,10 @@ div {
 
 
 
-  .searchBox:hover, 
-  .searchBox:focus, 
+  .searchBox:hover, .searchIcon:hover
+  .searchBox:focus, .searchIcon:focus
   .searchBox:active  {
-  background: grey;
+  background: rgb(163, 163, 163);
   color: white;
   outline: none;
     -webkit-box-shadow: none;
