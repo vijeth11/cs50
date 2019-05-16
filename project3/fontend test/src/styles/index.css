@@ -1,5 +1,5 @@
 div {
-    border: 0px black solid;
+    border: 1px black solid;
   }
 
 .navbar-brand{
@@ -87,4 +87,10 @@ div {
 .col-sm-8, .col-md-8{
   padding-right: 0;
   padding-left: 0;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 33.5%
 }
