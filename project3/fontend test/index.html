@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card panel panel-primary">
-                                <div class="panel-body" style="max-height:69.9vh;overflow-y: scroll;" id="contactList">
+                                <div class="panel-body" style="max-height:72.7vh;overflow-y: scroll;" id="contactList">
                                 <ul class="list-group list-group-flush" id="contactList">
 
                                 </ul>
@@ -69,11 +69,11 @@
                 </div>
                 <div  class="row">
                     <div  class="col-sm-12 col-md-12 bg-dark" style="padding-bottom:0;padding-left:2vh;">
-                      <div id="footer" style="background:black">
-                        <div  style="display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
+                      <div id="footer" >
+                        <div  style="background:black;display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
                             <span style="color:white">Add new Contact</span>
                         </div>
-                        <div style="display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
+                        <div style="background:black;display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
                             <span style="color:white">Add New Group</span>
                         </div>
                       </div>
@@ -91,10 +91,10 @@
                 <canvas>
 
                 </canvas>
-                <div id="footer" style="width:65%" class="input-group">
-                    <input type="text" class="form-control" size="13" height="120px" placeholder="Write ..." aria-describedby="start-date">
-                    <buttton style="text-align:center"><img src="./src/images/send_black_24x24.png"></buttton>
-                    
+                <div id="footer" style="width:67%" class="input-group">
+                    <input type="text" class="form-control" size="10"  placeholder="Write ..." aria-describedby="start-date">
+                    <span onclick="attachment()" style="padding-left:2vh"><i class="fa fa-paperclip fa-2x"></i></span>
+                    <span onclick="postMessage()" style="padding-left:2vh;padding-right:3vh"><i class="fa fa-paper-plane fa-2x"></i></span>
                 </div>
            </div>
 
@@ -120,15 +120,24 @@
        var contactList = document.getElementById("contactList");
        if(icon.className=="fa fa-angle-up"){
           icon.className= "fa fa-angle-down";
-          contactList.style.maxHeight="69.9vh";  
+          contactList.style.maxHeight="74.5vh";  
        }
        else{         
           icon.className="fa fa-angle-up";
             
-          contactList.style.maxHeight="53.9vh";         
+          contactList.style.maxHeight="58.5vh";         
        }
        
      }
       
+      function attachment(event)
+      {
+        alert("attachment clicked");
+      }
+
+      function postMessage(event)
+      {
+        alert("post Message clicked");
+      }
     </script>
 </html>
