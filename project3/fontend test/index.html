@@ -59,23 +59,23 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card panel panel-primary">
-                                <div class="panel-body" style="max-height:71.7vh;overflow-y: scroll;" id="contactList">
+                                <div class="panel-body" style="max-height:71.7vh;overflow-y: auto;" id="contactList">
                                 <ul class="list-group list-group-flush " id="contactList">
-
+                                    
                                 </ul>
                                 </div>
                               </div>
                             </div>
                 </div>
                 <div  class="row">
-                    <div  class="col-sm-12 col-md-12 bg-dark" style="padding-bottom:0;padding-left:2vh;">
-                      <div id="footer" >
-                        <div onmouseover="changeBackgroundcolor(this)" onmouseleave="this.style.background='#32465A'" class="raised" style="background:#32465A;display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
+                    <div  class="col-sm-12 col-md-12 bg-dark" style="float:center;padding-bottom:0;padding-left:2vh;">
+                      <div id="footer">
+                        <button onmouseover="changeBackgroundcolor(this)" onmouseleave="this.style.background='#32465A'" class="raised" style="background:#32465A;display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
                             <span style="color:white">Add new Contact</span>
-                        </div>
-                        <div onmouseover="changeBackgroundcolor(this)" onmouseleave="this.style.background='#32465A'" class="raised" style="background:#32465A;display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
+                        </button>
+                        <button onmouseover="changeBackgroundcolor(this)" onmouseleave="this.style.background='#32465A'" class="raised" style="background:#32465A;display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
                             <span style="color:white">Add New Group</span>
-                        </div>
+                        </button>
                       </div>
                     </div>
                 </div>
@@ -88,9 +88,23 @@
                   </a>
                  
                 </nav>
-                <canvas>
-
-                </canvas>
+                <div class="panel-body" style="max-height:71.7vh;overflow-y: auto;">
+                  <div class="card">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <div>
+                          <span>
+                          jasldkjasljdlkjasd<br>
+                          asdlkajsdlkjasldjlas<br>
+                          asdsadljaskdlasjdlajsd<br>
+                          </span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                  </div>
+                </div>
                 <div id="footer" style="width:67%" class="input-group">
                     <input type="text" class="form-control" size="10"  placeholder="Write ..." aria-describedby="start-date">
                     <span onclick="attachment()" style="padding-left:2vh;padding-right:2vh"><i class="fa fa-paperclip fa-lg"style="padding-top:11"></i></span>
@@ -134,7 +148,14 @@
        var names=["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"];
        for(var i=0;i<4;i++)
         for(var j in names)
-           contactList.innerHTML+="<li style='background:#2C3E50;color:white'class='list-group-item'><img src='./src/images/image1.jpg' width='50' height='50' class='rounded-circle' alt=''> "+names[j]+"</li>";     
+           contactList.innerHTML+="<li style='background:#2C3E50;color:white'class='list-group-item'>"+
+                                      "<div style='display:inline-block;'>"+
+                                       " <img style='vertical-align:top' src='./src/images/image1.jpg' width='50' height='50' class='rounded-circle' alt=''>"+
+                                      "</div>"+
+                                      "<div style='display:inline-block;vertical-align: bottom'>"+
+                                         "<span style='font-size:15px;font-weight:bold;'>&nbsp "+names[j]+"</span><br> <span style='font-size:15px;'>&nbsp hello how are you ?</span>"+
+                                      "</div>"+
+                                    "</li>";     
        }
 
      function changeIcon()
