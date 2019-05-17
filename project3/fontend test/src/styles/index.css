@@ -68,18 +68,6 @@ div {
 
 
 
-
-  .searchBox:hover, .searchIcon:hover
-  .searchBox:focus, .searchIcon:focus
-  .searchBox:active,.searchIcon:active {
-  background: #435F7A;
-  color: white;
-  outline: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
 .icon{
   width:120px;
   height:120px;

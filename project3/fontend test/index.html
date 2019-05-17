@@ -106,19 +106,31 @@
 
       window.onload=function(event)
         {
+        var isSearchBarOnFocus=false;
        console.log("calling onload");
        var contactList= document.getElementById("contactList");
        var searchbar = document.getElementById("searchbar");
        
       searchbar.onmouseover=function (event){ 
+        searchbar.style.background="#435F7A";
         document.getElementById("searchIcon").style.background="#435F7A";
        }
        searchbar.onmouseleave=function (event){ 
-        document.getElementById("searchIcon").style.background="#32465A";
+         if(!isSearchBarOnFocus){
+          searchbar.style.background="#32465A";
+          document.getElementById("searchIcon").style.background="#32465A";
+         }
        }
-       /*searchbar.onblur = function(event){
-         searchbar.style.background="blue";
-       }*/
+       searchbar.onfocus = function(event){
+         searchbar.style.background="#435F7A";
+         document.getElementById("searchIcon").style.background="#435F7A";
+         isSearchBarOnFocus=true;
+       }
+       searchbar.onblur= function(event){
+         searchbar.style.background="#32465A";
+         document.getElementById("searchIcon").style.background="#32465A";
+         isSearchBarOnFocus=false;
+       }
        var names=["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"];
        for(var i=0;i<4;i++)
         for(var j in names)
