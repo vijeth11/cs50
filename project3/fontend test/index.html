@@ -17,7 +17,7 @@
                 <div class="col-sm-12 col-md-12" >
                 <div class="accordion" id="accordionExample" >
                         <div class="card">
-                          <div class="bg-dark" style="padding-bottom: 4vh;"onclick="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne">
+                          <div  style="padding-bottom: 4vh;background: #2C3E50"onclick="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne">
                               <div style="display:inline-block" >
                                <a class="navbar-brand align-bottom" href="#">
                                  
@@ -35,8 +35,8 @@
                           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card panel panel-primary">                                        
                                         <ul class="list-group list-group-flush">
-                                          <li class="list-group-item">Cras justo odio</li>
-                                          <li class="list-group-item">Vestibulum at eros</li>
+                                          <li style="background:#2C3E50;color:white" class="list-group-item">Cras justo odio</li>
+                                          <li style="background:#2C3E50;color:white" class="list-group-item">Vestibulum at eros</li>
                                         </ul>                            
                                       </div>
                           </div>
@@ -45,10 +45,10 @@
                 </div>
                 </div>
                 <div class="row"> 
-                    <div class="col-sm-12 col-md-12" style="background:grey">
+                    <div class="col-sm-12 col-md-12" style="background:#32465A">
                             <form class=" my-2 my-lg-0" style="padding-left:2vh">
                                     <div class="input-group search-box" style="height:38px">
-                                      <span class="input-group-addon searchIcon" id="start-date" style="font-size: 0.5rem;"><span class="fa fa-search fa-2x"
+                                      <span id="searchIcon" class="input-group-addon" id="start-date" style="font-size: 0.5rem;"><span class="fa fa-search fa-2x"
                                           style="padding-top:1.89vh;padding-left:1vh;"></span></span>
                                       <input id="searchbar" type="text" class="form-control searchBox"  style="height:38px" placeholder="Search contacts ..." aria-describedby="start-date">
                                     </div>
@@ -70,10 +70,10 @@
                 <div  class="row">
                     <div  class="col-sm-12 col-md-12 bg-dark" style="padding-bottom:0;padding-left:2vh;">
                       <div id="footer" >
-                        <div  style="background:#343a40;display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
+                        <div onmouseover="changeBackgroundcolor(this)" onmouseleave="this.style.background='#32465A'" class="raised" style="background:#32465A;display:inline-block;text-align: center;width: 50%;padding-top: 1vh;padding-bottom: 1vh">
                             <span style="color:white">Add new Contact</span>
                         </div>
-                        <div style="background:#343a40;display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
+                        <div onmouseover="changeBackgroundcolor(this)" onmouseleave="this.style.background='#32465A'" class="raised" style="background:#32465A;display:inline-block;text-align:center;width:49%;padding-top: 1vh;padding-bottom: 1vh;">
                             <span style="color:white">Add New Group</span>
                         </div>
                       </div>
@@ -109,16 +109,20 @@
        console.log("calling onload");
        var contactList= document.getElementById("contactList");
        var searchbar = document.getElementById("searchbar");
-       /*searchbar.onfocus=function (event){ 
-        searchbar.style.background="green";
+       
+      searchbar.onmouseover=function (event){ 
+        document.getElementById("searchIcon").style.background="#435F7A";
        }
-       searchbar.onblur = function(event){
+       searchbar.onmouseleave=function (event){ 
+        document.getElementById("searchIcon").style.background="#32465A";
+       }
+       /*searchbar.onblur = function(event){
          searchbar.style.background="blue";
        }*/
        var names=["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"];
        for(var i=0;i<4;i++)
         for(var j in names)
-           contactList.innerHTML+="<li style='background:#343a40;color:white'class='list-group-item'><img src='./src/images/image1.jpg' width='50' height='50' class='rounded-circle' alt=''> "+names[j]+"</li>";     
+           contactList.innerHTML+="<li style='background:#2C3E50;color:white'class='list-group-item'><img src='./src/images/image1.jpg' width='50' height='50' class='rounded-circle' alt=''> "+names[j]+"</li>";     
        }
 
      function changeIcon()
@@ -137,6 +141,10 @@
        
      }
       
+      function changeBackgroundcolor(element)
+      {
+        element.style.background="#435F7A";
+      }
       function attachment(event)
       {
         alert("attachment clicked");

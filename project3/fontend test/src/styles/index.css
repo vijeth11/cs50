@@ -71,8 +71,8 @@ div {
 
   .searchBox:hover, .searchIcon:hover
   .searchBox:focus, .searchIcon:focus
-  .searchBox:active  {
-  background: rgb(163, 163, 163);
+  .searchBox:active,.searchIcon:active {
+  background: #435F7A;
   color: white;
   outline: none;
     -webkit-box-shadow: none;
@@ -100,3 +100,12 @@ div {
   padding-bottom: 7vh;
 }
 
+.raised {
+  /* ... */
+  border-left: 1px solid #38678B;
+  border-top: 1px solid #38678B;
+  border-right: 1px solid #24435B;
+  border-bottom:  1px solid #24435B;
+  -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+}
