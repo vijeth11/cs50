@@ -102,4 +102,17 @@ div {
   width: 0px;
   }
 
- 
+  textarea {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    resize: none;
+  word-wrap: break-word;
+  padding-left:3vh;
+  padding-right:3vh;
+  padding-top:2vh;
+  background:#2C3E50;
+  color:white;
+  overflow:hidden;
+}
+input:focus, textarea { outline: none ! important; }

@@ -92,15 +92,21 @@
                   <div class="card">
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">
-                        <div>
-                          <span>
-                          jasldkjasljdlkjasd<br>
-                          asdlkajsdlkjasldjlas<br>
-                          asdsadljaskdlasjdlajsd<br>
-                          </span>
+                        <div style="display: inline-block;vertical-align: top">
+                            <img src="./src/images/image1.jpg" width="25" height="25" class="rounded-circle" alt="">
+                        </div>
+                        <div style="display:inline-block;padding-left: 2vh"> 
+                            <textarea rows="1" cols="55">jasldkjasljdlkjasdasdlkajsdlkjasldjlas sdsadljaskdlasjdlajsd ?</textarea>
                         </div>
                       </li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item" style="text-align:right;">
+                          <div style="display: inline-block;">
+                              <textarea rows="1" cols="55" style="text-align:right;background:white;color:black">jasldkjasljdlkjas sdsadljaskdlasjdlajsd ?</textarea>
+                          </div>
+                          <div style="display:inline-block;vertical-align: top"> 
+                              <img src="./src/images/image1.jpg" width="25" height="25" class="rounded-circle" alt="">
+                          </div>
+                      </li>
                       <li class="list-group-item">Vestibulum at eros</li>
                     </ul>
                   </div>
@@ -124,8 +130,12 @@
        console.log("calling onload");
        var contactList= document.getElementById("contactList");
        var searchbar = document.getElementById("searchbar");
-       
-      searchbar.onmouseover=function (event){ 
+       var textareas = document.getElementsByTagName("textarea");
+       for(var i=0; i<textareas.length;i++)
+       {
+          autoExpand(textareas[i]);
+       }
+       searchbar.onmouseover=function (event){ 
         searchbar.style.background="#435F7A";
         document.getElementById("searchIcon").style.background="#435F7A";
        }
@@ -187,5 +197,41 @@
       {
         alert("post Message clicked");
       }
+
+      document.addEventListener('input', function (event) {
+	      if (event.target.tagName.toLowerCase() !== 'textarea') return;
+	      autoExpand(event.target);
+        }, false);
+      var autoExpand = function (field) {
+              
+            // Reset field height
+                field.style.height = 'inherit';
+                field.style.fontSize=16;
+                field.style.width="wrap-contant"
+                // Get the computed styles for the element
+                var computed = window.getComputedStyle(field);
+
+                //calculate the width
+                var lengthOfCharacters=field.value.length;
+                if(lengthOfCharacters>55)
+                {
+                  field.setAttribute("cols","55");
+                }
+                else{
+                  lengthOfCharacters=(lengthOfCharacters*16)/18;
+                  field.setAttribute("cols",lengthOfCharacters.toString());
+                }
+                // Calculate the height
+                var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                            + parseInt(computed.getPropertyValue('padding-top'), 10)
+                            + field.scrollHeight
+                            + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                            + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+                field.style.height = height + 'px';
+                              
+                
+                console.log(field.value.length);
+                console.log(field.getAttribute("cols"));
+                };
     </script>
 </html>
