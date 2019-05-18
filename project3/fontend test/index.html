@@ -88,10 +88,10 @@
                   </a>
                  
                 </nav>
-                <div class="panel-body" style="max-height:71.7vh;overflow-y: auto;">
+                <div class="panel-body" style="max-height:78.7vh;overflow-y: auto;" id="messages">
                   <div class="card">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
+                    <ul class="list-group list-group-flush" id="messagesList">
+                     <!-- <li class="list-group-item">
                         <div style="display: inline-block;vertical-align: top">
                             <img src="./src/images/image1.jpg" width="25" height="25" class="rounded-circle" alt="">
                         </div>
@@ -100,14 +100,14 @@
                         </div>
                       </li>
                       <li class="list-group-item" style="text-align:right;">
-                          <div style="display: inline-block;">
+                          <div style="display: inline-block;padding-right: 2vh">
                               <textarea rows="1" cols="55" style="text-align:right;background:white;color:black">jasldkjasljdlkjas sdsadljaskdlasjdlajsd ?</textarea>
                           </div>
                           <div style="display:inline-block;vertical-align: top"> 
                               <img src="./src/images/image1.jpg" width="25" height="25" class="rounded-circle" alt="">
                           </div>
                       </li>
-                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">Vestibulum at eros</li>-->
                     </ul>
                   </div>
                 </div>
@@ -130,6 +130,26 @@
        console.log("calling onload");
        var contactList= document.getElementById("contactList");
        var searchbar = document.getElementById("searchbar");
+       var messages= [{"type":"right","message":"When you're backed against the wall, break the god damn thing down."},
+                      {"type":"right","message":"Excuses don't win championships."},
+                      {"type":"left","message":"Oh yeah, did Michael Jordan tell you that?"},
+                      {"type":"right","message":"No, I told him that."},
+                      {"type":"right","message":"What are your choices when someone puts a gun to your head?"},
+                      {"type":"left","message":"What are you talking about? You do what they say or they shoot you."},
+                      {"type":"right","message":"Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things."}]
+       for(var i=0;i<messages.length;i++)
+       {
+         var bubble="";
+         if(messages[i].type==="left"){
+           bubble=enterLeftMessage(messages[i].message);
+         }
+         if(messages[i].type==="right"){
+           bubble=enterRightMessage(messages[i].message);
+         }
+         if(bubble==="")
+           continue;
+         document.getElementById("messages").innerHTML+=bubble;
+       }
        var textareas = document.getElementsByTagName("textarea");
        for(var i=0; i<textareas.length;i++)
        {
@@ -230,8 +250,34 @@
                 field.style.height = height + 'px';
                               
                 
-                console.log(field.value.length);
-                console.log(field.getAttribute("cols"));
+                //console.log(field.value.length);
+                //console.log(field.getAttribute("cols"));
                 };
+
+
+
+      function enterLeftMessage(message)
+      {
+         return "<li class='list-group-item' style='border:0px'>"+
+                        "<div style='display: inline-block;vertical-align: top'>"+
+                            "<img src='./src/images/image1.jpg' width='25' height='25' class='rounded-circle'>"+
+                        "</div>"+
+                        "<div style='display:inline-block;padding-left: 2vh'>"+ 
+                            "<textarea rows='1' cols='55'>"+message+"</textarea>"+
+                        "</div>"+
+                      "</li>"
+                      
+      }
+      function enterRightMessage(message)
+      {
+        return "<li class='list-group-item' style='text-align:right;border:0px'>"+
+                          "<div style='display: inline-block;padding-right: 2vh'>"+
+                              "<textarea rows='1' cols='5' style='text-align:left;background:white;color:black'>"+message+"</textarea>"+
+                          "</div>"+
+                          "<div style='display:inline-block;vertical-align: top'>"+ 
+                              "<img src='./src/images/image1.jpg' width='25' height='25' class='rounded-circle'>"+
+                          "</div>"+
+                      "</li>";
+      }
     </script>
 </html>

@@ -102,6 +102,10 @@ div {
   width: 0px;
   }
 
+#messages::-webkit-scrollbar {
+    width: 0px;
+  }
+
   textarea {
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
