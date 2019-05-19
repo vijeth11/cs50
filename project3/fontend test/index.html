@@ -112,7 +112,7 @@
                   </div>
                 </div>
                 <div id="footer" style="width:67%" class="input-group">
-                    <input type="text" class="form-control" size="10"  placeholder="Write ..." aria-describedby="start-date">
+                    <input id="messageTyped" type="text" class="form-control" size="10"  placeholder="Write ..." aria-describedby="start-date">
                     <span onclick="attachment()" style="padding-left:2vh;padding-right:2vh"><i class="fa fa-paperclip fa-lg"style="padding-top:11"></i></span>
                     <span onclick="postMessage()" style="padding-left:1vh;padding-right:2vh;background:#3f3b3b"><i class="fa fa-paper-plane-o fa-lg" style="color:white;padding-top: 11"></i></span>
                 </div>
@@ -124,6 +124,7 @@
 
     <script type="text/javascript">
 
+      var enterValueRightSide=true;
       window.onload=function(event)
         {
         var isSearchBarOnFocus=false;
@@ -148,7 +149,7 @@
          }
          if(bubble==="")
            continue;
-         document.getElementById("messages").innerHTML+=bubble;
+         document.getElementById("messagesList").innerHTML+=bubble;
        }
        var textareas = document.getElementsByTagName("textarea");
        for(var i=0; i<textareas.length;i++)
@@ -215,7 +216,22 @@
 
       function postMessage(event)
       {
-        alert("post Message clicked");
+        var bubble=document.getElementById("messageTyped");
+        if(bubble.value!=null){
+          console.log("message typed "+bubble.value);
+          if(enterValueRightSide){
+            document.getElementById("messagesList").innerHTML+=enterRightMessage(bubble.value);
+          }
+          else{
+            document.getElementById("messagesList").innerHTML+=enterLeftMessage(bubble.value);
+          }
+          autoExpand(document.getElementsByTagName("textarea")[document.getElementsByTagName("textarea").length-1]);
+          document.getElementById("messages").scrollTo(0,document.getElementById("messages").scrollHeight);
+          enterValueRightSide=!enterValueRightSide;
+          bubble.value="";
+          
+        }
+
       }
 
       document.addEventListener('input', function (event) {
