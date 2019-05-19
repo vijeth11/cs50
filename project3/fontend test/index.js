@@ -111,6 +111,12 @@ function postMessage(event)
 }
 
 document.addEventListener('input', function (event) {
+    if (event.target.tagName.toLowerCase()==='input'){
+      console.log("helo");
+      if(event.target.value==="\n")
+        alert("pressed enter");
+      return;
+    }
     if (event.target.tagName.toLowerCase() !== 'textarea') return;
     autoExpand(event.target);
   }, false);
