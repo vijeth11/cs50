@@ -134,16 +134,26 @@ function postMessage(event)
    } 
 }
 
+document.getElementById('messageTyped').onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    postMessage(document.getElementById('messageTyped'));
+    return false;
+  }
+}
+
 document.addEventListener('input', function (event) {
     if (event.target.tagName.toLowerCase()==='input'){
       console.log("helo");
-      if(event.target.value==="\n")
+      if(event.target.value=='\n')
         alert("pressed enter");
       return;
     }
     if (event.target.tagName.toLowerCase() !== 'textarea') return;
     autoExpand(event.target);
   }, false);
+
 var autoExpand = function (field) {
         
       // Reset field height
