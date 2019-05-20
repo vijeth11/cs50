@@ -50,10 +50,35 @@ window.onload=function(event)
    document.getElementById("searchIcon").style.background="#32465A";
    isSearchBarOnFocus=false;
  }
+
+ var facebookIcon = document.getElementById("facebook");
+ facebookIcon.onfocus = function(event){
+  facebookIcon.style.background="#435F7A";
+}
+facebookIcon.onblur= function(event){
+  facebookIcon.style.background="#32465A";
+}
+
+var twitterIcon = document.getElementById("twitter");
+twitterIcon.onfocus = function(event){
+  twitterIcon.style.background="#435F7A";
+}
+twitterIcon.onblur= function(event){
+  twitterIcon.style.background="#32465A";
+}
+
+var instagramIcon = document.getElementById("instagram");
+instagramIcon.onfocus = function(event){
+  instagramIcon.style.background="#435F7A";
+}
+instagramIcon.onblur= function(event){
+  instagramIcon.style.background="#32465A";
+}
+
  var names=["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"];
  for(var i=0;i<4;i++)
   for(var j in names)
-     contactList.innerHTML+="<li style='background:#2C3E50;color:white'class='list-group-item'>"+
+     contactList.innerHTML+="<li style='background:#2C3E50;color:white;padding-left:6vh;'class='list-group-item'>"+
                                 "<div style='display:inline-block;'>"+
                                  " <img style='vertical-align:top' src='./src/images/image1.jpg' width='50' height='50' class='rounded-circle' alt=''>"+
                                 "</div>"+
@@ -98,7 +123,7 @@ function postMessage(event)
     else{
       document.getElementById("messagesList").innerHTML+=enterLeftMessage(bubble.value);
     }
-    autoExpand(document.getElementsByTagName("textarea")[document.getElementsByTagName("textarea").length-1]);
+    //autoExpand(document.getElementsByTagName("textarea")[document.getElementsByTagName("textarea").length-1]);
     document.getElementById("messages").scrollTo(0,document.getElementById("messages").scrollHeight);
     enterValueRightSide=!enterValueRightSide;
     bubble.value="";
@@ -129,26 +154,29 @@ var autoExpand = function (field) {
           var computed = window.getComputedStyle(field);
 
           //calculate the width
-          var lengthOfCharacters=field.value.length;
-          console.log(lengthOfCharacters);
-          if(lengthOfCharacters >55)
-          {
-            //field.setAttribute("cols","55");
-            field.style.width="100%";
-          }
-          else if(lengthOfCharacters < 11){
-            field.style.width="";
-            field.setAttribute("cols",((lengthOfCharacters*16)/18).toString());
-          }
-          else if(lengthOfCharacters < 22){
-            field.style.width="";
-          }
-          else{
-            //lengthOfCharacters=(lengthOfCharacters*16)/18;
-            //field.setAttribute("cols",lengthOfCharacters.toString());
-            field.style.width=(field.value.length*2-(field.value.length/8)).toString()+"%";
-            console.log(field.style.width);
-          }
+
+          console.log(field.scrollWidth);
+          //field.style.width=field.scrollWidth;
+          // var lengthOfCharacters=field.value.length;
+          // console.log(lengthOfCharacters);
+          // if(lengthOfCharacters >55)
+          // {
+          //   //field.setAttribute("cols","55");
+          //   field.style.width="100%";
+          // }
+          // else if(lengthOfCharacters < 11){
+          //   field.style.width="";
+          //   field.setAttribute("cols",((lengthOfCharacters*16)/18).toString());
+          // }
+          // else if(lengthOfCharacters < 22){
+          //   field.style.width="";
+          // }
+          // else{
+          //   //lengthOfCharacters=(lengthOfCharacters*16)/18;
+          //   //field.setAttribute("cols",lengthOfCharacters.toString());
+          //   field.style.width=(field.value.length*2-(field.value.length/8)).toString()+"%";
+          //   console.log(field.style.width);
+          // }
           // Calculate the height
           var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
                       + parseInt(computed.getPropertyValue('padding-top'), 10)
@@ -167,22 +195,24 @@ var autoExpand = function (field) {
 function enterLeftMessage(message)
 {
    return "<li class='list-group-item' style='border:0px'>"+
-                  "<div style='display: inline-block;vertical-align: top'>"+
+                  "<div style='display: inline-block;vertical-align: top;padding-right:2vh;'>"+
                       "<img src='./src/images/image1.jpg' width='25' height='25' class='rounded-circle'>"+
                   "</div>"+
-                  "<div style='display:inline-block;padding-left: 2vh;width:55%;'>"+ 
-                      "<textarea rows='1' style='width:100%;'>"+message+"</textarea>"+
-                  "</div>"+
+                  //"<div style='display:inline-block;padding-left: 2vh;width:100%;'>"+ 
+                      //"<textarea readonly rows='1' style='width:100%;'>"+message+"</textarea>"+
+                      "<div style='text-align:left;background:#2C3E50;max-width:48%;border-radius:25px;border:1px solid #A9A9A9;color:white;padding:12px;display:inline-flex;'>"+message+"</div>"+
+                  //"</div>"+
                 "</li>"
                 
 }
 function enterRightMessage(message)
 {
   return "<li class='list-group-item' style='text-align:right;border:0px'>"+
-                    "<div style='display: inline-block;padding-right: 2vh;width:55%;'>"+
-                        "<textarea rows='1'  style='width:100%;text-align:left;background:white;color:black'>"+message+"</textarea>"+
-                    "</div>"+
-                    "<div style='display:inline-block;vertical-align: top'>"+ 
+                    //"<div style='display: inline-block;padding-right: 2vh;width:55%;'>"+
+                        //"<textarea readonly rows='1'  style='text-align:left;background:white;color:black'>"+message+"</textarea>"+
+                        "<div style='text-align:left;background:white;max-width:48%;border-radius:25px;border:1px solid #A9A9A9;color:black;padding:12px;display:inline-flex;'>"+message+"</div>"+
+                    //"</div>"+
+                    "<div style='display:inline-block;vertical-align: top;padding-left:2vh;'>"+ 
                         "<img src='./src/images/image1.jpg' width='25' height='25' class='rounded-circle'>"+
                     "</div>"+
                 "</li>";
