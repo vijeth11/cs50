@@ -92,7 +92,6 @@ function postMessage(event)
 {
   var bubble=document.getElementById("messageTyped");
   if(bubble.value.length!=0){
-    console.log("message typed "+bubble.value);
     if(enterValueRightSide){
       document.getElementById("messagesList").innerHTML+=enterRightMessage(bubble.value);
     }
@@ -131,13 +130,24 @@ var autoExpand = function (field) {
 
           //calculate the width
           var lengthOfCharacters=field.value.length;
-          if(lengthOfCharacters>55)
+          console.log(lengthOfCharacters);
+          if(lengthOfCharacters >55)
           {
-            field.setAttribute("cols","55");
+            //field.setAttribute("cols","55");
+            field.style.width="100%";
+          }
+          else if(lengthOfCharacters < 11){
+            field.style.width="";
+            field.setAttribute("cols",((lengthOfCharacters*16)/18).toString());
+          }
+          else if(lengthOfCharacters < 22){
+            field.style.width="";
           }
           else{
-            lengthOfCharacters=(lengthOfCharacters*16)/18;
-            field.setAttribute("cols",lengthOfCharacters.toString());
+            //lengthOfCharacters=(lengthOfCharacters*16)/18;
+            //field.setAttribute("cols",lengthOfCharacters.toString());
+            field.style.width=(field.value.length*2-(field.value.length/8)).toString()+"%";
+            console.log(field.style.width);
           }
           // Calculate the height
           var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
@@ -160,8 +170,8 @@ function enterLeftMessage(message)
                   "<div style='display: inline-block;vertical-align: top'>"+
                       "<img src='./src/images/image1.jpg' width='25' height='25' class='rounded-circle'>"+
                   "</div>"+
-                  "<div style='display:inline-block;padding-left: 2vh'>"+ 
-                      "<textarea rows='1' cols='55'>"+message+"</textarea>"+
+                  "<div style='display:inline-block;padding-left: 2vh;width:55%;'>"+ 
+                      "<textarea rows='1' style='width:100%;'>"+message+"</textarea>"+
                   "</div>"+
                 "</li>"
                 
@@ -169,8 +179,8 @@ function enterLeftMessage(message)
 function enterRightMessage(message)
 {
   return "<li class='list-group-item' style='text-align:right;border:0px'>"+
-                    "<div style='display: inline-block;padding-right: 2vh'>"+
-                        "<textarea rows='1' cols='5' style='text-align:left;background:white;color:black'>"+message+"</textarea>"+
+                    "<div style='display: inline-block;padding-right: 2vh;width:55%;'>"+
+                        "<textarea rows='1'  style='width:100%;text-align:left;background:white;color:black'>"+message+"</textarea>"+
                     "</div>"+
                     "<div style='display:inline-block;vertical-align: top'>"+ 
                         "<img src='./src/images/image1.jpg' width='25' height='25' class='rounded-circle'>"+
