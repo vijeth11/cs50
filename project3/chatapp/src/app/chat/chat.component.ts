@@ -16,11 +16,25 @@ export class ChatComponent implements OnInit {
                 {"type":"right","message":"Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things."}];
   
   private names:any =["Cras justo odio","Dapibus ac facilisis in","Vestibulum at eros"];
+  public anglechangeIcon:string;
+  private angleChange: boolean = true;
   constructor() { }
 
   ngOnInit() {
-    for(let i=0 ;i< 4 ;i++){
+    for(let i=1 ;i< 3 ;i++){
       this.names=this.names.concat(this.names);
+    }
+    this.anglechangeIcon="fa fa-angle-down";
+  }
+  
+  changeIcon(){
+    if(this.angleChange){
+      this.anglechangeIcon="fa fa-angle-up";
+      this.angleChange=!this.angleChange;
+    }
+    else{
+      this.anglechangeIcon="fa fa-angle-down";
+      this.angleChange=!this.angleChange;
     }
   }
 
