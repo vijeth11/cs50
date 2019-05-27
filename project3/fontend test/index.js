@@ -127,7 +127,7 @@ function postMessage(event)
     document.getElementById("messages").scrollTo(0,document.getElementById("messages").scrollHeight);
     enterValueRightSide=!enterValueRightSide;
     bubble.value="";
-    
+    document.getElementById
   }
    else{
      alert("message box cannot be empty");

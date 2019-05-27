@@ -1,74 +1,84 @@
 
-           
+
        <div class="row" id="chatapp">
            <div class="col-sm-4 col-md-4">
                <div class="row">
                 <div class="col-sm-12 col-md-12" >
                 <div class="accordion" id="accordionExample" >
                         <div class="card">
-                          <div  style="padding-bottom: 4vh;background: #2C3E50" (click)="changeIcon()" id="headingOne" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne">
+                          <div  style="padding-bottom: 4vh;background: #2C3E50" (click)="changeIcon(contactList)" id="headingOne" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne">
                               <div style="display:inline-block" >
                                <a class="navbar-brand align-bottom" href="#" style="padding-left:7vh;">
-                                 
+
                                     <img src="./assets/images/image1.jpg" width="50" height="50" class="rounded-circle" alt="" style=" border: 2px solid #2EC16E;">
-                                
-                                       <span style="vertical-align:bottom"> &nbsp; Bootstrap</span>                                   
+
+                                       <span style="vertical-align:bottom"> &nbsp; Bootstrap</span>
                                 </a>
                               </div>
-                              <div style="display:inline-block;padding-left: 35vh;"> 
+                              <div style="display:inline-block;padding-left: 35vh;">
                                 <span><i id="angledown" class="{{anglechangeIcon}}" style="color:white" aria-hidden="true"></i></span>
                               </div>
                             </div>
-                             
-                      
-                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card panel panel-primary">                                        
-                                        <ul class="list-group list-group-flush" style="padding-bottom:1vh;">
+
+
+                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="padding-bottom: 2vh;background:#2C3E50;">
+                                <div class="card panel panel-primary">
+                                        <ul class="list-group list-group-flush">
                                           <li style="background:#2C3E50;color:white" class="list-group-item">
                                             <div class="input-group search-box">
                                               <span class="input-group-addon"  style="font-size: 0.5rem;padding-left: 3vh;padding-right:3vh;"><span class="fa fa-facebook fa-2x"
                                                   style="padding-top:1.89vh;padding-left:3vh;padding-right: 1vh;"></span></span>
-                                              <div id="facebook" contenteditable="true" style="width:70%;padding: 1vh;background: #32465A;color:white;" >mikeross</div>
+                                              <div (focus)="changeIconEvent($event,'focus')" (blur)="changeIconEvent($event,'blur')" id="facebook" contenteditable="true" style="width:70%;padding: 1vh;background: #32465A;color:white;" >mikeross</div>
                                             </div>
                                           </li>
                                           <li style="background:#2C3E50;color:white" class="list-group-item">
                                             <div class="input-group search-box">
                                               <span class="input-group-addon"  style="font-size: 0.5rem;padding-left: 3vh;padding-right: 3vh;">
                                                 <span class="fa fa-twitter fa-2x"style="padding-top:1.89vh;padding-left:3vh;"></span></span>
-                                              <div id="twitter" contenteditable="true" style="width:70%;padding: 1vh;background: #32465A;color:white;" >ross81</div>
+                                              <div (focus)="changeIconEvent($event,'focus')" (blur)="changeIconEvent($event,'blur')"id="twitter" contenteditable="true" style="width:70%;padding: 1vh;background: #32465A;color:white;" >ross81</div>
                                             </div>
                                           </li>
-                                          <li style="background:#2C3E50;color:white" class="list-group-item">
+                                          <li style="background:#2C3E50;color:white;" class="list-group-item">
                                             <div class="input-group search-box">
                                               <span class="input-group-addon"  style="font-size: 0.5rem;padding-left: 3vh;padding-right: 3vh;">
                                                 <span class="fa fa-instagram fa-2x"style="padding-top:1.89vh;padding-left:3vh;"></span></span>
-                                              <div id="instagram" contenteditable="true" style="width:70%;padding: 1vh;background: #32465A;color:white;" >mike.ross</div>
+                                              <div (focus)="changeIconEvent($event,'focus')" (blur)="changeIconEvent($event,'blur')"id="instagram" contenteditable="true" style="width:70%;padding: 1vh;background: #32465A;color:white;" >mike.ross</div>
                                             </div>
                                           </li>
-                                        </ul>                            
+                                        </ul>
                                       </div>
                           </div>
                         </div>
                     </div>
                 </div>
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <div class="col-sm-12 col-md-12" style="background:#32465A">
                             <form class=" my-2 my-lg-0" style="padding-left:2vh">
                                     <div class="input-group search-box" style="height:38px;padding-left: 5vh;">
-                                      <span id="searchIcon" class="input-group-addon" id="start-date" style="font-size: 0.5rem;"><span class="fa fa-search fa-2x"
+                                      <span #searchIcon class="input-group-addon" id="start-date" style="font-size: 0.5rem;"><span class="fa fa-search fa-2x"
                                           style="padding-top:1.89vh;padding-left:1vh;"></span></span>
-                                      <input id="searchbar" type="text" class="form-control searchBox"  style="width:0;height:38px;color:'white';width:none" placeholder="Search contacts ..." aria-describedby="start-date">
+                                      <input
+                                      (mouseover)="searchbarChange($event,'mouseover',searchIcon)"
+                                      (mouseleave)="searchbarChange($event,'mouseleave',searchIcon)"
+                                      (focus)="searchbarChange($event,'focus',searchIcon)"
+                                      (blur)="searchbarChange($event,'blur',searchIcon)"
+                                      id="searchbar"
+                                      type="text"
+                                      class="form-control searchBox"
+                                      style="width:0;height:38px;color:'white';width:none"
+                                      placeholder="Search contacts ..."
+                                      aria-describedby="start-date">
                                     </div>
-                            
+
                                   </form>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <div class="card panel panel-primary">
-                                <div class="panel-body" style="max-height:71.7vh;overflow-y: auto;" id="contactlist">
-                                <ul class="list-group list-group-flush " id="contactList">
+                                <div class="panel-body" style="max-height:72.7vh;overflow-y: auto;" id="contactlist">
+                                <ul #contactList class="list-group list-group-flush " id="contactList">
                                     <div *ngFor= " let name of names">
                                         <li style='background:#2C3E50;color:white;padding-left:6vh;'class='list-group-item'>
                                             <div style='display:inline-block;'>
@@ -103,21 +113,21 @@
                     <img src="./assets/images/image1.jpg" width="50" height="50" class="rounded-circle" alt="">
                     <span style="color:black;"> &nbsp; Bootstrap</span>
                   </a>
-                 
+
                 </nav>
-                <div class="panel-body" style="max-height:78.7vh;overflow-y: auto;" id="messages">
+                <div #Messages class="panel-body" style="max-height:78.7vh;overflow-y: auto;" id="messages">
                   <div class="card">
-                    <ul class="list-group list-group-flush" id="messagesList">
+                    <ul class="list-group list-group-flush" id="messagesList" #messageList>
                       <div *ngFor ="let message of messages">
-                      <li *ngIf="message.type=='left'" class="list-group-item">
+                      <li *ngIf="message.type=='left'" class="list-group-item" >
                         <div style="display: inline-block;vertical-align: top;padding-right: 1vh;">
                             <img src="./assets/images/image1.jpg" width="25" height="25" class="rounded-circle" alt="">
                         </div>
-                        <div style='text-align:left;background:#2C3E50;max-width:48%;border-radius:25px;border:1px solid #A9A9A9;color:white;padding:12px;display:inline-flex;'>{{message.message}}</div>
+                        <div id="leftMessage" style='text-align:left;background:#2C3E50;max-width:48%;border-radius:25px;border:1px solid #A9A9A9;color:white;padding:12px;display:inline-flex;'>{{message.message}}</div>
                       </li>
                       <li *ngIf="message.type=='right'"class="list-group-item" style="text-align:right;">
-                        <div style='text-align:left;background:white;max-width:48%;border-radius:25px;border:1px solid #A9A9A9;color:black;padding:12px;display:inline-flex;'>{{message.message}}</div>
-                          <div style="display:inline-block;vertical-align: top;padding-left: 1vh;"> 
+                        <div  style='text-align:left;background:white;max-width:48%;border-radius:25px;border:1px solid #A9A9A9;color:black;padding:12px;display:inline-flex;'>{{message.message}}</div>
+                          <div  style="display:inline-block;vertical-align: top;padding-left: 1vh;">
                               <img src="./assets/images/image1.jpg" width="25" height="25" class="rounded-circle" alt="">
                           </div>
                       </li>
@@ -127,7 +137,7 @@
                   </div>
                 </div>
                 <div id="footer" style="width:67%" class="input-group">
-                    <input id="messageTyped" type="text" class="form-control" size="10"  placeholder="Write ..." aria-describedby="start-date">
+                    <input  id="messageTyped" type="text" class="form-control" size="10"  placeholder="Write ..." aria-describedby="start-date" (keyup)="keydowns($event,Messages,messageList)" >
                     <span onclick="attachment()" style="padding-left:2vh;padding-right:2vh;"><i class="fa fa-paperclip fa-lg"style="padding-top:11"></i></span>
                     <span onclick="postMessage()" style="padding-left:1vh;padding-right:2vh;background:#3f3b3b"><i class="fa fa-paper-plane-o fa-lg" style="color:white;padding-top: 11"></i></span>
                 </div>
