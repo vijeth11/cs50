@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { element } from '@angular/core/src/render3';
 
 @Component({
@@ -6,7 +6,7 @@ import { element } from '@angular/core/src/render3';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnChanges {
 
   messages:any= [{"type":"right","message":"When you're backed against the wall, break the god damn thing down."},
                 {"type":"right","message":"Excuses don't win championships."},
@@ -86,20 +86,38 @@ export class ChatComponent implements OnInit {
     // }
     // event.target.value=newVal;
     console.log(event);
-    if(event.keyCode==13)
+    if(event.keyCode==13 && event.target.value!="")
     {
-      var height:number=0;
-      if(this.messageSide){
-      this.messages=this.messages.concat([{'type':'right','message':event.target.value}]);
-      
-      }
-      else{
-      this.messages=this.messages.concat([{'type':'left','message':event.target.value}]);
-      }
+      this.typeMessage(Messages,event.target.value);
       event.target.value="";
-      console.log(document.getElementById("leftMessage"));
-      Messages.scrollTo(0,Messages.scrollHeight);
     }
+  }
+
+  postMessage(Message:any,text:any){
+    if(text.value!=""){
+    this.typeMessage(Message,text.value);
+    text.value="";
+  }
+  }
+  private typeMessage(Messages:any,value)
+  {
+    if(this.messageSide)
+      this.messages=this.messages.concat([{'type':'right','message':value}]);
+      else
+      this.messages=this.messages.concat([{'type':'left','message':value}]);
+      this.messageSide=!this.messageSide;
+      var timeInterval=setInterval(()=>{
+       Messages.scrollTo(0,Messages.scrollHeight);
+       clearInterval(timeInterval);
+      },1);
+  }
+
+  ngOnChanges(): void {
+     console.log("ng On changes");
+  }
+
+  test(event:any){
+    console.log("test hi");
   }
 }
 
