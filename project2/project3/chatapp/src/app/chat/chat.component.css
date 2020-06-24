@@ -1,0 +1,122 @@
+div {
+    border: 0px black solid;
+  }
+
+.navbar-brand{
+    color: white;
+    font-size: 16;
+    margin-right: 0;
+    padding-top: 2vh;
+    padding-bottom: 0;
+    padding-left: 3vh;
+}
+.col-md-4,.col-sm-4{
+    padding-right: 0;
+    padding-left:0;
+}
+.col-md-12,.col-sm-12{
+    padding-right: 0;
+   
+}
+.card-header{
+    padding: 0 0;
+}
+.row{
+    margin-right: 0;
+}
+
+.searchIcon {
+  
+}
+.searchBox
+{
+    background: transparent;
+    border:0px;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height:20px;
+    width: inherit;
+    color: white;
+}
+
+.search-box{
+  height:25px;
+  
+}
+
+.fa-search{
+  color:white;
+}
+
+.searchBox::placeholder { /* Firefox, Chrome, Opera */ 
+  color: white; 
+  align-content: center;
+} 
+
+.searchBox::-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+  color: white; 
+  align-content: center;
+} 
+
+.searchBox::-ms-input-placeholder { /* Microsoft Edge */ 
+  color: white; 
+  align-content: center;
+} 
+  /*.navbar {max-height:50px !important;}*/
+
+
+
+.icon{
+  width:120px;
+  height:120px;
+  position: absolute;
+  margin:-62px 0 0 125px;
+ 
+}
+.col-sm-8, .col-md-8{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 33.7%;
+  height:6%;
+  padding-bottom: 7vh;
+}
+
+.raised {
+  /* ... */
+  border-left: 1px solid #38678B;
+  border-top: 1px solid #38678B;
+  border-right: 1px solid #24435B;
+  border-bottom:  1px solid #24435B;
+  -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+}
+
+#contactlist::-webkit-scrollbar {
+  width: 0px;
+  }
+
+#messages::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  textarea {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    resize: none;
+  word-wrap: break-word;
+  padding-left:3vh;
+  padding-right:3vh;
+  padding-top:2vh;
+  background:#2C3E50;
+  color:white;
+  overflow:hidden;
+}
+input:focus, textarea { outline: none ! important; }

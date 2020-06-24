@@ -1,37 +1,31 @@
-.navbar {
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-  max-width: 100%;
-  opacity: 1;
+.navbar{
+    position:absolute;
+    width:100%;
+    z-index:10;
+    max-width:100%;
+    opacity: 1.0;
 }
 
-body {
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.animated {
-  position: absolute;
-  left: 35%;
-  top: 10%;
-}
 
-#jumbotroncontainer {
-  position: absolute;
-  top: 30%;
-  padding-top: 5vh;
-  width: 100%;
+body{
+    background-image: url("../images/library2.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+  .animated {
+      position: absolute;
+      left: 35%;
+      top: 10%; 
+  }
 
-div {
-  border: 0px black solid;
-}
+  #jumbotroncontainer{
+      position: absolute;
+      top:30%;
+      padding-top: 5vh;
+      width:100%;
+  }
 
-.btnsignin {
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
-  border-radius: 25px;
-}
+  div{
+      border: 0.0px black solid;
+  }

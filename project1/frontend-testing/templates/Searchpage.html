@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bibilo Ethica</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='stylesheet/Searchpage.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <nav
+        class="navbar navbar-light bg-light nav justify-content-end nav-pills"
+      >
+        <li class="nav-item">
+          <a class="btn btn-danger login" href="logout" role="button">Logout</a>
+        </li>
+      </nav>
+
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="{{ url_for('static',filename='images/library1.jpg') }}"
+              style="width:100%;height:100%"
+              alt="library1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static',filename='images/library2.jpg') }}"
+              style="width:100%;height:100%"
+              alt="library2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static',filename='images/library3.jpg') }}"
+              style="width:100%;height:100%"
+              alt="library3"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{{ url_for('static',filename='images/library 4.jpg') }}"
+              style="width:100%;height:100%"
+              alt="library4"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="title" class=" animated text-center ">
+      <img src="{{ url_for('static',filename='images/bibiloethca.png') }}" />
+    </div>
+
+    <nav class="navbar navbar-light bg-light justify-content-center searchbar">
+      <form class="form-inline">
+        <i class="fas fa-search"></i>
+        <input
+          class="form-control mr-md-2"
+          onkeyup="myFunction()"
+          id="searchinput"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          style="border-radius:25px;width:300px"
+        />
+      </form>
+    </nav>
+
+    <div class="jumbotron" id="jumbotroncontainer">
+      <div class="container justify-content-center" id="qoutes">
+        <span style="text-align:center;padding-bottom: 5vh;">
+          “The library is the temple of learning, and learning has liberated
+          more people than all the wars in history.”
+          <br />
+          ― Carl T. Rowan
+        </span>
+      </div>
+    </div>
+
+    <table class="table" id="bookdetails" style="visibility:hidden">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ISBN</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light">
+        {% for test in tests %}
+        <tr>
+          <td>
+            <a href="details.html?value={{ test[1] }}">{{ test[1] }}</a>
+          </td>
+          <td>{{ test[2] }}</td>
+          <td>{{ test[3] }}</td>
+          <td>{{ test[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+  <script>
+    $("#searchinput").click(function() {
+      console.log("clicked on the input text");
+      $("#jumbotroncontainer").css({ visibility: "hidden" });
+      $("#bookdetails").css({ visibility: "visible" });
+    });
+
+    function myFunction() {
+      console.log("my function");
+      var input, filter, table, tr, td, i, txtValue, j;
+      input = document.getElementById("searchinput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("bookdetails");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+          if (td[j]) {
+            txtValue = td[j].textContent || td[j].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+              break;
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    }
+  </script>
+</html>
