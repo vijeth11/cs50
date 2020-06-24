@@ -1,10 +1,58 @@
 <html>
   <head>
      {% load static %}
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
      <script src="{% static 'js/index.js' %}"></script>
-     <title>PinocchiosPizza</title>
+     <title>Pinocchios Pizza</title>
+     <style>
+        div > a {
+          font-size:17px;
+          font-weight:600;
+        }
+        .logo-position{
+          position: fixed;
+          left: 8vw;
+          z-index: 5;
+        }
+        #navbarNavAltMarkup div a:hover {              
+              border-top: #e2011b solid 4px;
+              padding-top: 4px;
+              transition: all 0.25s;
+              -moz-transition: all 0.25s;
+              -webkit-transition: all 0.25s;
+              -o-transition: all 0.25s;
+              -ms-transition: all 0.25s;
+        }
+     </style>
   </head>
   <body>
+    <header>
+    <div class="logo-position">
+       <img src="{% static 'logo.png' %}" height = "200" width = "200">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">  
+            <a class="nav-item nav-link" href="#">HOME</a>  
+            <a class="nav-item nav-link" href="#">ABOUT US</a>         
+            <a class="nav-item nav-link" href="#">GALLERY</a>
+            <a class="nav-item nav-link" href="#">TABLE BOOKING</a>
+            <a class="nav-item nav-link" href="#">MENU / ORDER ONLINE</a> 
+            <a class="nav-item nav-link" href="#">CONTACT</a>            
+          </div>
+        </div>
+        </div>
+      </nav>
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'background-pizza.jpg' %}" style="height:100%!important;margin-top:-40vh;"alt="First slide">
+            </div>
+      </div>
+</div>
+</header>
       {% block content %}
       {% endblock %}
   </body>

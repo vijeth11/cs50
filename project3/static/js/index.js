@@ -1,1 +1,1 @@
-console.log("landing page")
+console.log("landing page");
