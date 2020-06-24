@@ -2,6 +2,7 @@
   <head>
      {% load static %}
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <link rel="stylesheet" href="{% static 'css/index.css' %}">
      <script src="{% static 'js/index.js' %}"></script>
      <title>Pinocchios Pizza</title>
      <style>
@@ -38,12 +39,13 @@
         <div class="container">
         </a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ml-auto"> 
-          {% if name is not None %}
-                <a class="nav-item nav-link" href="#">HOME</a> 
-          {% endif %} 
+          <div class="navbar-nav ml-auto">           
             <a class="nav-item nav-link" href="{% url 'index' %}">HOME</a>  
-            <a class="nav-item nav-link" href="#">ABOUT US</a>         
+            {% if pageType is not None and pageType == "home"%}
+            <a class="nav-item nav-link" href="#about">ABOUT US</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'index' %}#about">ABOUT US</a>
+            {% endif %}                     
             <a class="nav-item nav-link" href="{% url 'gallery' %}">GALLERY</a>
             <a class="nav-item nav-link" href="#">TABLE BOOKING</a>
             <a class="nav-item nav-link" href="#">MENU / ORDER ONLINE</a> 
