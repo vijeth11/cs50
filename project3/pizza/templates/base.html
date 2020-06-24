@@ -10,7 +10,7 @@
           font-weight:600;
         }
         .logo-position{
-          position: fixed;
+          position: absolute;
           left: 8vw;
           z-index: 5;
         }
@@ -38,10 +38,13 @@
         <div class="container">
         </a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ml-auto">  
-            <a class="nav-item nav-link" href="#">HOME</a>  
+          <div class="navbar-nav ml-auto"> 
+          {% if name is not None %}
+                <a class="nav-item nav-link" href="#">HOME</a> 
+          {% endif %} 
+            <a class="nav-item nav-link" href="{% url 'index' %}">HOME</a>  
             <a class="nav-item nav-link" href="#">ABOUT US</a>         
-            <a class="nav-item nav-link" href="#">GALLERY</a>
+            <a class="nav-item nav-link" href="{% url 'gallery' %}">GALLERY</a>
             <a class="nav-item nav-link" href="#">TABLE BOOKING</a>
             <a class="nav-item nav-link" href="#">MENU / ORDER ONLINE</a> 
             <a class="nav-item nav-link" href="#">CONTACT</a>            

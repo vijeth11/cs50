@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+    {% for image in list %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" height="300" src="{% static image %}" style="width:100%;object-fit:cover">
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock  %}
