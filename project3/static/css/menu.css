@@ -1,11 +1,36 @@
-.menu .navbar{
-    background: white;
+.menu.navbar{
+    background: white !important;
 }
-.menu .nav-item .active {
-    background-color: black;
+.menu>.nav-item.active {
+    background-color: black !important;
 }
-.menu .nav-item .active > a{
-    color: white;
+
+.menu > .nav-item > a{
+    color: black !important;
     font-weight: 600;
     font-size: 20px;
+}
+.menu > .nav-item.active > a{
+    color: white !important;
+}
+
+.theme-product-group{
+    padding: 20px;
+    margin-bottom: 15px;
+    background: transparent;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+} 
+.theme-product-group-center{
+    text-align: center;
+}
+
+.theme-product-group-name {
+    color: #000000;
+    font-family: Montserrat;
+    font-size: 36px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
