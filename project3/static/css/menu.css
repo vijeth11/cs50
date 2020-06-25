@@ -1,0 +1,11 @@
+.menu .navbar{
+    background: white;
+}
+.menu .nav-item .active {
+    background-color: black;
+}
+.menu .nav-item .active > a{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}

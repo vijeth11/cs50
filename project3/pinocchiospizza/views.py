@@ -12,3 +12,6 @@ We sell award-winning sicilian-style pizza and mouth-watering steak subs! We hav
 
 def gallery(request):
     return render(request,"pinocchiospizza/gallery.html",{'list':["gallery-"+str(i)+".jpg" for i in range(1,7) ]})
+
+def menu(request):
+    return render(request,"pinocchiospizza/menu.html")
