@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-    <div class="row">
+    <div class="row" style="margin-right:0px !important">
         <div class="col-sm-9 col-md-9"> 
-          <div class="col-sm-12 col-md-12">
+          <div class="col-sm-12 col-md-12" id="menu-items">
             <nav class="menu navbar navbar-expand-lg navbar-light bg-light">            
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="menu navbar-nav mr-auto">
@@ -31,29 +31,29 @@
                     <div class="theme-product-group-name">Pizza</div>
                 </div>
           </div>
-          <div class="row">
-          {% for pizza in pizzas %}
-           <div class="col-sm-4 col-md-4">
-            <div class="container text-center">
-                <div class="card" style="width: 15rem;border:none;">
-                    <img src="{{pizza.image.url}}" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title theme-product-name">{{pizza.name}}</h5>
-                                <p class="card-text theme-product-desc">
-                                   {{pizza.toppings}} <br>
-                                   <span class="theme-price">
-                                        ${{pizza.price}}
-                                    </span>
-                                </p>                                
-                            <button class="btn btn-primary order-button">Orders</button>
-                        </div>
+          <div class="col-sm-12 col-md-12">
+            <div class="row" style="padding-left:8vw">
+            {% for pizza in pizzas %}
+                <div class="col-sm-4 col-md-4 text-center card-placing">
+                    <div>
+                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                            <div class="text-center">
+                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                    <p class="theme-product-desc">
+                                            {{pizza.toppings}} <br>
+                                        <span class="theme-price">
+                                            ${{pizza.price}}
+                                        </span>
+                                    </p>                                
+                                <button class="btn btn-primary order-button">Orders</button>
+                            </div>
+                    </div>              
                 </div>
-            </div>              
-          </div>
-          {% endfor %} 
-          </div>          
-        </div>
-        <div class="col-sm-4 col-md-4">
+            {% endfor %} 
+            </div>
+          </div>  
+        </div>              
+        <div class="col-sm-3 col-md-3">
         </div>
     </div>
 {% endblock  %}

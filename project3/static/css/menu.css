@@ -52,7 +52,12 @@
 }
 
 .order-button {
-    width: 100%;
+    width: 90%;
     background-color: black;
     color: white;
+}
+
+.card-placing{
+    margin-left:-2vw;
+    margin-bottom: 2vh;
 }

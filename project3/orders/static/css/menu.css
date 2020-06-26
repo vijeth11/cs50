@@ -17,7 +17,7 @@
 .theme-product-group{
     padding: 20px;
     margin-bottom: 15px;
-    background: transparent;
+    background: white;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
@@ -52,7 +52,18 @@
 }
 
 .order-button {
-    width: 100%;
+    width: 90%;
     background-color: black;
     color: white;
+}
+
+.card-placing{
+    margin-left:-2vw;
+    margin-bottom: 15vh;
+}
+
+#menu-items{
+position: sticky;
+top: 0px;
+z-index: 10;
 }
