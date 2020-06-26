@@ -34,3 +34,25 @@
     text-transform: uppercase;
     letter-spacing: 3px;
 }
+
+.theme-product-name {
+    color: #333333;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.theme-product-desc {
+    font-size: 16px;
+    color: #666666;
+}
+
+.theme-price {
+    color: #e2011b;
+    font-size: 28px;
+}
+
+.order-button {
+    width: 100%;
+    background-color: black;
+    color: white;
+}

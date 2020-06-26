@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 
 def index(request):
@@ -14,4 +14,5 @@ def gallery(request):
     return render(request,"orders/gallery.html",{'list':["gallery-"+str(i)+".jpg" for i in range(1,7) ]})
 
 def menu(request):
-    return render(request,"orders/menu.html")
+    pizzas = Pizza.objects.all() 
+    return render(request,"orders/menu.html",{'pizzas':pizzas})

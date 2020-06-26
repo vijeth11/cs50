@@ -7,6 +7,9 @@ PizzaTypes=[("R","Regular"),
             ]
 class Toppings(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 class Pizza(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits= 10,decimal_places=2)
@@ -17,5 +20,7 @@ class Pizza(models.Model):
     def __str__(self):
         return self.name
 
-
+    def toppings(self):
+        names = [topping.name for topping in self.selectedTopings.all()]
+        return " , ".join(names)
 

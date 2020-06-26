@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
     <div class="row">
-        <div class="col-sm-8 col-md-8"> 
+        <div class="col-sm-9 col-md-9"> 
           <div class="col-sm-12 col-md-12">
             <nav class="menu navbar navbar-expand-lg navbar-light bg-light">            
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -31,6 +31,27 @@
                     <div class="theme-product-group-name">Pizza</div>
                 </div>
           </div>
+          <div class="row">
+          {% for pizza in pizzas %}
+           <div class="col-sm-4 col-md-4">
+            <div class="container text-center">
+                <div class="card" style="width: 15rem;border:none;">
+                    <img src="{{pizza.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title theme-product-name">{{pizza.name}}</h5>
+                                <p class="card-text theme-product-desc">
+                                   {{pizza.toppings}} <br>
+                                   <span class="theme-price">
+                                        ${{pizza.price}}
+                                    </span>
+                                </p>                                
+                            <button class="btn btn-primary order-button">Orders</button>
+                        </div>
+                </div>
+            </div>              
+          </div>
+          {% endfor %} 
+          </div>          
         </div>
         <div class="col-sm-4 col-md-4">
         </div>
