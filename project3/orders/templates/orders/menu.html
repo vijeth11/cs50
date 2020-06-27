@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-    <div class="row" style="margin-right:0px !important">
-        <div class="col-sm-9 col-md-9"> 
-          <div class="col-sm-12 col-md-12" id="menu-items">
-            <nav class="menu navbar navbar-expand-lg navbar-light bg-light">            
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="menu navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Pizza</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Subs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pasta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Salads</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Dinner Platters</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="row" style="margin-right:0px !important" >
+        <div class="col-sm-9 col-md-9" id="menu-header">
+            <nav class="menu navbar navbar-expand-lg navbar-light bg-light" id="menu-items"> 
+                <ul class="nav nav-pills menu mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pizza" id="pizza">Pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#subs">Subs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pasta">Pasta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#salads">Salads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#DinnerPlatters">Dinner Platters</a>
+                    </li>
+                </ul>
             </nav>
-          </div>
-          <div class="col-sm-12 col-md-12">
+        </div>
+        <div class="col-sm-9 col-md-9">          
+          <div class="col-sm-12 col-md-12" id = "pizza">
                 <div class="theme-product-group theme-product-group-center" >
                     <div class="theme-product-group-name">Pizza</div>
                 </div>
@@ -52,6 +50,110 @@
             {% endfor %} 
             </div>
           </div>  
+          <div class="col-sm-12 col-md-12" id = "subs">
+                <div class="theme-product-group theme-product-group-center" >
+                    <div class="theme-product-group-name">Subs</div>
+                </div>
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <div class="row" style="padding-left:8vw">
+            {% for pizza in pizzas %}
+                <div class="col-sm-4 col-md-4 text-center card-placing">
+                    <div>
+                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                            <div class="text-center">
+                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                    <p class="theme-product-desc">
+                                            {{pizza.toppings}} <br>
+                                        <span class="theme-price">
+                                            ${{pizza.price}}
+                                        </span>
+                                    </p>                                
+                                <button class="btn btn-primary order-button">Orders</button>
+                            </div>
+                    </div>              
+                </div>
+            {% endfor %} 
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12" id = "pasta">
+                <div class="theme-product-group theme-product-group-center" >
+                    <div class="theme-product-group-name">Pasta</div>
+                </div>
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <div class="row" style="padding-left:8vw">
+            {% for pizza in pizzas %}
+                <div class="col-sm-4 col-md-4 text-center card-placing">
+                    <div>
+                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                            <div class="text-center">
+                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                    <p class="theme-product-desc">
+                                            {{pizza.toppings}} <br>
+                                        <span class="theme-price">
+                                            ${{pizza.price}}
+                                        </span>
+                                    </p>                                
+                                <button class="btn btn-primary order-button">Orders</button>
+                            </div>
+                    </div>              
+                </div>
+            {% endfor %} 
+            </div>
+          </div>
+           <div class="col-sm-12 col-md-12" id = "salads">
+                <div class="theme-product-group theme-product-group-center" >
+                    <div class="theme-product-group-name">Salads</div>
+                </div>
+          </div> 
+          <div class="col-sm-12 col-md-12">
+            <div class="row" style="padding-left:8vw">
+            {% for pizza in pizzas %}
+                <div class="col-sm-4 col-md-4 text-center card-placing">
+                    <div>
+                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                            <div class="text-center">
+                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                    <p class="theme-product-desc">
+                                            {{pizza.toppings}} <br>
+                                        <span class="theme-price">
+                                            ${{pizza.price}}
+                                        </span>
+                                    </p>                                
+                                <button class="btn btn-primary order-button">Orders</button>
+                            </div>
+                    </div>              
+                </div>
+            {% endfor %} 
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12" id = "DinnerPlatters">
+                <div class="theme-product-group theme-product-group-center" >
+                    <div class="theme-product-group-name">Dinner Platters</div>
+                </div>
+          </div> 
+          <div class="col-sm-12 col-md-12">
+            <div class="row" style="padding-left:8vw">
+            {% for pizza in pizzas %}
+                <div class="col-sm-4 col-md-4 text-center card-placing">
+                    <div>
+                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                            <div class="text-center">
+                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                    <p class="theme-product-desc">
+                                            {{pizza.toppings}} <br>
+                                        <span class="theme-price">
+                                            ${{pizza.price}}
+                                        </span>
+                                    </p>                                
+                                <button class="btn btn-primary order-button">Orders</button>
+                            </div>
+                    </div>              
+                </div>
+            {% endfor %} 
+            </div>
+          </div> 
         </div>              
         <div class="col-sm-3 col-md-3">
         </div>

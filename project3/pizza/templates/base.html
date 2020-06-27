@@ -4,7 +4,11 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
      <link rel="stylesheet" href="{% static 'css/index.css' %}">
      <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      <script src="{% static 'js/index.js' %}"></script>
+     <script src="{% static 'js/menu.js' %}"></script>
      <title>Pinocchios Pizza</title>
      <style>
         div > a {
@@ -29,9 +33,12 @@
               -o-transition: all 0.25s;
               -ms-transition: all 0.25s;
         }
+        body{
+          position: relative;
+        }
      </style>
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#menu-items" data-offset="80">
     <header>
     <div class="logo-position">
        <img src="{% static 'logo.png' %}" height = "200" width = "200">

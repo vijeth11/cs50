@@ -1,7 +1,7 @@
 .menu.navbar{
     background: white !important;
 }
-.menu>.nav-item.active {
+.menu>.nav-item> a.active {
     background-color: black !important;
 }
 
@@ -10,7 +10,7 @@
     font-weight: 600;
     font-size: 20px;
 }
-.menu > .nav-item.active > a{
+.menu > .nav-item > a.active{
     color: white !important;
 }
 
@@ -62,7 +62,7 @@
     margin-bottom: 15vh;
 }
 
-#menu-items{
+#menu-header{
 position: sticky;
 top: 0px;
 z-index: 10;
