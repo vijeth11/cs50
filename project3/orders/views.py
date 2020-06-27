@@ -15,4 +15,8 @@ def gallery(request):
 
 def menu(request):
     pizzas = Pizza.objects.all() 
-    return render(request,"orders/menu.html",{'pizzas':pizzas})
+    subs = Subs.objects.all()
+    salads = Salads.objects.all()
+    pastas = Pasta.objects.all()
+    dinnerplatters = DinnerPlatters.objects.all()
+    return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png'})

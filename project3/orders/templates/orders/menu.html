@@ -34,7 +34,11 @@
             {% for pizza in pizzas %}
                 <div class="col-sm-4 col-md-4 text-center card-placing">
                     <div>
+                        {% if pizza.image.url is not None %}
                         <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                        {% else %}
+                        <img src="{{blankimageurl}}" alt="..." width="150" height="150">
+                        {% endif %} 
                             <div class="text-center">
                                 <h5 class="theme-product-name">{{pizza.name}}</h5>
                                     <p class="theme-product-desc">
@@ -57,16 +61,19 @@
           </div>
           <div class="col-sm-12 col-md-12">
             <div class="row" style="padding-left:8vw">
-            {% for pizza in pizzas %}
+            {% for sub in subs %}
                 <div class="col-sm-4 col-md-4 text-center card-placing">
                     <div>
-                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                        {% if sub.image.url is not None %}
+                        <img src="{{sub.image.url}}" alt="..." width="150" height="150">
+                        {% else %}
+                        <img src="{{blankimageurl}}" alt="..." width="150" height="150">
+                        {% endif %}                        
                             <div class="text-center">
-                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                <h5 class="theme-product-name">{{sub.name}}</h5>
                                     <p class="theme-product-desc">
-                                            {{pizza.toppings}} <br>
                                         <span class="theme-price">
-                                            ${{pizza.price}}
+                                            ${{sub.smallprice}}
                                         </span>
                                     </p>                                
                                 <button class="btn btn-primary order-button">Orders</button>
@@ -83,16 +90,19 @@
           </div>
           <div class="col-sm-12 col-md-12">
             <div class="row" style="padding-left:8vw">
-            {% for pizza in pizzas %}
+            {% for pasta in pastas %}
                 <div class="col-sm-4 col-md-4 text-center card-placing">
                     <div>
-                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                        {% if pasta.image.url is not None %}
+                        <img src="{{pasta.image.url}}" alt="..." width="150" height="150">
+                        {% else %}
+                        <img src="{{blankimageurl}}" alt="..." width="150" height="150">
+                        {% endif %}                        
                             <div class="text-center">
-                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                <h5 class="theme-product-name">{{pasta.name}}</h5>
                                     <p class="theme-product-desc">
-                                            {{pizza.toppings}} <br>
                                         <span class="theme-price">
-                                            ${{pizza.price}}
+                                            ${{pasta.price}}
                                         </span>
                                     </p>                                
                                 <button class="btn btn-primary order-button">Orders</button>
@@ -109,16 +119,19 @@
           </div> 
           <div class="col-sm-12 col-md-12">
             <div class="row" style="padding-left:8vw">
-            {% for pizza in pizzas %}
+            {% for salad in salads %}
                 <div class="col-sm-4 col-md-4 text-center card-placing">
                     <div>
-                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                        {% if salad.image.url is not None %}
+                        <img src="{{salad.image.url}}" alt="..." width="150" height="150">
+                        {% else %}
+                        <img src="{{blankimageurl}}" alt="..." width="150" height="150">
+                        {% endif %}
                             <div class="text-center">
-                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                <h5 class="theme-product-name">{{salad.name}}</h5>
                                     <p class="theme-product-desc">
-                                            {{pizza.toppings}} <br>
                                         <span class="theme-price">
-                                            ${{pizza.price}}
+                                            ${{salad.price}}
                                         </span>
                                     </p>                                
                                 <button class="btn btn-primary order-button">Orders</button>
@@ -135,16 +148,19 @@
           </div> 
           <div class="col-sm-12 col-md-12">
             <div class="row" style="padding-left:8vw">
-            {% for pizza in pizzas %}
+            {% for dinnerplatter in dinnerplatters %}
                 <div class="col-sm-4 col-md-4 text-center card-placing">
                     <div>
-                        <img src="{{pizza.image.url}}" alt="..." width="150" height="150">
+                        {% if dinnerplatter.image.url is not None %}
+                        <img src="{{dinnerplatter.image.url}}" alt="..." width="150" height="150">
+                        {% else %}
+                        <img src="{{blankimageurl}}" alt="..." width="150" height="150">
+                        {% endif %}
                             <div class="text-center">
-                                <h5 class="theme-product-name">{{pizza.name}}</h5>
+                                <h5 class="theme-product-name">{{dinnerplatter.name}}</h5>
                                     <p class="theme-product-desc">
-                                            {{pizza.toppings}} <br>
                                         <span class="theme-price">
-                                            ${{pizza.price}}
+                                            ${{dinnerplatter.smallprice}}
                                         </span>
                                     </p>                                
                                 <button class="btn btn-primary order-button">Orders</button>
