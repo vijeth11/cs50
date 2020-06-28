@@ -186,9 +186,114 @@
             <div class="cart hidden-xs">
                 <div class="theme-cart-inner">
                     <h4>Your order</h4>
-		            <div class="text-center"><img src="/media/empty-cart.png" class="theme-empty-cart-img"></div>
-				    <div class="text-center" style="opacity: 0.4;">Cart is empty. Add menu items.<br><br></div>
-                    <div class="_cart-info"></div>
+                    <ul class="cart-items-scrollable list-unstyled">
+						<li>
+							<div>
+								<span class="quantity">1 x</span>
+								<span class="name">
+									Capriciosa 
+								</span>
+                                <div class="price">
+								    <div>
+									    $22.00									
+									    <div>
+										    <a href="#" id="b33c465a-b96e-11ea-be50-525400080321" class="decrease-cart-item cart-icon btn plus theme-plus pull-right">−</a>
+										    <a href="#" id="b33c465a-b96e-11ea-be50-525400080321" class="increase-cart-item cart-icon btn plus theme-plus pull-right">+</a>
+									    </div>
+								    </div>
+							    </div>
+							</div>							
+						</li>
+						<li>
+							<div>
+								<span class="quantity">1 x</span>
+								<span class="name">
+									Pepperoni 
+								</span>
+								<div class="price">
+								    <div>
+									    $20.00
+									
+									    <div>
+										    <a href="#" id="1f295ac2-b96f-11ea-be50-525400080321" class="decrease-cart-item cart-icon btn plus theme-plus pull-right">−</a>
+										    <a href="#" id="1f295ac2-b96f-11ea-be50-525400080321" class="increase-cart-item cart-icon btn plus theme-plus pull-right">+</a>
+									    </div>
+								    </div>
+							    </div>
+							</div>							
+						</li>
+				    </ul>
+                    <ul class="list-unstyled cart-summary">
+
+						<li class="clearfix theme-set-delivery-address">
+							<div class="pull-right price">
+
+
+											FREE
+								 
+							</div>
+
+							<div>
+								Delivery
+
+								 							</div>
+						</li>
+
+
+		<li class="clearfix" style="display: none;">
+            <div class="pull-right price">
+                $42.00
+                
+            </div>
+            <div>menu items</div>
+		</li>
+
+			<!-- TIPS -->
+				<li class="clearfix theme-cart-tips">
+					<div class="pull-right price">
+						$0.00
+					</div>
+					<div>Tip</div>
+
+						<div class="btn-group media-flex m-t-xs" role="group" aria-label="...">
+							<button type="button" class="btn btn-default _set-tip " data-tip="0" data-tiptype="PERCENT">0%</button>
+							<button type="button" class="btn btn-default _set-tip " data-tip="10" data-tiptype="PERCENT">10%</button>
+							<button type="button" class="btn btn-default _set-tip " data-tip="20" data-tiptype="PERCENT">20%</button>
+							<button type="button" class="btn btn-default " data-toggle="popover" data-html="true" data-placement="left" data-template="<div class='popover tip-amount' role='tooltip' style='right: 60px'><div class='arrow'></div><div class='popover-content wrapper'></div></div>" data-content="<p>Tip amount <a href=&quot;#!&quot; class=&quot;_close-set-tip&quot;><i class=&quot;fa fa-close pull-right&quot;></i></a></p>
+								<div class=&quot;input-group&quot;>
+									<span class=&quot;input-group-addon&quot;>USD</span>
+									<input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;custom-tip&quot; value=&quot;&quot;>
+									<span class=&quot;input-group-btn&quot;>
+										<button class=&quot;btn btn-upmenu _set-tip other&quot; type=&quot;button&quot;>Add</button>
+									</span>
+								</div>
+								" data-original-title="" title="">
+									Other
+							</button>
+
+						</div>
+
+
+				</li>
+				<li class="clearfix total">
+					<div class="pull-right price">
+						$42.00
+						
+					</div>
+					<div>
+						TOTAL
+						
+					</div>
+				</li>
+
+				<!--<li class="clearfix">
+					<div class="pull-right price">
+						40&nbsp;Points
+					</div>
+					<div>You will earn</div>
+				</li>-->
+
+			</ul>
             	</div>
                 <a href="#" class="btn btn-upmenu btn-lg btn-block _start-order">
 		                GO TO CHECKOUT <i class="fa fa-chevron-right"></i>
