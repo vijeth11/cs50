@@ -172,6 +172,37 @@
           </div> 
         </div>              
         <div class="col-sm-3 col-md-3">
+            <div class="cart-wrapper theme-cart-mini-context theme-context-wrapper hidden-xs m-b">	       
+		        <div class="dropdown" style="float:right">
+                    <a onclick="myFunction()" class="dropbtn">Account <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#!">Sign in</a>
+                        <a href="#!">Register</a>
+                    </div>
+                </div>
+                <h4 class="text-ellipsis">Pinocchio's</h4>
+                <p class="text-ellipsis">74 Winthrop Street</p>
+            </div>
+            <div class="cart hidden-xs">
+                <div class="theme-cart-inner">
+                    <h4>Your order</h4>
+		            <div class="text-center"><img src="/media/empty-cart.png" class="theme-empty-cart-img"></div>
+				    <div class="text-center" style="opacity: 0.4;">Cart is empty. Add menu items.<br><br></div>
+                    <div class="_cart-info"></div>
+            	</div>
+                <a href="#" class="btn btn-upmenu btn-lg btn-block _start-order">
+		                GO TO CHECKOUT <i class="fa fa-chevron-right"></i>
+	            </a>
+                <div class="m-t-sm small text-center">
+			        <div class="theme-cart-min-order">
+				        <div>
+					            Min. order
+								$0.00
+
+				        </div>
+			        </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock  %}
