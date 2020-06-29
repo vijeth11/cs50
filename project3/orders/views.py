@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,HttpResponse
 from .models import *
+from django.contrib.auth.models import User
+from django.contrib import auth
 # Create your views here.
 
 def index(request):
@@ -20,3 +22,38 @@ def menu(request):
     pastas = Pasta.objects.all()
     dinnerplatters = DinnerPlatters.objects.all()
     return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png'})
+
+def signup(request):
+    #return HttpResponse("signup")
+    if request.method == 'POST':
+        # User has info and wants account now!
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.get(username = request.POST['username'])
+                return render(request, 'signup.html', {'error':'Username has already been taken'})
+            except User.DoesNotExist:
+                user = User.objects.create_user(request.POST['username'],password = request.POST['password1'])
+                auth.login(request,user)
+                return redirect('home')
+        else:
+            return HttpResponse("error password does not match")
+    else:
+        return HttpResponse("Successfull")
+
+def login(request):
+    #return HttpResponse("login")
+    if request.method == 'POST':
+        user = auth.authenticate(username = request.POST['username'],password = request.POST['password'])
+        if user is not None:
+            auth.login(request,user)
+            return HttpResponse("Successfull")
+        else:
+            return HttpResponse('username or password is incorrect.')
+    else:
+        return render(request,'menu.html')
+
+def logout(request):
+    #TODO Need to route to homepage
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('index')

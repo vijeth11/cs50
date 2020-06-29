@@ -176,8 +176,8 @@
 		        <div class="dropdown" style="float:right">
                     <a onclick="myFunction()" class="dropbtn">Account <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="#!">Sign in</a>
-                        <a href="#!">Register</a>
+                        <a href="#!" onclick="login()">Sign in</a>
+                        <a href="#!" onclick="signup()">Register</a>
                     </div>
                 </div>
                 <h4 class="text-ellipsis">Pinocchio's</h4>
@@ -186,10 +186,11 @@
             <div class="cart hidden-xs">
                 <div class="theme-cart-inner">
                     <h4>Your order</h4>
-                    <!-- Do Not Remove the Below part it is for empty cart-->
-                    <!--<div class="text-center"><img src="/media/empty-cart.png" class="theme-empty-cart-img"></div>
+                    {% if order is None %}
+                    <div class="text-center"><img src="/media/empty-cart.png" class="theme-empty-cart-img"></div>
 				    <div class="text-center" style="opacity: 0.4;">Cart is empty. Add menu items.<br><br></div>
-                    <div class="_cart-info"></div>-->
+                    <div class="_cart-info"></div>
+                    {% else %}
                     <ul class="cart-items-scrollable list-unstyled">
 						<li>
 							<div>
@@ -234,7 +235,8 @@
 					        <div>TOTAL</div>
 				        </li>
 			        </ul>
-            	</div>
+                    {% endif %}
+                </div>
                 <a href="#" class="btn btn-upmenu btn-lg btn-block">
 		                GO TO CHECKOUT <i class="fa fa-chevron-right"></i>
 	            </a>
@@ -246,4 +248,55 @@
             </div>
         </div>
     </div>
+
+
+    <!--modal-->
+    <div class="modal" id="signupModal" style="z-index=20001;">
+        <div class="modal-dialog">	        
+            <div class="modal-content" id="_cms-modal-narrow-content">
+                <div class="modal-close">
+		            <button type="button" id ="close" class="btn pull-right"><img src="//cdn.upmenu.com/media/338/admin2/images/icons/x-white.svg"></button>
+	            </div>
+                <div class="modal-body">
+		            <form name="f" action="#" method="POST" id="_registration-form">
+		                <div class="row">			
+                            <div class="col-sm-12">
+                                <div class="form-group ">
+                                    <label class="control-label" id="email">Email *</label>
+                                    <input type="text" name="email" value="" class="form-control">                        
+                                </div>
+                            </div>
+		                </div>
+		                <div class="row">		
+                            <div class="col-sm-12">
+                                <div class="form-group ">
+                                    <label class="control-label" id="password">Password *</label>
+                                    <input type="password" name="password" value="" class="form-control">                        
+                                </div>
+                            </div>
+                            <div class="col-sm-12" id="confirmpassword">
+                                <div class="form-group ">
+                                    <label class="control-label">Confirm password *</label>
+                                    <input type="password" name="passwordConfirm" value="" class="form-control">                            
+                                </div>
+                            </div>
+		                </div> 
+                        <div class="row">
+                            <div class="col-sm-12">
+					            <br><button type="button" class="btn btn-upmenu btn-block" id="submitButton">Finish registration</button> 
+				            </div>
+			            </div>		    
+			            <div class="row" id="LoginRoute">		
+                            <div class="col-sm-12">
+                                <p class="text-center">
+                                    <br><br>Already have an account?  <a href="#!" onclick="login()">Log in</a>
+                                </p>
+                            </div>
+		                </div>
+		            </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--/modal-->
 {% endblock  %}

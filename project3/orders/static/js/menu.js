@@ -1,6 +1,6 @@
+
 window.addEventListener('scroll', function() {
     var el = document.getElementById('pizza');
-    console.log(el.getBoundingClientRect().top);
     if(el.getBoundingClientRect().top > 80){
         el.classList.add("active");
     }
@@ -11,7 +11,10 @@ window.addEventListener('scroll', function() {
   }
   
   window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+    if(event.target == document.getElementById("signupModal")){
+        document.getElementById("signupModal").style.display = "none";
+    }  
+    else if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
@@ -21,4 +24,30 @@ window.addEventListener('scroll', function() {
         }
       }
     }
+  }
+
+
+  function signup(){
+    document.getElementById("signupModal").style.display = "block";
+    document.getElementById("confirmpassword").style.display = "block";
+    document.getElementById("email").textContent = "Email *";
+    document.getElementById("password").textContent = "Password *";
+    document.getElementById("submitButton").textContent = "Finish registration";
+    document.getElementById("LoginRoute").style.display = "block";
+      document.getElementById("close").addEventListener('click',()=>{
+        document.getElementById("signupModal").style.display = "none";
+      });
+  }
+
+  function login(){
+    document.getElementById("signupModal").style.display = "block";
+    document.getElementById("confirmpassword").style.display = "none";
+    document.getElementById("email").textContent = "Login (Email)";
+    document.getElementById("password").textContent = "Password";
+    document.getElementById("submitButton").textContent = "Login";
+    document.getElementById("LoginRoute").style.display = "none";
+    document.getElementById("close").addEventListener('click',()=>{
+        document.getElementById("signupModal").style.display = "none";
+    });
+     
   }
