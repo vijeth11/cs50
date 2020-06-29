@@ -1,3 +1,6 @@
+const User = {
+    name:null,
+}
 
 window.addEventListener('scroll', function() {
     var el = document.getElementById('pizza');
@@ -37,6 +40,24 @@ window.addEventListener('scroll', function() {
       document.getElementById("close").addEventListener('click',()=>{
         document.getElementById("signupModal").style.display = "none";
       });
+    document.getElementById("formLoginRegister").onsubmit = function(event){
+        event.preventDefault();
+        var inputFields = document.getElementById("formLoginRegister").getElementsByTagName("input");
+        var token = inputFields[0];
+            axios({
+                headers: { "X-CSRFToken": token.value },
+                method:'post',
+                url:'/register/',
+                data:new FormData(document.getElementById("formLoginRegister")),
+            })
+            .then(data => {
+                User.name = data.data;
+                console.log(User);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    } 
   }
 
   function login(){
@@ -49,5 +70,38 @@ window.addEventListener('scroll', function() {
     document.getElementById("close").addEventListener('click',()=>{
         document.getElementById("signupModal").style.display = "none";
     });
-     
+    document.getElementById("formLoginRegister").onsubmit = function(event){
+        event.preventDefault();
+        var inputFields = document.getElementById("formLoginRegister").getElementsByTagName("input");
+        var token = inputFields[0];
+            axios({
+                headers: { "X-CSRFToken": token.value },
+                method:'post',
+                url:'/login/',
+                data:new FormData(document.getElementById("formLoginRegister"))
+            })
+            .then(data => {
+                User = data;
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    } 
+  }
+
+  function order(Url,id){
+      axios({
+          method: 'post',
+          url:'/order/',
+          data: {
+              orderid:id,
+              user:User
+          }
+      })
+      .then(data => {
+          console.log(data);
+      })
+      .catch(err => {
+          login();
+      })
   }

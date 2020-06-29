@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponse
+from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -27,28 +28,28 @@ def signup(request):
     #return HttpResponse("signup")
     if request.method == 'POST':
         # User has info and wants account now!
-        if request.POST['password1'] == request.POST['password2']:
+        if request.POST['password'] == request.POST['passwordConfirm']:
             try:
-                user = User.objects.get(username = request.POST['username'])
-                return render(request, 'signup.html', {'error':'Username has already been taken'})
+                user = User.objects.get(username = request.POST['email'])
+                return HttpResponse('Username has already been taken',400)
             except User.DoesNotExist:
-                user = User.objects.create_user(request.POST['username'],password = request.POST['password1'])
+                user = User.objects.create_user(request.POST['email'],password = request.POST['password'])
                 auth.login(request,user)
-                return redirect('home')
+                return HttpResponse(user)
         else:
-            return HttpResponse("error password does not match")
+            return HttpResponse("error password does not match",400)
     else:
         return HttpResponse("Successfull")
 
 def login(request):
     #return HttpResponse("login")
     if request.method == 'POST':
-        user = auth.authenticate(username = request.POST['username'],password = request.POST['password'])
+        user = auth.authenticate(username = request.POST['email'],password = request.POST['password'])
         if user is not None:
             auth.login(request,user)
-            return HttpResponse("Successfull")
+            return HttpResponse(user)
         else:
-            return HttpResponse('username or password is incorrect.')
+            return HttpResponse('username or password is incorrect.',400)
     else:
         return render(request,'menu.html')
 
@@ -57,3 +58,8 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('index')
+
+@login_required
+def order(request):
+    if request.method == 'POST':
+        return HttpResponse('success')

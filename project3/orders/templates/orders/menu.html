@@ -47,7 +47,7 @@
                                             ${{pizza.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({% url 'order' %},{{pizza.id}})">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -258,7 +258,8 @@
 		            <button type="button" id ="close" class="btn pull-right"><img src="//cdn.upmenu.com/media/338/admin2/images/icons/x-white.svg"></button>
 	            </div>
                 <div class="modal-body">
-		            <form name="f" action="#" method="POST" id="_registration-form">
+		            <form name="f" action="#" method="POST" id="formLoginRegister">
+                    {% csrf_token %}
 		                <div class="row">			
                             <div class="col-sm-12">
                                 <div class="form-group ">
@@ -283,7 +284,7 @@
 		                </div> 
                         <div class="row">
                             <div class="col-sm-12">
-					            <br><button type="button" class="btn btn-upmenu btn-block" id="submitButton">Finish registration</button> 
+					            <br><button type="submit" class="btn btn-upmenu btn-block" id="submitButton">Finish registration</button> 
 				            </div>
 			            </div>		    
 			            <div class="row" id="LoginRoute">		
