@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponse
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
@@ -31,13 +32,13 @@ def signup(request):
         if request.POST['password'] == request.POST['passwordConfirm']:
             try:
                 user = User.objects.get(username = request.POST['email'])
-                return HttpResponse('Username has already been taken',400)
+                return HttpResponse('Username has already been taken',status = 400)
             except User.DoesNotExist:
                 user = User.objects.create_user(request.POST['email'],password = request.POST['password'])
                 auth.login(request,user)
                 return HttpResponse(user)
         else:
-            return HttpResponse("error password does not match",400)
+            return HttpResponse("error password does not match",status = 400)
     else:
         return HttpResponse("Successfull")
 
@@ -47,9 +48,9 @@ def login(request):
         user = auth.authenticate(username = request.POST['email'],password = request.POST['password'])
         if user is not None:
             auth.login(request,user)
-            return HttpResponse(user)
+            return JsonResponse({'user':request.POST['email']},safe=False)
         else:
-            return HttpResponse('username or password is incorrect.',400)
+            return HttpResponse('username or password is incorrect.',status = 400)
     else:
         return render(request,'menu.html')
 

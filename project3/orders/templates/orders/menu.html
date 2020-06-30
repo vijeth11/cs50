@@ -173,12 +173,15 @@
         </div>              
         <div class="col-sm-3 col-md-3">
             <div class="cart-wrapper theme-cart-mini-context theme-context-wrapper hidden-xs m-b">	       
-		        <div class="dropdown" style="float:right">
+		        <div class="dropdown" id="Account" style="float:right">
                     <a onclick="myFunction()" class="dropbtn">Account <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="#!" onclick="login()">Sign in</a>
                         <a href="#!" onclick="signup()">Register</a>
                     </div>
+                </div>
+                <div class="dropdown" id="Logout" style="float:right;display:none">
+                    <a onclick="logout()" class="dropbtn"> Logout </a>
                 </div>
                 <h4 class="text-ellipsis">Pinocchio's</h4>
                 <p class="text-ellipsis">74 Winthrop Street</p>
@@ -251,11 +254,11 @@
 
 
     <!--modal-->
-    <div class="modal" id="signupModal" style="z-index=20001;">
+    <div class="modal" id="signupModal" style="z-index=20001;" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">	        
             <div class="modal-content" id="_cms-modal-narrow-content">
                 <div class="modal-close">
-		            <button type="button" id ="close" class="btn pull-right"><img src="//cdn.upmenu.com/media/338/admin2/images/icons/x-white.svg"></button>
+		            <button type="button" id ="close" class="btn pull-right"><i class="fa fa-2x fa-times" aria-hidden="true" style="color:white"></i></button>
 	            </div>
                 <div class="modal-body">
 		            <form name="f" action="#" method="POST" id="formLoginRegister">
@@ -282,9 +285,10 @@
                                 </div>
                             </div>
 		                </div> 
+                        <div class="alert alert-danger" id="errorMessage" style="display:none"></div>
                         <div class="row">
                             <div class="col-sm-12">
-					            <br><button type="submit" class="btn btn-upmenu btn-block" id="submitButton">Finish registration</button> 
+					            <button type="submit" class="btn btn-upmenu btn-block" id="submitButton">Finish registration</button> 
 				            </div>
 			            </div>		    
 			            <div class="row" id="LoginRoute">		
