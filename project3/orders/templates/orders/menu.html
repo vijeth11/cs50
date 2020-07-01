@@ -47,7 +47,7 @@
                                             ${{pizza.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button" onclick="order({% url 'order' %},{{pizza.id}})">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{pizza.id}},{{pizza.price}},'{{pizza.name}}',1)">Orders</button>
                             </div>
                     </div>              
                 </div>

@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.utils import timezone
+from decimal import Decimal
 # Create your views here.
 
 def index(request):
@@ -63,4 +65,17 @@ def logout(request):
 @login_required
 def order(request):
     if request.method == 'POST':
+        orders = Orders.objects.all().filter(person = request.user).filter(status = 'N')
+        if len(orders) > 0:
+            print(orders[0])
+            orders[0].totalprice = orders[0].totalprice + Decimal(request.POST["price"])
+            orders[0].save()
+            orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = request.POST["plate"], order = orders[0])
+            orderitems.save()
+        else:
+            order = Orders(totalprice = 0.0, status = 'N', date = timezone.datetime.now(), person = request.user)
+            order.totalprice = order.totalprice + float(request.POST["price"])
+            order.save()            
+            orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = int(request.POST["plate"]), order = order)
+            orderitems.save()
         return HttpResponse('success')

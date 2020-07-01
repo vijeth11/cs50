@@ -81,15 +81,16 @@ window.addEventListener('scroll', function() {
     
   }
 
-  function order(Url,id){
+  function order(id,price,name,plate){
+    var formData = new FormData();
+    formData.append('price',price);
+    formData.append('orderitem',name);
+    formData.append('plate',plate);
       axios({
           headers: { "X-CSRFToken": Cookies.get('csrftoken')},
           method: 'post',
           url:'/order/',
-          data: {
-              orderid:id,
-              user:User ? User.name : null
-          }
+          data: formData
       })
       .then(data => {
           console.log(data);
