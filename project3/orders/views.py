@@ -48,7 +48,7 @@ def login(request):
         user = auth.authenticate(username = request.POST['email'],password = request.POST['password'])
         if user is not None:
             auth.login(request,user)
-            return JsonResponse({'user':request.POST['email']},safe=False)
+            return JsonResponse({'user':user.get_username(),'id':user.id},safe=False)
         else:
             return HttpResponse('username or password is incorrect.',status = 400)
     else:

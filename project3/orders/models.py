@@ -1,10 +1,14 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 PizzaTypes=[("R","Regular"),
             ("S","Sicilian")
             ]
+OrderStatuses =[("N","New"),
+                ("P","Preparing"),
+                ("F","Completed"),
+                ("C","Canceled")]
 class Toppings(models.Model):
     name = models.CharField(max_length=100)
 
@@ -57,3 +61,19 @@ class DinnerPlatters(models.Model):
 
     def __str__(self):
         return self.name
+
+class Orders(models.Model):
+    totalprice = models.DecimalField(max_digits=10,decimal_places=2)
+    status = models.CharField(max_length=1,choices=OrderStatuses)
+    date = models.DateField()
+    person = models.ForeignKey(User, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return "order: "+str(self.id)+self.person.username
+
+class OrderItems(models.Model):
+    price = models.DecimalField(max_digits = 10,decimal_places=2)
+    name = models.CharField(max_length=1000)
+    plates = models.IntegerField()
+    order = models.ForeignKey(Orders,on_delete = models.CASCADE,related_name = 'items')
+

@@ -1,6 +1,6 @@
 const User = {
     name:null,
-    token:null
+    id:null
 }
 
 window.addEventListener('scroll', function() {
@@ -67,6 +67,9 @@ window.addEventListener('scroll', function() {
         event.preventDefault();
         var inputFields = document.getElementById("formLoginRegister").getElementsByTagName("input");
         var token = inputFields[0];
+        if(Cookies.get('csrftoken')){
+            token.value = Cookies.get('csrftoken');
+        }
         backendcall('/login/',token.value,new FormData(document.getElementById("formLoginRegister")),event);        
     } 
   }
@@ -93,6 +96,7 @@ window.addEventListener('scroll', function() {
       })
       .catch(err => {
           console.log(err);
+          login();
       })
   }
   
@@ -111,7 +115,7 @@ window.addEventListener('scroll', function() {
     .then(data => {
         if(data.data && data.data.user){
         User.name = data.data.user;
-        User.token = data.data.token;
+        User.id = data.data.id;
         document.getElementById("signupModal").style.display = "none";
         document.body.style.overflow = "visible";
         document.getElementById("errorMessage").style.display = "none";
@@ -119,7 +123,7 @@ window.addEventListener('scroll', function() {
         document.getElementById("Account").style.display = "none";
         }else{
           User.name = null;
-          User.token = null;  
+          User.id = null;  
         }
     })
     .catch(err => {
