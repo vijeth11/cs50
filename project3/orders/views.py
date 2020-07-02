@@ -50,7 +50,14 @@ def login(request):
         user = auth.authenticate(username = request.POST['email'],password = request.POST['password'])
         if user is not None:
             auth.login(request,user)
-            return JsonResponse({'user':user.get_username(),'id':user.id},safe=False)
+            orders = Orders.objects.all().filter(person = user).filter(status = 'N')
+            orderData =[]
+            totalPrice = 0
+            if len(orders) > 0:        
+                for orderitem in OrderItems.objects.all().filter(order = orders[0]):
+                    orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates})
+                    totalPrice = orderitem.plates * orderitem.price
+            return JsonResponse({'user':user.get_username(),'id':user.id,'orders':orderData,'total':totalPrice},safe=False)
         else:
             return HttpResponse('username or password is incorrect.',status = 400)
     else:
@@ -67,15 +74,25 @@ def order(request):
     if request.method == 'POST':
         orders = Orders.objects.all().filter(person = request.user).filter(status = 'N')
         if len(orders) > 0:
-            print(orders[0])
             orders[0].totalprice = orders[0].totalprice + Decimal(request.POST["price"])
             orders[0].save()
-            orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = request.POST["plate"], order = orders[0])
-            orderitems.save()
+            orderitems = OrderItems.objects.all().filter(order = orders[0]).filter(name = request.POST["orderitem"])
+            if len(orderitems) > 0:
+                orderitems[0].plates = orderitems[0].plates + int(request.POST["plate"])
+                orderitems[0].save()
+            else:
+                orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = request.POST["plate"], order = orders[0])
+                orderitems.save()
         else:
             order = Orders(totalprice = 0.0, status = 'N', date = timezone.datetime.now(), person = request.user)
             order.totalprice = order.totalprice + float(request.POST["price"])
             order.save()            
             orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = int(request.POST["plate"]), order = order)
             orderitems.save()
-        return HttpResponse('success')
+        orders = Orders.objects.all().filter(person = request.user).filter(status = 'N')
+        orderData = []
+        totalPrice = 0
+        for orderitem in OrderItems.objects.all().filter(order = orders[0]):                
+                orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates})
+                totalPrice = orderitem.plates * orderitem.price        
+        return JsonResponse({'orders':orderData,'total':totalPrice},safe=False)

@@ -219,6 +219,7 @@ font-size: 120%;
     display: inline-block;
     right: -6vw;
     padding-bottom: 3vh;
+    padding-right: 0;
 }
 
 .cart-icon:hover{
@@ -269,4 +270,9 @@ label {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 700;
+}
+
+.orderName{
+    margin-left: 0vw;
+    margin-right: -6vw;
 }

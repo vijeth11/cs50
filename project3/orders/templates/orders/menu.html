@@ -189,56 +189,39 @@
             <div class="cart hidden-xs">
                 <div class="theme-cart-inner">
                     <h4>Your order</h4>
-                    {% if order is None %}
-                    <div class="text-center"><img src="/media/empty-cart.png" class="theme-empty-cart-img"></div>
-				    <div class="text-center" style="opacity: 0.4;">Cart is empty. Add menu items.<br><br></div>
-                    <div class="_cart-info"></div>
-                    {% else %}
-                    <ul class="cart-items-scrollable list-unstyled">
-						<li>
-							<div>
-								<span class="quantity">1 x</span>
-								<span class="name">
-									Capriciosa 
-								</span>
-                                <div class="price">
-								    <div>
-									    $22.00									
-									    <div>
-										    <a href="#" id="b33c465a-b96e-11ea-be50-525400080321" class="decrease-cart-item cart-icon btn plus theme-plus pull-right">−</a>
-										    <a href="#" id="b33c465a-b96e-11ea-be50-525400080321" class="increase-cart-item cart-icon btn plus theme-plus pull-right">+</a>
-									    </div>
-								    </div>
-							    </div>
-							</div>							
-						</li>
-						<li>
-							<div>
-								<span class="quantity">1 x</span>
-								<span class="name">
-									Pepperoni 
-								</span>
-								<div class="price">
-								    <div>
-									    $20.00
-									
-									    <div>
-										    <a href="#" id="1f295ac2-b96f-11ea-be50-525400080321" class="decrease-cart-item cart-icon btn plus theme-plus pull-right">−</a>
-										    <a href="#" id="1f295ac2-b96f-11ea-be50-525400080321" class="increase-cart-item cart-icon btn plus theme-plus pull-right">+</a>
-									    </div>
-								    </div>
-							    </div>
-							</div>							
-						</li>
-				    </ul>
-                    <ul class="list-unstyled cart-summary">
-                        <br>
-				        <li class="clearfix total">
-					        <div class="pull-right price">$42.00</div>
-					        <div>TOTAL</div>
-				        </li>
-			        </ul>
-                    {% endif %}
+                    <div id="noOrder">
+                        <div class="text-center"><img src="/media/empty-cart.png" class="theme-empty-cart-img"></div>
+				        <div class="text-center" style="opacity: 0.4;">Cart is empty. Add menu items.<br><br></div>
+                        <div class="_cart-info"></div>
+                    </div>
+                    <div id= "orders">
+                        <ul class="cart-items-scrollable list-unstyled">
+                            <!--<li>
+                                <div class="row" style="width:99%;margin-left:0px">
+                                    <div class="col-sm-7 orderName">
+                                        <span class="quantity">{{order.plates}} x </span>
+                                        <span class="name">{{order.name}}</span>
+                                    </div>
+                                    <div class="col-sm-4 price">
+                                        <div>
+                                            <span style="padding-left: 1.5vw;">${{order.price}}</span>
+                                            <div>
+                                                <a href="#" class="decrease-cart-item cart-icon btn plus theme-plus pull-right">-</a>
+                                                <a class="increase-cart-item cart-icon btn plus theme-plus pull-right" href="#">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>-->						    
+				        </ul>
+                        <ul class="list-unstyled cart-summary">
+                            <br>
+				            <li class="clearfix total">
+					            <div class="pull-right price" id="totalprice">${{totalprice}}</div>
+					            <div>TOTAL</div>
+				            </li>
+			            </ul>
+                    </div>  
                 </div>
                 <a href="#" class="btn btn-upmenu btn-lg btn-block">
 		                GO TO CHECKOUT <i class="fa fa-chevron-right"></i>
