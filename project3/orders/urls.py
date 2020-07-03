@@ -10,5 +10,6 @@ urlpatterns = [
     path("order/",views.order,name="order"),
     path("login/",views.login,name="login"),
     path("register/",views.signup, name= "register"),
-    path("logout/",views.logout, name= "logout")
+    path("logout/",views.logout, name= "logout"),
+    path("orderItems/",views.getOrderData, name= "orderitems")
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -47,7 +47,7 @@
                                             ${{pizza.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button" onclick="order({{pizza.id}},{{pizza.price}},'{{pizza.name}}',1)">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{pizza.price}},'{{pizza.name}}',1)">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -76,7 +76,7 @@
                                             ${{sub.smallprice}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button">Orders</button>
+                                <button class="btn btn-primary order-button"  onclick="order({{sub.smallprice}},'{{sub.name}}',1)">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -105,7 +105,7 @@
                                             ${{pasta.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{pasta.price}},'{{pasta.name}}',1)">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -134,7 +134,7 @@
                                             ${{salad.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{salad.price}},'{{salad.name}}',1)">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -163,7 +163,7 @@
                                             ${{dinnerplatter.smallprice}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{dinnerplatter.smallprice}},'{{dinnerplatter.name}}',1)">Orders</button>
                             </div>
                     </div>              
                 </div>
