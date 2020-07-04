@@ -91,8 +91,12 @@ def order(request):
 
 def getOrderData(request):
     if request.user is not None:
-        data = getOrderItems(request.user)
-        return JsonResponse({'orders':data[0],'total':data[1]},safe=False)
+        try:
+            data = getOrderItems(request.user)
+            return JsonResponse({'orders':data[0],'total':data[1]},safe=False)
+        except:
+            return HttpResponse("",status=400)
+
     else:
         return JsonResponse({'orders':[],'total':0},safe=False)
 

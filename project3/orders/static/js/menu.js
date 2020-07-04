@@ -26,6 +26,7 @@ window.onload = function(){
     })
     .catch(err => {
         console.log(err);
+        login();
     })
 }
 
@@ -88,6 +89,7 @@ window.addEventListener('scroll', function() {
     document.getElementById("errorMessage").style.display = "none";
     document.getElementById("close").addEventListener('click',()=>{
         document.getElementById("signupModal").style.display = "none";
+        document.body.style.overflow = "visible";
     });
     document.getElementById("formLoginRegister").onsubmit = function(event){
         event.preventDefault();
