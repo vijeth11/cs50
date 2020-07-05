@@ -46,6 +46,15 @@ window.addEventListener('scroll', function() {
         document.getElementById("signupModal").style.display = "none";
         document.body.style.overflow = "visible";
     }  
+    else if(event.target == document.getElementById("toppingsModal")){
+        let selectedToppings = []
+        for(let input of document.getElementById("toppingsform").querySelectorAll('input[type="checkbox"]:checked')){
+            selectedToppings.push(input.nextElementSibling.innerText);
+        }
+        console.log(selectedToppings);
+        document.getElementById("toppingsModal").style.display = "none";
+        document.body.style.overflow = "visible";
+    }
     else if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
@@ -61,6 +70,7 @@ window.addEventListener('scroll', function() {
 
   function signup(){
     document.getElementById("signupModal").style.display = "block";
+    document.body.style.overflow = "hidden";
     document.getElementById("confirmpassword").style.display = "block";
     document.getElementById("email").textContent = "Email *";
     document.getElementById("password").textContent = "Password *";
@@ -68,6 +78,7 @@ window.addEventListener('scroll', function() {
     document.getElementById("LoginRoute").style.display = "block";
     document.getElementById("errorMessage").style.display = "none";
       document.getElementById("close").addEventListener('click',()=>{
+        document.body.style.overflow = "visible";
         document.getElementById("signupModal").style.display = "none";
       });
     document.getElementById("formLoginRegister").onsubmit = function(event){
@@ -76,6 +87,30 @@ window.addEventListener('scroll', function() {
         var token = inputFields[0];
         backendcall('/register/',token.value,new FormData(document.getElementById("formLoginRegister")),event);
     } 
+  }
+
+  function toppings(){
+    document.getElementById("toppingsModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+    for(var element of document.getElementById("toppingsform").getElementsByTagName("input")){
+        element.checked = false;
+        element.addEventListener("click",(event)=>{
+            if(event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:checked').length === 3){
+                for(var input of event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:not(:checked)')){
+                    input.setAttribute("disabled","");
+                }
+            }
+        });
+    }
+    document.getElementById("closetoppings").addEventListener('click',()=>{
+        let selectedToppings = []
+        for(let input of document.getElementById("toppingsform").querySelectorAll('input[type="checkbox"]:checked')){
+            selectedToppings.push(input.nextElementSibling.innerText);
+        }
+        console.log(selectedToppings);
+        document.body.style.overflow = "visible";
+        document.getElementById("toppingsModal").style.display = "none";
+      });
   }
 
   function login(){
@@ -109,11 +144,12 @@ window.addEventListener('scroll', function() {
     
   }
 
-  function order(price,name,plate){
+  function order(price,name,plate,itemtype){
     var formData = new FormData();
     formData.append('price',price);
     formData.append('orderitem',name);
     formData.append('plate',plate);
+    formData.append('itemtype',itemtype);
       axios({
           headers: { "X-CSRFToken": Cookies.get('csrftoken')},
           method: 'post',
@@ -215,9 +251,22 @@ window.addEventListener('scroll', function() {
             div1.setAttribute("class","row");
             div1.setAttribute("style","width:99%;margin-left:0px");
             div1.appendChild(div2);
-            div1.appendChild(div3);
+            div1.appendChild(div3);            
             var li= document.createElement("li");
             li.appendChild(div1);
+            if(orderitem.itemtype === "pizza"){
+                var button1 = document.createElement("button");
+                button1.setAttribute("type","button")
+                button1.setAttribute("class","btn btn-primary selectToppingsButton");
+                button1.setAttribute("onclick","toppings()");
+                button1.textContent = "Select Toppings";
+                var div6 = document.createElement("div");
+                div6.setAttribute("class","row");
+                div6.setAttribute("style","width:99%;margin-left:0px");
+                div6.appendChild(button1);
+                li.appendChild(div6);
+            }
+            
             OrderList.getElementsByTagName("ul")[0].appendChild(li);
         }
       }

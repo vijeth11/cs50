@@ -276,3 +276,21 @@ label {
     margin-left: 0vw;
     margin-right: -6vw;
 }
+
+.form-check-input {
+    width: 18px;
+    height: 24px;
+}
+
+.form-check-label {
+    padding-left: 10px;
+    font-size: 130%;
+    font-weight: 300;
+    font-family: cursive;
+}
+
+.selectToppingsButton{
+    width: 100%;
+    background-color: grey;
+    margin-bottom: 3vh;
+}

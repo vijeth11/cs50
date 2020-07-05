@@ -47,7 +47,7 @@
                                             ${{pizza.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button" onclick="order({{pizza.price}},'{{pizza.name}}',1)">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{pizza.price}},'{{pizza.name}}',1,'pizza')">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -76,7 +76,7 @@
                                             ${{sub.smallprice}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button"  onclick="order({{sub.smallprice}},'{{sub.name}}',1)">Orders</button>
+                                <button class="btn btn-primary order-button"  onclick="order({{sub.smallprice}},'{{sub.name}}',1,'sub')">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -105,7 +105,7 @@
                                             ${{pasta.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button" onclick="order({{pasta.price}},'{{pasta.name}}',1)">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{pasta.price}},'{{pasta.name}}',1,'pasta')">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -134,7 +134,7 @@
                                             ${{salad.price}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button" onclick="order({{salad.price}},'{{salad.name}}',1)">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{salad.price}},'{{salad.name}}',1,'salad')">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -163,7 +163,7 @@
                                             ${{dinnerplatter.smallprice}}
                                         </span>
                                     </p>                                
-                                <button class="btn btn-primary order-button" onclick="order({{dinnerplatter.smallprice}},'{{dinnerplatter.name}}',1)">Orders</button>
+                                <button class="btn btn-primary order-button" onclick="order({{dinnerplatter.smallprice}},'{{dinnerplatter.name}}',1,'dinnerplatter')">Orders</button>
                             </div>
                     </div>              
                 </div>
@@ -199,18 +199,23 @@
                             <!--<li>
                                 <div class="row" style="width:99%;margin-left:0px">
                                     <div class="col-sm-7 orderName">
-                                        <span class="quantity">{{order.plates}} x </span>
-                                        <span class="name">{{order.name}}</span>
+                                        <span class="quantity">1 x </span>
+                                        <span class="name">Margraite</span>
                                     </div>
                                     <div class="col-sm-4 price">
                                         <div>
-                                            <span style="padding-left: 1.5vw;">${{order.price}}</span>
+                                            <span style="padding-left: 1.5vw;">$22.00</span>
                                             <div>
                                                 <a href="#" class="decrease-cart-item cart-icon btn plus theme-plus pull-right">-</a>
                                                 <a class="increase-cart-item cart-icon btn plus theme-plus pull-right" href="#">+</a>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class = "row" style="width:99%;margin-left:0px">                                    
+                                        <button type="button" class="btn btn-primary selectToppingsButton" onclick="toppings()">
+                                            Select Toppings
+                                        </button>
                                 </div>
                             </li>-->						    
 				        </ul>
@@ -285,6 +290,31 @@
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
+    </div>
+    <!--/modal-->
+
+
+    <!--modal-->
+    <div class="modal" id = "toppingsModal" style="z-index = 20001;" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="_cms-modal-narrow-content">
+                <div class="modal-close">
+		            <button type="button" id ="closetoppings" class="btn pull-right"><i class="fa fa-2x fa-times" aria-hidden="true" style="color:white"></i></button>
+	            </div>
+                <div class="modal-body" style="max-height: 80vh;">
+                    <form id="toppingsform">
+                        {% for topping in toppings %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" >
+                                <label class="form-check-label" for="defaultCheck1">
+                                         {{topping.name}}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <!--/modal-->
 {% endblock  %}

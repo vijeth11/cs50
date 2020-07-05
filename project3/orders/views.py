@@ -25,7 +25,8 @@ def menu(request):
     salads = Salads.objects.all()
     pastas = Pasta.objects.all()
     dinnerplatters = DinnerPlatters.objects.all()
-    return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png'})
+    toppings= Toppings.objects.all()
+    return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png','toppings':toppings})
 
 def signup(request):
     #return HttpResponse("signup")
@@ -78,13 +79,13 @@ def order(request):
                 else:
                     orderitems[0].save()
             else:
-                orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = request.POST["plate"], order = orders[0])
+                orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = request.POST["plate"], orderitemtype = request.POST["itemtype"],order = orders[0])
                 orderitems.save()
         else:
             order = Orders(totalprice = 0.0, status = 'N', date = timezone.datetime.now(), person = request.user)
             order.totalprice = order.totalprice + float(request.POST["price"])
             order.save()            
-            orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = int(request.POST["plate"]), order = order)
+            orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = int(request.POST["plate"]), orderitemtype = request.POST["itemtype"],order = order)
             orderitems.save()
         data = getOrderItems(request.user)     
         return JsonResponse({'orders':data[0],'total':data[1]},safe=False)
@@ -106,6 +107,6 @@ def getOrderItems(user):
     totalPrice = 0
     if len(orders) > 0:        
         for orderitem in OrderItems.objects.all().filter(order = orders[0]):
-            orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates})
+            orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates,'itemtype':orderitem.orderitemtype})
             totalPrice += orderitem.plates * orderitem.price
     return [orderData,totalPrice]

@@ -75,5 +75,6 @@ class OrderItems(models.Model):
     price = models.DecimalField(max_digits = 10,decimal_places=2)
     name = models.CharField(max_length=1000)
     plates = models.IntegerField()
+    orderitemtype = models.CharField(max_length=100,default="food")
     order = models.ForeignKey(Orders,on_delete = models.CASCADE,related_name = 'items')
 
