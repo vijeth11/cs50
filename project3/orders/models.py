@@ -77,4 +77,8 @@ class OrderItems(models.Model):
     plates = models.IntegerField()
     orderitemtype = models.CharField(max_length=100,default="food")
     order = models.ForeignKey(Orders,on_delete = models.CASCADE,related_name = 'items')
+    selectedtoppings = models.ManyToManyField(Toppings)
 
+    def toppings(self):
+        names = [topping.name for topping in self.selectedtoppings.all()]
+        return " , ".join(names)

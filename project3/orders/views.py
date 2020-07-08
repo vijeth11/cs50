@@ -74,6 +74,14 @@ def order(request):
             orderitems = OrderItems.objects.all().filter(order = orders[0]).filter(name = request.POST["orderitem"])
             if len(orderitems) > 0:
                 orderitems[0].plates = orderitems[0].plates + int(request.POST["plate"])
+                if orderitems[0].toppings() != request.POST["selectedToppings"]:
+                    orderitems[0].selectedtoppings.clear()
+                    for toppingname in request.POST["selectedToppings"].split(","):
+                        if toppingname is not '' and not toppingname.isspace():
+                            try:
+                                orderitems[0].selectedtoppings.add(Toppings.objects.get(name=toppingname.strip()))
+                            except:
+                                continue
                 if orderitems[0].plates <= 0:
                     orderitems[0].delete()
                 else:
@@ -81,11 +89,27 @@ def order(request):
             else:
                 orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = request.POST["plate"], orderitemtype = request.POST["itemtype"],order = orders[0])
                 orderitems.save()
+                if len(request.POST["selectedToppings"]) > 0:
+                    for toppingname in request.POST["selectedToppings"].split(","):
+                        if toppingname is not '' and not toppingname.isspace():
+                             try:
+                                orderitems.selectedtoppings.add(Toppings.objects.get(name=toppingname.strip()))
+                             except:
+                                continue
+                orderitems.save()
         else:
             order = Orders(totalprice = 0.0, status = 'N', date = timezone.datetime.now(), person = request.user)
             order.totalprice = order.totalprice + float(request.POST["price"])
             order.save()            
             orderitems = OrderItems(price = request.POST["price"], name = request.POST["orderitem"], plates = int(request.POST["plate"]), orderitemtype = request.POST["itemtype"],order = order)
+            orderitems.save()
+            if len(request.POST["selectedToppings"]) > 0:
+                    for toppingname in request.POST["selectedToppings"].split(","):
+                        if toppingname is not '' and not toppingname.isspace():
+                            try:
+                                orderitems.selectedtoppings.add(Toppings.objects.get(name=toppingname.strip()))
+                            except:
+                                continue
             orderitems.save()
         data = getOrderItems(request.user)     
         return JsonResponse({'orders':data[0],'total':data[1]},safe=False)
@@ -107,6 +131,6 @@ def getOrderItems(user):
     totalPrice = 0
     if len(orders) > 0:        
         for orderitem in OrderItems.objects.all().filter(order = orders[0]):
-            orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates,'itemtype':orderitem.orderitemtype})
+            orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates,'itemtype':orderitem.orderitemtype,'selectedtoppings':list(orderitem.selectedtoppings.all().values_list('name', flat=True))})
             totalPrice += orderitem.plates * orderitem.price
     return [orderData,totalPrice]

@@ -89,25 +89,42 @@ window.addEventListener('scroll', function() {
     } 
   }
 
-  function toppings(){
+  function toppings(price,name,plate,itemType,preSelectedString){
     document.getElementById("toppingsModal").style.display = "block";
     document.body.style.overflow = "hidden";
-    for(var element of document.getElementById("toppingsform").getElementsByTagName("input")){
-        element.checked = false;
+    preSelectedString = preSelectedString.split(",").map(function(element) {return element.trim();})
+    for(var element of document.getElementById("toppingsform").getElementsByTagName("input")){        
+        if(preSelectedString.findIndex(el => el.toLowerCase() == element.nextElementSibling.innerText.toLowerCase()) > -1){
+          element.checked = true;
+        }else{
+          element.checked = false;
+        }
         element.addEventListener("click",(event)=>{
             if(event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:checked').length === 3){
                 for(var input of event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:not(:checked)')){
                     input.setAttribute("disabled","");
                 }
+            }else{
+              for(var input of event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:not(:checked)')){
+                input.removeAttribute("disabled");
+              }
             }
         });
+    }
+    for(let input of document.getElementById("toppingsform").querySelectorAll('input[type="checkbox"]')){
+      input.removeAttribute("disabled");
+    }
+    if(document.getElementById("toppingsform").querySelectorAll('input[type="checkbox"]:checked').length >= 3){
+      for(var input of document.getElementById("toppingsform").querySelectorAll('input[type="checkbox"]:not(:checked)')){
+          input.setAttribute("disabled","");
+      }
     }
     document.getElementById("closetoppings").addEventListener('click',()=>{
         let selectedToppings = []
         for(let input of document.getElementById("toppingsform").querySelectorAll('input[type="checkbox"]:checked')){
             selectedToppings.push(input.nextElementSibling.innerText);
         }
-        console.log(selectedToppings);
+        order(price,name,plate,itemType,selectedToppings.toString());
         document.body.style.overflow = "visible";
         document.getElementById("toppingsModal").style.display = "none";
       });
@@ -144,12 +161,13 @@ window.addEventListener('scroll', function() {
     
   }
 
-  function order(price,name,plate,itemtype){
+  function order(price,name,plate,itemtype,toppings=""){
     var formData = new FormData();
     formData.append('price',price);
     formData.append('orderitem',name);
     formData.append('plate',plate);
     formData.append('itemtype',itemtype);
+    formData.append('selectedToppings',toppings)
       axios({
           headers: { "X-CSRFToken": Cookies.get('csrftoken')},
           method: 'post',
@@ -218,12 +236,12 @@ window.addEventListener('scroll', function() {
             var a2 = document.createElement("a");
             a2.setAttribute("class","increase-cart-item cart-icon btn plus theme-plus pull-right");
             a2.setAttribute("href","#!");
-            a2.setAttribute("onclick","order("+orderitem.price+",'"+orderitem.name+"',1)");
+            a2.setAttribute("onclick","order("+orderitem.price+",'"+orderitem.name+"',1,'"+orderitem.itemtype+"','"+orderitem.selectedtoppings.toString()+"')");
             a2.innerHTML="+";
             var a1 = document.createElement("a");
             a1.setAttribute("href","#!");
             a1.setAttribute("class","decrease-cart-item cart-icon btn plus theme-plus pull-right");
-            a1.setAttribute("onclick","order("+orderitem.price+",'"+orderitem.name+"',-1)");
+            a1.setAttribute("onclick","order("+orderitem.price+",'"+orderitem.name+"',-1,'"+orderitem.itemtype+"','"+orderitem.selectedtoppings.toString()+"')");
             a1.innerHTML="-";
             var div5 = document.createElement("div");
             div5.appendChild(a1);
@@ -258,7 +276,7 @@ window.addEventListener('scroll', function() {
                 var button1 = document.createElement("button");
                 button1.setAttribute("type","button")
                 button1.setAttribute("class","btn btn-primary selectToppingsButton");
-                button1.setAttribute("onclick","toppings()");
+                button1.setAttribute("onclick","toppings("+orderitem.price+",'"+orderitem.name+"',0,'"+orderitem.itemtype+"','"+orderitem.selectedtoppings.toString()+"')");
                 button1.textContent = "Select Toppings";
                 var div6 = document.createElement("div");
                 div6.setAttribute("class","row");
