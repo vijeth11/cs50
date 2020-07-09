@@ -78,6 +78,8 @@
                                     </p>                                
                                 <button class="btn btn-primary order-button"  onclick="order({{sub.smallprice}},'{{sub.name}}',1,'sub')">Orders</button>
                             </div>
+                            <input style="display:none" type="text" id="{{sub.name}}_subsmall"value="{{sub.smallprice}}">
+                            <input style="display:none" type="text" id="{{sub.name}}_sublarge"value="{{sub.largeprice}}">
                     </div>              
                 </div>
             {% endfor %} 
@@ -165,6 +167,8 @@
                                     </p>                                
                                 <button class="btn btn-primary order-button" onclick="order({{dinnerplatter.smallprice}},'{{dinnerplatter.name}}',1,'dinnerplatter')">Orders</button>
                             </div>
+                            <input style="display:none" type="text" id="{{dinnerplatter.name}}_dinnerplattersmall"value="{{dinnerplatter.smallprice}}">
+                            <input style="display:none" type="text" id="{{dinnerplatter.name}}_dinnerplatterlarge"value="{{dinnerplatter.largeprice}}">
                     </div>              
                 </div>
             {% endfor %} 

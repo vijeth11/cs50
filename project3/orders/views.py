@@ -82,6 +82,8 @@ def order(request):
                                 orderitems[0].selectedtoppings.add(Toppings.objects.get(name=toppingname.strip()))
                             except:
                                 continue
+                if orderitems[0].price != Decimal(request.POST["price"]) and (request.POST["itemtype"] == "sub" or request.POST["itemtype"] == "dinnerplatter"):
+                    orderitems[0].price = request.POST["price"]
                 if orderitems[0].plates <= 0:
                     orderitems[0].delete()
                 else:

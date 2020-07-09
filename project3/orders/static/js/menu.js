@@ -284,7 +284,56 @@ window.addEventListener('scroll', function() {
                 div6.appendChild(button1);
                 li.appendChild(div6);
             }
-            
+            if(orderitem.itemtype === "sub" || orderitem.itemtype === "dinnerplatter"){
+              var input1 = document.createElement("input");
+              input1.setAttribute("type","radio");
+              input1.setAttribute("name","small");
+              input1.setAttribute("id",orderitem.name+"_smallinput")
+              if(orderitem.itemtype == "sub"){
+                input1.setAttribute("value",document.getElementById(orderitem.name+"_subsmall").value);
+              }else{
+                input1.setAttribute("value",document.getElementById(orderitem.name+"_dinnerplattersmall").value);
+              }
+              if(input1.value == orderitem.price){
+                input1.checked = true;
+              }
+              input1.setAttribute("style","margin-left: 1vw;");
+              input1.setAttribute("onclick","order("+input1.value+",'"+orderitem.name+"',0,'"+orderitem.itemtype+"','"+orderitem.selectedtoppings.toString()+"');getElementById('"+orderitem.name+"_largeinput').checked=false;")
+              var label1 = document.createElement("label");
+              label1.setAttribute("style","margin-left: 5px;");
+              label1.innerHTML = "Small"
+              var input2 = document.createElement("input");
+              input2.setAttribute("type","radio");
+              input2.setAttribute("name","large");
+              input2.setAttribute("id",orderitem.name+"_largeinput")
+              if(orderitem.itemtype == "sub"){
+                input2.setAttribute("value",document.getElementById(orderitem.name+"_sublarge").value);
+              }else{
+                input2.setAttribute("value",document.getElementById(orderitem.name+"_dinnerplatterlarge").value);
+              }
+              if(input2.value == orderitem.price){
+                input2.checked=true;
+              }
+              input2.setAttribute("style","margin-left: 5vw;");
+              input2.setAttribute("onclick","order("+input2.value+",'"+orderitem.name+"',0,'"+orderitem.itemtype+"','"+orderitem.selectedtoppings.toString()+"');getElementById('"+orderitem.name+"_smallinput').checked=false;")
+              var label2 = document.createElement("label");
+              label2.setAttribute("style","margin-left: 5px;");
+              label2.innerHTML = "Large";
+              var div6 = document.createElement("div");
+              div6.setAttribute("class","col-md-12");
+              div6.setAttribute("style","padding:0");          
+              div6.appendChild(input1);
+              div6.appendChild(label1);
+              div6.appendChild(input2);
+              div6.appendChild(label2)
+              var form = document.createElement("form");
+              form.appendChild(div6);
+              var div7 = document.createElement("div");
+              div7.setAttribute("class","row");
+              div7.setAttribute("style","width:99%;margin-left:0px");
+              div7.appendChild(form);
+              li.appendChild(div7);
+            }
             OrderList.getElementsByTagName("ul")[0].appendChild(li);
         }
       }
