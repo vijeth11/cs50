@@ -74,14 +74,15 @@ def order(request):
             orderitems = OrderItems.objects.all().filter(order = orders[0]).filter(name = request.POST["orderitem"])
             if len(orderitems) > 0:
                 orderitems[0].plates = orderitems[0].plates + int(request.POST["plate"])
-                if orderitems[0].toppings() != request.POST["selectedToppings"]:
+                if orderitems[0].toppings() != request.POST["selectedToppings"]:   
+                    orderitems[0].price += Decimal(len(request.POST["selectedToppings"].split(",")) * 1.50 - len(orderitems[0].selectedtoppings.all())* 1.50)                  
                     orderitems[0].selectedtoppings.clear()
                     for toppingname in request.POST["selectedToppings"].split(","):
                         if toppingname is not '' and not toppingname.isspace():
                             try:
                                 orderitems[0].selectedtoppings.add(Toppings.objects.get(name=toppingname.strip()))
                             except:
-                                continue
+                                continue                    
                 if orderitems[0].price != Decimal(request.POST["price"]) and (request.POST["itemtype"] == "sub" or request.POST["itemtype"] == "dinnerplatter"):
                     orderitems[0].price = request.POST["price"]
                 if orderitems[0].plates <= 0:
