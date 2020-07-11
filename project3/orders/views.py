@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -27,6 +28,13 @@ def menu(request):
     dinnerplatters = DinnerPlatters.objects.all()
     toppings= Toppings.objects.all()
     return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png','toppings':toppings})
+
+def booktable(request):
+    times= [""]
+    for i in range(11,22):
+        for j in [":00",":15",":30",":45"]:
+            times.append(str(i)+j); 
+    return render(request,"orders/booktables.html",{"timelist":times,"personsList":range(1,16)})
 
 def signup(request):
     #return HttpResponse("signup")
@@ -137,3 +145,4 @@ def getOrderItems(user):
             orderData.append({'name':orderitem.name,'price':orderitem.price,'plate':orderitem.plates,'itemtype':orderitem.orderitemtype,'selectedtoppings':list(orderitem.selectedtoppings.all().values_list('name', flat=True))})
             totalPrice += orderitem.plates * orderitem.price
     return [orderData,totalPrice]
+

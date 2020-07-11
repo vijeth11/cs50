@@ -5,34 +5,37 @@ const User = {
 
 window.onload = function(){
     EmptyCart =  document.getElementById("noOrder");
-    EmptyCart.style.display = "block";
-    OrderList =  document.getElementById("orders");
-    OrderList.style.display = "none";
-    axios({
-        method: 'get',
-        url:'/orderItems/',
-    })
-    .then(data => {
-        EmptyCart.style.display ="none";
-        OrderList.style.display = "block";
-        document.getElementById("signupModal").style.display = "none";
-        document.body.style.overflow = "visible";
-        document.getElementById("errorMessage").style.display = "none";
-        document.getElementById("Logout").style.display="block";
-        document.getElementById("Account").style.display = "none";
-        OrderList.getElementsByTagName("ul")[0].textContent="";
-        setupOrders(data.data.orders);
-        document.getElementById("totalprice").textContent = data.data.total;
-    })
-    .catch(err => {
-        console.log(err);
-        login();
-    })
-}
+      OrderList =  document.getElementById("orders");
+      if(EmptyCart && OrderList)
+      {
+        EmptyCart.style.display = "block";    
+        OrderList.style.display = "none";
+          axios({
+              method: 'get',
+              url:'/orderItems/',
+          })
+          .then(data => {
+              EmptyCart.style.display ="none";
+              OrderList.style.display = "block";
+              document.getElementById("signupModal").style.display = "none";
+              document.body.style.overflow = "visible";
+              document.getElementById("errorMessage").style.display = "none";
+              document.getElementById("Logout").style.display="block";
+              document.getElementById("Account").style.display = "none";
+              OrderList.getElementsByTagName("ul")[0].textContent="";
+              setupOrders(data.data.orders);
+              document.getElementById("totalprice").textContent = data.data.total;
+          })
+          .catch(err => {
+              console.log(err);
+              login();
+          });
+      }
+} 
 
 window.addEventListener('scroll', function() {
     var el = document.getElementById('pizza');
-    if(el.getBoundingClientRect().top > 80){
+    if(el && el.getBoundingClientRect().top > 80){
         el.classList.add("active");
     }
   });
