@@ -10,26 +10,26 @@ window.onload = function(){
       {
         EmptyCart.style.display = "block";    
         OrderList.style.display = "none";
-        axios({
-            method: 'get',
-            url:'/orderItems/',
-        })
-        .then(data => {
-            EmptyCart.style.display ="none";
-            OrderList.style.display = "block";
-            document.getElementById("signupModal").style.display = "none";
-            document.body.style.overflow = "visible";
-            document.getElementById("errorMessage").style.display = "none";
-            document.getElementById("Logout").style.display="block";
-            document.getElementById("Account").style.display = "none";
-            OrderList.getElementsByTagName("ul")[0].textContent="";
-            setupOrders(data.data.orders);
-            document.getElementById("totalprice").textContent = data.data.total;
-        })
-        .catch(err => {
-            console.log(err);
-            login();
-        });
+          axios({
+              method: 'get',
+              url:'/orderItems/',
+          })
+          .then(data => {
+              EmptyCart.style.display ="none";
+              OrderList.style.display = "block";
+              document.getElementById("signupModal").style.display = "none";
+              document.body.style.overflow = "visible";
+              document.getElementById("errorMessage").style.display = "none";
+              document.getElementById("Logout").style.display="block";
+              document.getElementById("Account").style.display = "none";
+              OrderList.getElementsByTagName("ul")[0].textContent="";
+              setupOrders(data.data.orders);
+              document.getElementById("totalprice").textContent = data.data.total;
+          })
+          .catch(err => {
+              console.log(err);
+              login();
+          });
       }
 } 
 
@@ -131,6 +131,30 @@ window.addEventListener('scroll', function() {
         document.body.style.overflow = "visible";
         document.getElementById("toppingsModal").style.display = "none";
       });
+  }
+
+  function login(){
+    document.getElementById("signupModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+    document.getElementById("confirmpassword").style.display = "none";
+    document.getElementById("email").textContent = "Login (Email)";
+    document.getElementById("password").textContent = "Password";
+    document.getElementById("submitButton").textContent = "Login";
+    document.getElementById("LoginRoute").style.display = "none";
+    document.getElementById("errorMessage").style.display = "none";
+    document.getElementById("close").addEventListener('click',()=>{
+        document.getElementById("signupModal").style.display = "none";
+        document.body.style.overflow = "visible";
+    });
+    document.getElementById("formLoginRegister").onsubmit = function(event){
+        event.preventDefault();
+        var inputFields = document.getElementById("formLoginRegister").getElementsByTagName("input");
+        var token = inputFields[0];
+        if(Cookies.get('csrftoken')){
+            token.value = Cookies.get('csrftoken');
+        }
+        backendcall('/login/',token.value,new FormData(document.getElementById("formLoginRegister")),event);        
+    } 
   }
   
   function logout(){   
