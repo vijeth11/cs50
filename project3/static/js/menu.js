@@ -3,8 +3,8 @@ const User = {
     id:null
 }
 
-window.onload = function(){
-    EmptyCart =  document.getElementById("noOrder");
+function menuOnLoad(){
+      EmptyCart =  document.getElementById("noOrder");
       OrderList =  document.getElementById("orders");
       if(EmptyCart && OrderList)
       {

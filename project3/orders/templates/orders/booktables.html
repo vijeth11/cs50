@@ -11,45 +11,84 @@
             	            <h1>Book a table</h1>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-						        <label class="control-label">Date *</label>
-						        <input type="date" name="toDate" class="form-control _reservation-delivery-date hasDatepicker">						
-					        </div>
+                    <form name="f" action="#" method="POST" id="formBookTable">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <div class="form-group has-error">
+						            <label class="control-label">Date *</label>
+						            <input type="date" name="toDate" class="form-control _reservation-delivery-date hasDatepicker">	
+                                    <span class="help-block">Field is required</span>					
+					            </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group has-error">
+						            <label class="control-label">Time *</label>
+						                <select name="toTime" class="form-control _reservation-delivery-time">
+                                        {% for time in timelist %}
+                                         <option hidden>{{time}}</option>
+                                        {% endfor %}                                    
+						    	        </select>
+                                        <span class="help-block">Field is required</span>
+						        </div>
+                            </div>                        
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-						        <label class="control-label">Time *</label>
-						            <select name="toTime" class="form-control _reservation-delivery-time">
-                                    {% for time in timelist %}
-                                     <option hidden>{{time}}</option>
-                                    {% endfor %}                                    
-							        </select>
-						    </div>
-                        </div>                        
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-					        <div class="form-group ">
-						        <label class="control-label">People *</label>
-						        <select name="people" class="form-control">
-							        <option value="">- select -</option>
-                                    {% for index in personsList %}
-                                    <option value="1">{{index}} person </option>
-                                    {% endfor %}                                                                
-                                </select>						
-					        </div>
-				        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-					        <a href="" class="btn btn-upmenu btn-block btn-lg _booking-form-submit">Book a table</a>
-				        </div>
-                    </div> 
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+					            <div class="form-group has-error">
+						            <label class="control-label">People *</label>
+						            <select name="people" class="form-control">
+						    	        <option value="">- select -</option>
+                                        {% for index in personsList %}
+                                        <option value="1">{{index}} person </option>
+                                        {% endfor %}                                                                
+                                    </select>
+                                    <span class="help-block">Field is required</span>						
+					            </div>
+				            </div>
+                        </div>
+                        <div class ="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <div class="form-group  has-error ">
+						            <label class="control-label">First name *</label>
+						            <input type="text" name="firstName" value="" class="form-control">
+						            <span class="help-block">Field is required</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  has-error ">
+						            <label class="control-label">Last name *</label>
+						            <input type="text" name="lastName" value="" class="form-control">
+						            <span class="help-block">Field is required</span>
+						        </div>
+                            </div>
+                        </div>
+                        <div class ="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <div class="form-group  has-error ">
+						            <label class="control-label">Email *</label>
+						            <input type="text" name="email" value="" class="form-control">
+                                    <span class="help-block">Field is required</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group  has-error ">
+						            <label class="control-label">Phone *</label>
+                                    <input type="tel" id="phone" class="form-control">
+						            <span class="help-block">Field is required</span>
+						        </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+					            <a href="" class="btn btn-upmenu btn-block btn-lg _booking-form-submit">Book a table</a>
+				            </div>
+                        </div> 
+                    </form>
                 </div>
             </div>
         </div>
