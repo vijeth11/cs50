@@ -82,3 +82,15 @@ class OrderItems(models.Model):
     def toppings(self):
         names = [topping.name for topping in self.selectedtoppings.all()]
         return " , ".join(names)
+
+class BookingTable(models.Model):
+    dateOfBooking = models.DateField()
+    timeOfBooking = models.CharField(max_length=10)
+    numberOfPeople = models.CharField(max_length=20)
+    firstName = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.firstName + "booking"

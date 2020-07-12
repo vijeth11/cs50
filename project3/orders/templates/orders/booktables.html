@@ -15,77 +15,77 @@
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-3">
-                                <div class="form-group has-error">
+                                <div class="form-group" id="dateForm">
 						            <label class="control-label">Date *</label>
 						            <input type="date" name="toDate" class="form-control _reservation-delivery-date hasDatepicker">	
-                                    <span class="help-block">Field is required</span>					
+                                    <span class="help-block" hidden>Field is required</span>					
 					            </div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group has-error">
+                                <div class="form-group" id="timeForm">
 						            <label class="control-label">Time *</label>
 						                <select name="toTime" class="form-control _reservation-delivery-time">
                                         {% for time in timelist %}
                                          <option hidden>{{time}}</option>
                                         {% endfor %}                                    
 						    	        </select>
-                                        <span class="help-block">Field is required</span>
+                                        <span class="help-block" hidden>Field is required</span>
 						        </div>
                             </div>                        
                         </div>
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
-					            <div class="form-group has-error">
+					            <div class="form-group" id="peopleForm">
 						            <label class="control-label">People *</label>
 						            <select name="people" class="form-control">
 						    	        <option value="">- select -</option>
                                         {% for index in personsList %}
-                                        <option value="1">{{index}} person </option>
+                                        <option>{{index}} person </option>
                                         {% endfor %}                                                                
                                     </select>
-                                    <span class="help-block">Field is required</span>						
+                                    <span class="help-block" hidden>Field is required</span>						
 					            </div>
 				            </div>
                         </div>
-                        <div class ="row">
+                        <div class ="row" hidden id="userdetail">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-3">
-                                <div class="form-group  has-error ">
+                                <div class="form-group" id="firstNameForm">
 						            <label class="control-label">First name *</label>
 						            <input type="text" name="firstName" value="" class="form-control">
-						            <span class="help-block">Field is required</span>
+						            <span class="help-block" hidden>Field is required</span>
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group  has-error ">
+                                <div class="form-group" id="lastNameForm">
 						            <label class="control-label">Last name *</label>
 						            <input type="text" name="lastName" value="" class="form-control">
-						            <span class="help-block">Field is required</span>
+						            <span class="help-block" hidden>Field is required</span>
 						        </div>
                             </div>
                         </div>
-                        <div class ="row">
+                        <div class ="row" hidden id="contactdetail">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-3">
-                                <div class="form-group  has-error ">
+                                <div class="form-group" id="emailForm">
 						            <label class="control-label">Email *</label>
-						            <input type="text" name="email" value="" class="form-control">
-                                    <span class="help-block">Field is required</span>
+						            <input type="email" name="email" value="" class="form-control">
+                                    <span class="help-block" hidden>Field is required</span>
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group  has-error ">
+                                <div class="form-group" id="phoneForm">
 						            <label class="control-label">Phone *</label>
-                                    <input type="tel" id="phone" class="form-control">
-						            <span class="help-block">Field is required</span>
+                                    <input type="tel" id="phone" name="phone" class="form-control">
+						            <span class="help-block" hidden>Field is required</span>
 						        </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
-					            <a href="" class="btn btn-upmenu btn-block btn-lg _booking-form-submit">Book a table</a>
+					            <a href="#!" class="btn btn-upmenu btn-block btn-lg _booking-form-submit" onclick="submitbookTable()">Book a table</a>
 				            </div>
                         </div> 
                     </form>

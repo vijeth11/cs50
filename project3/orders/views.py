@@ -30,11 +30,17 @@ def menu(request):
     return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png','toppings':toppings})
 
 def booktable(request):
-    times= [""]
-    for i in range(11,22):
-        for j in [":00",":15",":30",":45"]:
-            times.append(str(i)+j); 
-    return render(request,"orders/booktables.html",{"timelist":times,"personsList":range(1,16)})
+    if request.method == 'POST':
+        tablebooked =  BookingTable(dateOfBooking = request.POST["toDate"],timeOfBooking = request.POST["toTime"], numberOfPeople = request.POST["people"], firstName = request.POST["firstName"], 
+        lastName = request.POST["lastName"], email = request.POST["email"], phone = request.POST["phone"])
+        tablebooked.save()
+        return HttpResponse(tablebooked)
+    else:
+        times= [""]
+        for i in range(11,22):
+            for j in [":00",":15",":30",":45"]:
+                times.append(str(i)+j); 
+        return render(request,"orders/booktables.html",{"timelist":times,"personsList":range(1,16)})
 
 def signup(request):
     #return HttpResponse("signup")

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pizza, Toppings, Subs, Pasta, Salads, DinnerPlatters, Orders, OrderItems 
+from .models import Pizza, Toppings, Subs, Pasta, Salads, DinnerPlatters, Orders, OrderItems, BookingTable 
 # Register your models here.
 
 class PizzaAdmin(admin.ModelAdmin):
@@ -13,5 +13,5 @@ admin.site.register(Salads)
 admin.site.register(DinnerPlatters)
 admin.site.register(Orders)
 admin.site.register(OrderItems)
-
+admin.site.register(BookingTable)
 
