@@ -1,2 +1,7 @@
-django==2.1.5
+django==3
 Pillow
+gunicorn>=19.8,<19.9
+whitenoise
+dj-database-url
+psycopg2
+pytz
