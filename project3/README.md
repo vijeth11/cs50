@@ -72,6 +72,8 @@ Web Programming with Python and JavaScript
 
     https://tutorial-extensions.djangogirls.org/en/heroku/
 
+    https://medium.com/@hdsingh13/deploying-django-app-on-heroku-with-postgres-as-backend-b2f3194e8a43
+
     https://stackoverflow.com/questions/55813584/django-whitenoise-configuration-is-incompatible-with-whitenoise-v4-0
 
     https://stackoverflow.com/questions/58908100/how-to-sync-local-django-sqlite3-data-with-herokus-postgres-database
