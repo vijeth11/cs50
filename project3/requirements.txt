@@ -3,5 +3,6 @@ Pillow
 gunicorn>=19.8,<19.9
 whitenoise
 dj-database-url
-psycopg2
+psycopg2-binary
+django-heroku
 pytz
