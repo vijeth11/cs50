@@ -31,6 +31,14 @@ function menuOnLoad(){
               login();
           });
       }
+      var input = document.querySelector("#phone");
+      if(input){
+        window.intlTelInput(input, {
+        // any initialisation options go here
+        initialCountry: "in",
+        separateDialCode: true
+        });
+      }
 } 
 
 window.addEventListener('scroll', function() {
@@ -348,5 +356,6 @@ window.addEventListener('scroll', function() {
 
   function checkoutOrder(){
     document.getElementById("checkoutModal").style.display = "block";
+    document.getElementById("checkoutModal").style.overflow = "auto";
     document.body.style.overflow = "hidden";
   }
