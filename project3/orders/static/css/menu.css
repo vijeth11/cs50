@@ -294,3 +294,58 @@ label {
     background-color: grey;
     margin-bottom: 3vh;
 }
+
+.pull-left {
+    margin-inline-end: auto;
+}
+
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #737373;
+}
+
+.radio, .checkbox {
+    position: relative;
+    display: block;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.radio label, .checkbox label {
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#checkoutModal .modal-dialog{
+    margin-left: 14vw;
+}
+
+#checkoutModal .modal-content{
+    width: 70vw;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    background: white;
+}
+
+.btn-upmenu{
+    padding-bottom: 10px !important;
+}
+
+.btn-default{
+    border: 1px solid grey;
+}
+
+#order-form .form-control {
+    color: black;
+}
+.m-t {
+    margin-top: 15px;
+}

@@ -58,6 +58,10 @@ window.addEventListener('scroll', function() {
         document.getElementById("toppingsModal").style.display = "none";
         document.body.style.overflow = "visible";
     }
+    else if(event.target == document.getElementById("checkoutModal")){
+       document.getElementById("checkoutModal").style.display = "none";
+       document.body.style.overflow = "visible";
+    }
     else if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
@@ -340,4 +344,9 @@ window.addEventListener('scroll', function() {
             OrderList.getElementsByTagName("ul")[0].appendChild(li);
         }
       }
+  }
+
+  function checkoutOrder(){
+    document.getElementById("checkoutModal").style.display = "block";
+    document.body.style.overflow = "hidden";
   }

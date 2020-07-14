@@ -232,7 +232,7 @@
 			            </ul>
                     </div>  
                 </div>
-                <a href="#" class="btn btn-upmenu btn-lg btn-block">
+                <a href="#!" class="btn btn-upmenu btn-lg btn-block" onclick="checkoutOrder()">
 		                GO TO CHECKOUT <i class="fa fa-chevron-right"></i>
 	            </a>
                 <div class="m-t-sm small text-center">
@@ -318,6 +318,82 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+    <!--/modal-->
+
+    <!--modal-->
+    <div class="modal" id = "checkoutModal" style="z-index = 20001;" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="_cms-modal-narrow-content">
+                <div class="modal-body">
+                    <div class = "row">
+                        <div class = "col-sm-8">
+                            <form action="#" id="checkout-order-id" style="padding-left: 2vw;">
+                                <div class="row">
+                                <!--Payment-->
+                                    <div class="col-sm-4">
+                                        <div class="form-group ">
+                                            <h4 class="control-label">Payment</h4>
+                                            <div class="radio">
+                                                <label class="control-label"><input type="radio" name="paymentType" value="CART" checked="checked"> Card</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="control-label"><input type="radio" name="paymentType" value="CASH"> Cash</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!--/Payment-->
+                                <!-- DELIVERY TYPES -->
+                                    <div class="col-sm-4">
+                                        <div class="form-group ">
+                                            <h4 class="control-label">Order type</h4>
+                                            <div class="radio">
+                                                <label class="control-label"><input type="radio" id="DELIVERY" name="deliveryType" value="DELIVERY" data-delivery-type="DELIVERY" checked="checked"> Delivery</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="control-label"><input type="radio" id="TAKEAWAY" name="deliveryType" value="TAKEAWAY" data-delivery-type="TAKEAWAY"> Pickup</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- DELIVERY TYPES -->
+                                <!-- DELIVERY DATE-->
+                                    <div class="col-sm-4">
+                                        <div class="form-group ">
+                                            <h4 class="control-label">When</h4>
+                                            <div class="radio">
+                                                <label class="control-label"><input type="radio" name="deliveryTimeType" value="NOW" id="as-soon-as-possible" checked="checked"> As soon as possible</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="control-label"><input type="radio" name="deliveryTimeType" value="FUTURE" id="delivery-date"> Specific time</label>
+                                            </div>
+                                            <!-- TIME SELECT -->
+                                            <div style="display: block;" id="delivery-date-field">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <input type="text" placeholder="Date" name="deliveryDate" id="delivery-date-input" value="" class="form-control hasDatepicker">
+                                                        <select name="deliveryTime" placeholder="Godzina" class="form-control m-t" id="delivery-time-select" style="display: block;">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- TIME SELECT -->
+                                        </div>
+                                    </div>
+                                <!-- /DELIVERY DATE-->
+                                </div>
+                            </form>
+                        </div>
+                        <div class = "col-sm-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="help-block pull-left hidden-xs" id="summaryError">* These fields are required</div>
+                    <a href="" class="btn btn-lg btn-default hidden-xs" onclick="clearOrderForm();" data-dismiss="modal">Cancel</a>
+                    <a href="" class="btn btn-lg btn-upmenu hidden-xs pull-right _order-form-submit" data-online-payment-title="Proceed to payment" data-offline-payment-title="Create order">Create order</a>
+                </div>
+            </div>            
         </div>
     </div>
     <!--/modal-->
