@@ -58,7 +58,10 @@ function submitbookTable(){
             data: formData
         })
         .then(data => {
-            location.reload();
+            showToast("table has been booked and email is sent");
+            setTimeout(function() {
+                location.reload();
+            },4000);            
         })
         .catch(err => {
             console.log(err);
