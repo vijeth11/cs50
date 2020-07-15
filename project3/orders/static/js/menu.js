@@ -8,6 +8,7 @@ var firstNameElement = null;
 var lastNameElement = null;
 var emailElement = null;
 var phoneElement = null;
+var orders = null;
 
 const User = {
     name:null,
@@ -26,16 +27,24 @@ function menuOnLoad(){
               url:'/orderItems/',
           })
           .then(data => {
-              EmptyCart.style.display ="none";
-              OrderList.style.display = "block";
+              if(data.data.orders.length > 0)
+              {
+                EmptyCart.style.display ="none";
+                OrderList.style.display = "block";
+                OrderList.getElementsByTagName("ul")[0].textContent="";              
+                document.getElementById("totalprice").textContent = data.data.total;
+                setupOrders(data.data.orders);              
+              }else{
+                EmptyCart.style.display ="block";
+                OrderList.style.display = "none";
+                document.getElementById("totalprice").textContent = 0;
+              }
+              orders = data.data.orders;
               document.getElementById("signupModal").style.display = "none";
               document.body.style.overflow = "visible";
               document.getElementById("errorMessage").style.display = "none";
               document.getElementById("Logout").style.display="block";
-              document.getElementById("Account").style.display = "none";
-              OrderList.getElementsByTagName("ul")[0].textContent="";
-              setupOrders(data.data.orders);
-              document.getElementById("totalprice").textContent = data.data.total;
+              document.getElementById("Account").style.display = "none";              
           })
           .catch(err => {
               console.log(err);
@@ -218,12 +227,19 @@ window.addEventListener('scroll', function() {
           data: formData
       })
       .then(data => {
-          EmptyCart.style.display ="none";
-          OrderList.style.display = "block";
-          OrderList.getElementsByTagName("ul")[0].textContent="";
-          setupOrders(data.data.orders);
-          document.getElementById("totalprice").textContent = data.data.total;
+          if(data.data.orders.length > 0){
+            EmptyCart.style.display ="none";
+            OrderList.style.display = "block";
+            OrderList.getElementsByTagName("ul")[0].textContent="";
+            setupOrders(data.data.orders);
+            document.getElementById("totalprice").textContent = data.data.total;
+          }else{
+            EmptyCart.style.display ="block";
+            OrderList.style.display = "none";
+            document.getElementById("totalprice").textContent = 0;
+          }          
           showToast('Order added from menu item');
+          orders = data.data.orders;
       })
       .catch(err => {
           console.log(err);
@@ -252,11 +268,18 @@ window.addEventListener('scroll', function() {
         document.getElementById("errorMessage").style.display = "none";
         document.getElementById("Logout").style.display="block";
         document.getElementById("Account").style.display = "none";
-        EmptyCart.style.display ="none";
-        OrderList.style.display = "block";
-        OrderList.getElementsByTagName("ul")[0].textContent="";
-        setupOrders(data.data.orders);
-        document.getElementById("totalprice").textContent = data.data.total;
+        if(data.data.orders.length > 0 ){
+          EmptyCart.style.display ="none";
+          OrderList.style.display = "block";
+          OrderList.getElementsByTagName("ul")[0].textContent="";
+          setupOrders(data.data.orders);
+          document.getElementById("totalprice").textContent = data.data.total;
+        }else{
+          EmptyCart.style.display ="block";
+          OrderList.style.display = "none";
+          document.getElementById("totalprice").textContent = 0;
+        }
+        orders = data.data.orders;        
         }else{
           User.name = null;
           User.id = null;  
@@ -384,50 +407,56 @@ window.addEventListener('scroll', function() {
   }
 
   function checkoutOrder(){
-    document.getElementById("checkoutModal").style.display = "block";
-    document.getElementById("checkoutModal").style.overflow = "auto";
-    document.body.style.overflow = "hidden";
-    document.getElementById("delivery-date-field").style.display = "none";
-    document.getElementsByName("deliveryTime")[0].style.display = "none";
-    document.getElementById("deliveryType").classList.remove("has-error");
-    document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
-    document.getElementById("streetForm").classList.remove("has-error");
-    document.getElementById("streetForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("streetNumberForm").classList.remove("has-error");
-    document.getElementById("streetNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("cityForm").classList.remove("has-error");
-    document.getElementById("cityForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("apartmentNumberForm").classList.remove("has-error");
-    document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("floorNumberForm").classList.remove("has-error");
-    document.getElementById("floorNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("firstNameForm").classList.remove("has-error");
-    document.getElementById("firstNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("lastNameForm").classList.remove("has-error");
-    document.getElementById("lastNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("emailForm").classList.remove("has-error");
-    document.getElementById("emailForm").getElementsByTagName("div")[0].setAttribute("hidden","");
-    document.getElementById("phoneForm").classList.remove("has-error");
-    let errormessage = document.getElementById("phoneForm").getElementsByTagName("div");
-    errormessage[errormessage.length-1].setAttribute("hidden","");
-    document.getElementById("_order-form-errors").style.display = "none";
+    if(orders && orders.length > 0)
+    {
+      document.getElementById("checkoutModal").style.display = "block";
+      document.getElementById("checkoutModal").style.overflow = "auto";
+      document.body.style.overflow = "hidden";
+      document.getElementById("delivery-date-field").style.display = "none";
+      document.getElementsByName("deliveryTime")[0].style.display = "none";
+      document.getElementById("deliveryType").classList.remove("has-error");
+      document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
+      document.getElementById("streetForm").classList.remove("has-error");
+      document.getElementById("streetForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("streetNumberForm").classList.remove("has-error");
+      document.getElementById("streetNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("cityForm").classList.remove("has-error");
+      document.getElementById("cityForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("apartmentNumberForm").classList.remove("has-error");
+      document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("floorNumberForm").classList.remove("has-error");
+      document.getElementById("floorNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("firstNameForm").classList.remove("has-error");
+      document.getElementById("firstNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("lastNameForm").classList.remove("has-error");
+      document.getElementById("lastNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("emailForm").classList.remove("has-error");
+      document.getElementById("emailForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+      document.getElementById("phoneForm").classList.remove("has-error");
+      let errormessage = document.getElementById("phoneForm").getElementsByTagName("div");
+      errormessage[errormessage.length-1].setAttribute("hidden","");
+      document.getElementById("_order-form-errors").style.display = "none";
+      
+      document.getElementById("deliveryType").addEventListener('change',function(){
+        if(document.getElementById("delivery-date").checked){
+          document.getElementById("delivery-date-field").style.display = "block";
+        }else{
+          document.getElementById("delivery-date-field").style.display = "none";
+          //document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
+        }
+      });
+    
+      document.getElementById("orderType").addEventListener('change',function(){
+        if(document.getElementById("DELIVERY").checked){
+          document.getElementById("deliveryAddressDetails").style.display="flex";
+        }else{
+          document.getElementById("deliveryAddressDetails").style.display = "none";
+        }
+      });
 
-    document.getElementById("deliveryType").addEventListener('change',function(){
-      if(document.getElementById("delivery-date").checked){
-        document.getElementById("delivery-date-field").style.display = "block";
-      }else{
-        document.getElementById("delivery-date-field").style.display = "none";
-        //document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
-      }
-    });
-
-    document.getElementById("orderType").addEventListener('change',function(){
-      if(document.getElementById("DELIVERY").checked){
-        document.getElementById("deliveryAddressDetails").style.display="flex";
-      }else{
-        document.getElementById("deliveryAddressDetails").style.display = "none";
-      }
-    });
+    }else{
+      showToast("Your Cart is Empty");
+    }
   }
 
   function displayTime(event){
