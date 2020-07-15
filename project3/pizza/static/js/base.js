@@ -3,9 +3,14 @@ window.onload = function(){
     menuOnLoad();
 }
 
-function showToast(message){
+function showToast(message,type=""){
     var x = document.getElementById("snackbar");
-    x.className = "show";
     x.innerHTML = message;
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    if(type=="error"){
+        x.className = "error"
+        setTimeout(function(){ x.className = x.className.replace("error", ""); }, 3000);
+    }else{
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }   
 }

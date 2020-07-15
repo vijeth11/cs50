@@ -25,7 +25,7 @@
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    background-color: rgb(255, 102, 102);
+    background-color: rgb(237, 84, 57);
     color:rgb(240, 46, 12);
     border:1px solid red;
   }

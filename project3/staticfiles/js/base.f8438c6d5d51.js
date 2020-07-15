@@ -8,9 +8,9 @@ function showToast(message,type=""){
     x.innerHTML = message;
     if(type=="error"){
         x.className = "error"
-        setTimeout(function(){ x.className = x.className.replace("error", ""); }, 4000);
+        setTimeout(function(){ x.className = x.className.replace("error", ""); }, 3000);
     }else{
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }   
 }

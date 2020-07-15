@@ -455,7 +455,7 @@ window.addEventListener('scroll', function() {
       });
 
     }else{
-      showToast("Your Cart is Empty");
+      showToast("Your Cart is Empty","error");
     }
   }
 
