@@ -27,7 +27,11 @@ def menu(request):
     pastas = Pasta.objects.all()
     dinnerplatters = DinnerPlatters.objects.all()
     toppings= Toppings.objects.all()
-    return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png','toppings':toppings})
+    times= []
+    for i in range(11,22):
+        for j in [":00",":15",":30",":45"]:
+            times.append(str(i)+j); 
+    return render(request,"orders/menu.html",{'pizzas':pizzas,'subs':subs,'salads':salads,'pastas':pastas,'dinnerplatters':dinnerplatters,'blankimageurl':'/media/product-blank.png','toppings':toppings,'timelist':times})
 
 def booktable(request):
     if request.method == 'POST':

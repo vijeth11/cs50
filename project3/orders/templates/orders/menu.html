@@ -346,7 +346,7 @@
                                 <!--/Payment-->
                                 <!-- DELIVERY TYPES -->
                                     <div class="col-sm-4">
-                                        <div class="form-group ">
+                                        <div class="form-group "id ="orderType">
                                             <h4 class="control-label">Order type</h4>
                                             <div class="radio">
                                                 <label class="control-label"><input type="radio" id="DELIVERY" name="deliveryType" value="DELIVERY" data-delivery-type="DELIVERY" checked="checked"> Delivery</label>
@@ -359,7 +359,7 @@
                                 <!-- DELIVERY TYPES -->
                                 <!-- DELIVERY DATE-->
                                     <div class="col-sm-4">
-                                        <div class="form-group ">
+                                        <div class="form-group " id="deliveryType">
                                             <h4 class="control-label">When</h4>
                                             <div class="radio">
                                                 <label class="control-label"><input type="radio" name="deliveryTimeType" value="NOW" id="as-soon-as-possible" checked="checked"> As soon as possible</label>
@@ -368,16 +368,19 @@
                                                 <label class="control-label"><input type="radio" name="deliveryTimeType" value="FUTURE" id="delivery-date"> Specific time</label>
                                             </div>
                                             <!-- TIME SELECT -->
-                                            <div style="display: block;" id="delivery-date-field">
+                                            <div style="display: none;" id="delivery-date-field">
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <input type="text" placeholder="Date" name="deliveryDate" id="delivery-date-input" value="" class="form-control hasDatepicker">
-                                                        <select name="deliveryTime" placeholder="Godzina" class="form-control m-t" id="delivery-time-select" style="display: block;">
+                                                        <input type="date" placeholder="Date" name="deliveryDate" id="delivery-date-input" value="" class="form-control hasDatepicker">
+                                                        <select name="deliveryTime" placeholder="Godzina" class="form-control m-t" id="delivery-time-select" style="display: none;">
+                                                            {% for time in timelist %}
+                                                                <option hidden>{{time}}</option>
+                                                            {% endfor %} 
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="help-block">Set your preferred delivery time</div>
+                                            <div class="help-block" hidden>Set your preferred delivery time</div>
                                             <!-- TIME SELECT -->
                                         </div>
                                     </div>
@@ -390,35 +393,35 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="row _order-address-group">
+                                        <div class="row _order-address-group" id = "deliveryAddressDetails" style="display:flex">
                                             <div class="col-sm-8">
-                                                <div class="form-group has-error">
+                                                <div class="form-group " id="streetForm">
                                                     <input type="text" name="street" value="" id="street" class="form-control " placeholder="Street *">
-                                                    <div class="help-block">Field is required</div>
+                                                    <div class="help-block" hidden>Field is required</div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div class="form-group ">
+                                                <div class="form-group " id="streetNumberForm">
                                                     <input type="text" name="streetNumber" value="" id="streetNumber" class="form-control " placeholder="No. *">
-                                                    <div class="help-block">Field is required</div>
+                                                    <div class="help-block" hidden>Field is required</div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-8">
-                                                <div class="form-group ">
+                                                <div class="form-group " id="cityForm">
                                                     <input type="text" name="city" value="" id="city" class="form-control " placeholder="City *">
-                                                    <div class="help-block">Field is required</div>
+                                                    <div class="help-block" hidden>Field is required</div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div class="form-group ">
+                                                <div class="form-group " id="apartmentNumberForm">
                                                     <input type="text" name="apartmentNumber" value="" class="form-control " placeholder="Apt.  ">
-                                                    <div class="help-block">Field is required</div>
+                                                    <div class="help-block" hidden>Field is required</div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div class="form-group ">
+                                                <div class="form-group " id="floorNumberForm">
                                                     <input type="text" name="floorNumber" value="" class="form-control " placeholder="Floor ">
-                                                    <div class="help-block">Field is required</div>
+                                                    <div class="help-block" hidden>Field is required</div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
@@ -429,31 +432,31 @@
                                             <div class="col-sm-12">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group   has-error">
+                                                        <div class="form-group " id="firstNameForm">
                                                             <input type="text" name="firstName" value="" class="form-control " placeholder="First name *">
-                                                            <div class="help-block">Field is required</div>             
+                                                            <div class="help-block" hidden>Field is required</div>             
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group  has-error       ">
+                                                        <div class="form-group " id = "lastNameForm">
                                                             <input type="text" name="lastName" value="" class="form-control " placeholder="Last name *">
-                                                             <div class="help-block">Field is required</div>               
+                                                             <div class="help-block" hidden>Field is required</div>               
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group    has-error     ">
+                                                        <div class="form-group " id = "phoneForm">
                                                             <input type="tel" id="phone" name="phone" class="form-control">
-                                                            <div class="help-block">Field is required</div>           
+                                                            <div class="help-block" hidden>Field is required</div>           
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group         has-error">
+                                                        <div class="form-group " id = "emailForm">
                                                             <input type="text" name="email" value="" class="form-control " placeholder="Email *">
-                                                            <div class="help-block">Field is required</div> 
+                                                            <div class="help-block" hidden>Field is required</div> 
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="form-group         ">
+                                                        <div class="form-group ">
                                                             <input type="text" name="companyName" value="" class="form-control " placeholder="Company name ">                                                                            
                                                         </div>
                                                     </div>
@@ -470,7 +473,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12" id="_order-form-errors">
+                                    <div class="col-sm-12" id="_order-form-errors" style="display:none">
                                         <div class="alert alert-danger">
                                             <p>Correct errors</p>
                                         </div>
@@ -484,12 +487,12 @@
                 </div>
                 <div class="modal-footer">
                     <div class="help-block pull-left hidden-xs" id="summaryError">* These fields are required</div>
-                    <a href="" class="btn btn-lg btn-default hidden-xs" onclick="clearOrderForm();" data-dismiss="modal">Cancel</a>
-                    <a href="" class="btn btn-lg btn-upmenu hidden-xs pull-right _order-form-submit" data-online-payment-title="Proceed to payment" data-offline-payment-title="Create order">Create order</a>
+                    <a href="#!" class="btn btn-lg btn-default hidden-xs" onclick="clearOrderForm();" data-dismiss="modal">Cancel</a>
+                    <a href="#!" class="btn btn-lg btn-upmenu hidden-xs pull-right _order-form-submit" data-online-payment-title="Proceed to payment" data-offline-payment-title="Create order" onclick="submitFinalCheckOutOrder()">Create order</a>
                 </div>
             </div>            
         </div>
     </div>
     <!--/modal-->
-    
+
 {% endblock  %}

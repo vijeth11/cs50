@@ -1,3 +1,14 @@
+var deliveryDate = null;
+var streetElement = null;
+var streetNumberElement = null;
+var cityElement = null;
+var apartmentNumberElement = null;
+var floorElement = null;
+var firstNameElement = null;
+var lastNameElement = null;
+var emailElement = null;
+var phoneElement = null;
+
 const User = {
     name:null,
     id:null
@@ -31,6 +42,13 @@ function menuOnLoad(){
               login();
           });
       }
+      if(document.getElementsByName("deliveryDate").length > 0){
+        // var nextWeekDate = new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("deliveryDate")[0].setAttribute('min', today);
+        //document.getElementsByName("toDate")[0].setAttribute('max', nextWeekDate);
+        document.getElementsByName("deliveryDate")[0].setAttribute('onchange',"displayTime(event)")
+      }
       var input = document.querySelector("#phone");
       if(input){
         window.intlTelInput(input, {
@@ -39,6 +57,16 @@ function menuOnLoad(){
         separateDialCode: true
         });
       }
+      streetElement = document.querySelector("input[name='street']");
+      streetNumberElement = document.querySelector("input[name='streetNumber']");
+      cityElement = document.querySelector("input[name='city']");
+      apartmentNumberElement = document.querySelector("input[name='apartmentNumber']");
+      floorElement = document.querySelector("input[name='floorNumber']");
+      firstNameElement = document.querySelector("input[name='firstName']");
+      lastNameElement = document.querySelector("input[name='lastName']");
+      emailElement = document.querySelector("input[name='email']");
+      phoneElement = document.querySelector("input[name='phone']");
+      deliveryDate = document.querySelector("input[name='deliveryDate']");
 } 
 
 window.addEventListener('scroll', function() {
@@ -359,4 +387,146 @@ window.addEventListener('scroll', function() {
     document.getElementById("checkoutModal").style.display = "block";
     document.getElementById("checkoutModal").style.overflow = "auto";
     document.body.style.overflow = "hidden";
+
+    document.getElementById("deliveryType").addEventListener('change',function(){
+      if(document.getElementById("delivery-date").checked){
+        document.getElementById("delivery-date-field").style.display = "block";
+      }else{
+        document.getElementById("delivery-date-field").style.display = "none";
+        document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
+      }
+    });
+
+    document.getElementById("orderType").addEventListener('change',function(){
+      if(document.getElementById("DELIVERY").checked){
+        document.getElementById("deliveryAddressDetails").style.display="flex";
+      }else{
+        document.getElementById("deliveryAddressDetails").style.display = "none";
+      }
+    });
+  }
+
+  function displayTime(event){
+    if(document.getElementsByName("deliveryTime").length > 0){
+      document.getElementsByName("deliveryTime")[0].style.display = "block";
+      for(var ele of document.getElementsByName("deliveryTime")[0].getElementsByTagName("option")){
+          if(ele.hasAttribute("hidden") && event.currentTarget.value){
+              ele.removeAttribute("hidden");
+          }else if(!ele.hasAttribute("hidden")){
+              ele.setAttribute("hidden","");
+          }
+      }
+    }
+  }
+
+  function clearOrderForm(){
+    document.getElementById("checkout-order-id").reset();
+    document.getElementById("checkoutModal").style.display = "none";
+    document.body.style.overflow = "visible";
+  }
+
+  function validate(){
+    let valid = true;
+
+    if(!deliveryDate.value){
+      document.getElementsByName("deliveryTime")[0].style.display = "none";
+      document.getElementById("deliveryType").classList.add("has-error");
+      document.getElementById("deliveryType").getElementsByClassName("help-block")[0].removeAttribute("hidden");
+      valid = false;
+    }else{
+      document.getElementsByName("deliveryTime")[0].style.display = "block";
+      document.getElementById("deliveryType").classList.remove("has-error");
+      document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
+    }
+    if(!streetElement.value){
+      document.getElementById("streetForm").classList.add("has-error");
+      document.getElementById("streetForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+      valid = false;
+    }else{
+      document.getElementById("streetForm").classList.remove("has-error");
+      document.getElementById("streetForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+
+    if(!streetNumberElement.value){
+      document.getElementById("streetNumberForm").classList.add("has-error");
+      document.getElementById("streetNumberForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+      valid = false;
+    }else{
+      document.getElementById("streetNumberForm").classList.remove("has-error");
+      document.getElementById("streetNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+
+    if(!cityElement.value){
+      document.getElementById("cityForm").classList.add("has-error");
+      document.getElementById("cityForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+      valid = false;
+    }else{
+      document.getElementById("cityForm").classList.remove("has-error");
+      document.getElementById("cityForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+
+    if(!apartmentNumberElement.value){
+      document.getElementById("apartmentNumberForm").classList.add("has-error");
+      document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+      valid = false;
+    }else{
+      document.getElementById("apartmentNumberForm").classList.remove("has-error");
+      document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+
+    if(!floorElement.value){
+      document.getElementById("floorNumberForm").classList.add("has-error");
+      document.getElementById("floorNumberForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+      valid = false;
+    }else{
+      document.getElementById("floorNumberForm").classList.remove("has-error");
+      document.getElementById("floorNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+    if(!firstNameElement.value){
+      document.getElementById("firstNameForm").classList.add("has-error");
+      document.getElementById("firstNameForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+        valid = false;
+    }else{
+        document.getElementById("firstNameForm").classList.remove("has-error");
+        document.getElementById("firstNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+    if(!lastNameElement.value){
+        document.getElementById("lastNameForm").classList.add("has-error");
+        document.getElementById("lastNameForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+        valid = false;
+    }else{
+        document.getElementById("lastNameForm").classList.remove("has-error");
+        document.getElementById("lastNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+    if(!emailElement.value || !emailElement.validity.valid){
+        document.getElementById("emailForm").classList.add("has-error");
+        document.getElementById("emailForm").getElementsByTagName("div")[0].removeAttribute("hidden");
+        valid = false;
+    }else{
+        document.getElementById("emailForm").classList.remove("has-error");
+        document.getElementById("emailForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    }
+    if(!phoneElement.value){
+        document.getElementById("phoneForm").classList.add("has-error");
+        let errormessage = document.getElementById("phoneForm").getElementsByTagName("div");
+        errormessage[errormessage.length-1].removeAttribute("hidden");
+        valid = false;
+    }else{
+        document.getElementById("phoneForm").classList.remove("has-error");
+        let errormessage = document.getElementById("phoneForm").getElementsByTagName("div");
+        errormessage[errormessage.length-1].setAttribute("hidden","");
+    }
+
+    if(!valid){
+      document.getElementById("_order-form-errors").style.display = "block";
+    }else{
+      document.getElementById("_order-form-errors").style.display = "none";
+    }
+
+    return valid;
+  }
+
+
+  function submitFinalCheckOutOrder(){
+      validate();
   }
