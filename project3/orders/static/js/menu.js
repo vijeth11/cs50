@@ -387,13 +387,37 @@ window.addEventListener('scroll', function() {
     document.getElementById("checkoutModal").style.display = "block";
     document.getElementById("checkoutModal").style.overflow = "auto";
     document.body.style.overflow = "hidden";
+    document.getElementById("delivery-date-field").style.display = "none";
+    document.getElementsByName("deliveryTime")[0].style.display = "none";
+    document.getElementById("deliveryType").classList.remove("has-error");
+    document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
+    document.getElementById("streetForm").classList.remove("has-error");
+    document.getElementById("streetForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("streetNumberForm").classList.remove("has-error");
+    document.getElementById("streetNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("cityForm").classList.remove("has-error");
+    document.getElementById("cityForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("apartmentNumberForm").classList.remove("has-error");
+    document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("floorNumberForm").classList.remove("has-error");
+    document.getElementById("floorNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("firstNameForm").classList.remove("has-error");
+    document.getElementById("firstNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("lastNameForm").classList.remove("has-error");
+    document.getElementById("lastNameForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("emailForm").classList.remove("has-error");
+    document.getElementById("emailForm").getElementsByTagName("div")[0].setAttribute("hidden","");
+    document.getElementById("phoneForm").classList.remove("has-error");
+    let errormessage = document.getElementById("phoneForm").getElementsByTagName("div");
+    errormessage[errormessage.length-1].setAttribute("hidden","");
+    document.getElementById("_order-form-errors").style.display = "none";
 
     document.getElementById("deliveryType").addEventListener('change',function(){
       if(document.getElementById("delivery-date").checked){
         document.getElementById("delivery-date-field").style.display = "block";
       }else{
         document.getElementById("delivery-date-field").style.display = "none";
-        document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
+        //document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
       }
     });
 
