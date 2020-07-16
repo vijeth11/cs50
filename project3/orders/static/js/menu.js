@@ -620,13 +620,13 @@ window.addEventListener('scroll', function() {
         if(data.itemtype === "sub" || data.itemtype === "dinnerplatter"){
           var p1 = document.createElement("p");
           p1.setAttribute("style","font-size: 96%;font-weight: 500;");
-          if(document.getElementById(data.name+"_subsmall").value == data.price || 
-            document.getElementById(data.name+"_dinnerplattersmall").value == data.price)
+          if((document.getElementById(data.name+"_subsmall") && document.getElementById(data.name+"_subsmall").value == data.price) || 
+            (document.getElementById(data.name+"_dinnerplattersmall") && document.getElementById(data.name+"_dinnerplattersmall").value == data.price))
             {
               p1.innerHTML = "Small";
             }
-          if(document.getElementById(data.name+"_sublarge").value == data.price ||
-            document.getElementById(data.name+"_dinnerplatterlarge").value == data.price)
+          if((document.getElementById(data.name+"_sublarge") && document.getElementById(data.name+"_sublarge").value == data.price) ||
+            (document.getElementById(data.name+"_dinnerplatterlarge") && document.getElementById(data.name+"_dinnerplatterlarge").value == data.price))
           {
             p1.innerHTML = "Large";
           }
