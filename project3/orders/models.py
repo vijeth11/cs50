@@ -90,7 +90,7 @@ class BookingTable(models.Model):
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    phone = models.CharField(max_length=12)
+    phone = models.CharField(max_length=14)
 
     def __str__(self):
         return self.firstName + "booking"
