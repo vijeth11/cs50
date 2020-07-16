@@ -49,32 +49,32 @@ function menuOnLoad(){
               console.log(err);
               login();
           });
-      }
-      if(document.getElementsByName("deliveryDate").length > 0){
-        // var nextWeekDate = new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-        var today = new Date().toISOString().split('T')[0];
-        document.getElementsByName("deliveryDate")[0].setAttribute('min', today);
-        //document.getElementsByName("toDate")[0].setAttribute('max', nextWeekDate);
-        document.getElementsByName("deliveryDate")[0].setAttribute('onchange',"displayTime(event)")
-      }
-      var input = document.querySelector("#phone");
-      if(input){
-        window.intlTelInput(input, {
-        // any initialisation options go here
-        initialCountry: "in",
-        separateDialCode: true
-        });
-      }
-      streetElement = document.querySelector("input[name='street']");
-      streetNumberElement = document.querySelector("input[name='streetNumber']");
-      cityElement = document.querySelector("input[name='city']");
-      apartmentNumberElement = document.querySelector("input[name='apartmentNumber']");
-      floorElement = document.querySelector("input[name='floorNumber']");
-      firstNameElement = document.querySelector("input[name='firstName']");
-      lastNameElement = document.querySelector("input[name='lastName']");
-      emailElement = document.querySelector("input[name='checkoutEmail']");
-      phoneElement = document.querySelector("input[name='phone']");
-      deliveryDate = document.querySelector("input[name='deliveryDate']");
+          if(document.getElementsByName("deliveryDate").length > 0){
+            // var nextWeekDate = new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("deliveryDate")[0].setAttribute('min', today);
+            //document.getElementsByName("toDate")[0].setAttribute('max', nextWeekDate);
+            document.getElementsByName("deliveryDate")[0].setAttribute('onchange',"displayTime(event)")
+          }
+          var input = document.querySelector("#phone");
+          if(input){
+            window.intlTelInput(input, {
+            // any initialisation options go here
+            initialCountry: "in",
+            separateDialCode: true
+            });
+          }
+          streetElement = document.querySelector("input[name='street']");
+          streetNumberElement = document.querySelector("input[name='streetNumber']");
+          cityElement = document.querySelector("input[name='city']");
+          apartmentNumberElement = document.querySelector("input[name='apartmentNumber']");
+          floorElement = document.querySelector("input[name='floorNumber']");
+          firstNameElement = document.querySelector("input[name='firstName']");
+          lastNameElement = document.querySelector("input[name='lastName']");
+          emailElement = document.querySelector("input[name='checkoutEmail']");
+          phoneElement = document.querySelector("input[name='phone']");
+          deliveryDate = document.querySelector("input[name='deliveryDate']");
+      }      
 } 
 
 window.addEventListener('scroll', function() {
