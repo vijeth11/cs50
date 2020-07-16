@@ -9,7 +9,6 @@ var lastNameElement = null;
 var emailElement = null;
 var phoneElement = null;
 var orders = null;
-
 const User = {
     name:null,
     id:null
@@ -330,6 +329,7 @@ window.addEventListener('scroll', function() {
             span1.textContent= orderitem.plate.toString()+" x ";  
             var div2 = document.createElement("div");
             div2.setAttribute("class","col-sm-7 orderName")
+            div2.setAttribute("style","padding:0");
             div2.appendChild(span1);
             div2.appendChild(span2); 
             var div1 = document.createElement("div"); 
@@ -453,7 +453,8 @@ window.addEventListener('scroll', function() {
           document.getElementById("deliveryAddressDetails").style.display = "none";
         }
       });
-
+      
+      createFinalOrderDetails();
     }else{
       showToast("Your Cart is Empty","error");
     }
@@ -582,4 +583,59 @@ window.addEventListener('scroll', function() {
 
   function submitFinalCheckOutOrder(){
       validate();
+  }
+
+
+  function createFinalOrderDetails(){
+    var ul = document.getElementById("final order");
+    ul.innerHTML = "";
+    for(var data of orders){
+      if(Number(data.plate) > 0){
+        var div4 = document.createElement("div");
+        div4.innerHTML ="$"+data.price.toString();
+        var div2 = document.createElement("div"); 
+        div2.setAttribute("class","price");
+        div2.setAttribute("style","padding-bottom:1vh;right:-4vw");
+        div2.appendChild(div4);     
+        var span2 = document.createElement("span");
+        span2.setAttribute("class","name");
+        span2.textContent = data.name;
+        var span1 = document.createElement("span");
+        span1.setAttribute("class","quantity");
+        span1.textContent = data.plate.toString()+" x ";
+        var div1 = document.createElement("div");
+        div1.appendChild(span1);
+        div1.appendChild(span2);
+        div1.appendChild(div2);
+        var li = document.createElement("li");
+        li.appendChild(div1);
+        if(data.itemtype === "pizza"){
+          var p1 = document.createElement("p");
+          p1.setAttribute("style","font-size: 96%;font-weight: 500;");
+          p1.innerHTML = data.selectedtoppings.toString();
+          var div3 = document.createElement("div");
+          div3.appendChild(p1);
+          div1.appendChild(div3);
+        }
+        if(data.itemtype === "sub" || data.itemtype === "dinnerplatter"){
+          var p1 = document.createElement("p");
+          p1.setAttribute("style","font-size: 96%;font-weight: 500;");
+          if(document.getElementById(data.name+"_subsmall").value == data.price || 
+            document.getElementById(data.name+"_dinnerplattersmall").value == data.price)
+            {
+              p1.innerHTML = "Small";
+            }
+          if(document.getElementById(data.name+"_sublarge").value == data.price ||
+            document.getElementById(data.name+"_dinnerplatterlarge").value == data.price)
+          {
+            p1.innerHTML = "Large";
+          }
+          var div3 = document.createElement("div");
+          div3.appendChild(p1);
+          div1.appendChild(div3);
+        }
+        ul.appendChild(li);
+        document.getElementById("finalTotalCost").innerHTML = document.getElementById("totalprice").innerHTML;
+      }
+    }
   }

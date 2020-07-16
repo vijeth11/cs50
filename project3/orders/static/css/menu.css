@@ -349,3 +349,49 @@ label {
 .m-t {
     margin-top: 15px;
 }
+
+._shopping-cart-container {
+    background-color: #fbfbfb;
+    border: 1px solid #ededed;
+    padding-bottom: 15px;
+}
+
+.theme-cart-inner {
+    padding: 10px;
+}
+
+.cart .cart-items-scrollable {
+    border-color: #d9d9d9;
+}
+
+.cart ul {
+    margin: 0;
+}
+.cart-items-scrollable {
+    max-height: 300px;
+    overflow: auto;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.cart .addon {
+    font-size: 0.8em;
+}
+
+.cart .cart-summary {
+    border-color: #d9d9d9;
+}
+.cart ul {
+    margin: 0;
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
