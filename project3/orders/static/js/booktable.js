@@ -11,7 +11,7 @@ function loadBookingTables(){
         var today = new Date().toISOString().split('T')[0];
         document.getElementsByName("toDate")[0].setAttribute('min', today);
         //document.getElementsByName("toDate")[0].setAttribute('max', nextWeekDate);
-        document.getElementsByName("toDate")[0].setAttribute('onchange',"displayTime(event)")
+        document.getElementsByName("toDate")[0].setAttribute('onchange',"displayTimeOfBookingTable(event)")
     }
     var input = document.querySelector("#phone");
     if(input){
@@ -38,7 +38,7 @@ function loadBookingTables(){
     });
 }
 
-function displayTime(event){
+function displayTimeOfBookingTable(event){
     for(var ele of document.getElementsByName("toTime")[0].getElementsByTagName("option")){
         if(ele.hasAttribute("hidden") && event.currentTarget.value){
             ele.removeAttribute("hidden");
@@ -49,7 +49,7 @@ function displayTime(event){
 }
 
 function submitbookTable(){
-    if(validate()){
+    if(validateBookingTable()){
         var formData = new FormData(document.getElementById("formBookTable"));
         axios({
             headers: { "X-CSRFToken": Cookies.get('csrftoken')},
@@ -69,7 +69,7 @@ function submitbookTable(){
     }
 }
 
-function validate(){
+function validateBookingTable(){
    let valid=true;
    if(!bookingDateElement.value){
        document.getElementById("dateForm").classList.add("has-error");

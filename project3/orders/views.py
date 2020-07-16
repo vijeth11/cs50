@@ -156,3 +156,8 @@ def getOrderItems(user):
             totalPrice += orderitem.plates * orderitem.price
     return [orderData,totalPrice]
 
+@login_required
+def completeOrder(request):
+    if request.Method == 'POST':
+        return "Hello"
+

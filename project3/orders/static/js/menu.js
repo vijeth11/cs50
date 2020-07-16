@@ -72,7 +72,7 @@ function menuOnLoad(){
       floorElement = document.querySelector("input[name='floorNumber']");
       firstNameElement = document.querySelector("input[name='firstName']");
       lastNameElement = document.querySelector("input[name='lastName']");
-      emailElement = document.querySelector("input[name='email']");
+      emailElement = document.querySelector("input[name='checkoutEmail']");
       phoneElement = document.querySelector("input[name='phone']");
       deliveryDate = document.querySelector("input[name='deliveryDate']");
 } 
@@ -482,7 +482,7 @@ window.addEventListener('scroll', function() {
   function validate(){
     let valid = true;
 
-    if(!deliveryDate.value){
+    if(!deliveryDate.value && document.getElementById("delivery-date").checked){
       document.getElementsByName("deliveryTime")[0].style.display = "none";
       document.getElementById("deliveryType").classList.add("has-error");
       document.getElementById("deliveryType").getElementsByClassName("help-block")[0].removeAttribute("hidden");
@@ -492,7 +492,7 @@ window.addEventListener('scroll', function() {
       document.getElementById("deliveryType").classList.remove("has-error");
       document.getElementById("deliveryType").getElementsByClassName("help-block")[0].setAttribute("hidden","");
     }
-    if(!streetElement.value){
+    if(!streetElement.value && document.getElementById("DELIVERY").checked){
       document.getElementById("streetForm").classList.add("has-error");
       document.getElementById("streetForm").getElementsByTagName("div")[0].removeAttribute("hidden");
       valid = false;
@@ -501,7 +501,7 @@ window.addEventListener('scroll', function() {
       document.getElementById("streetForm").getElementsByTagName("div")[0].setAttribute("hidden","");
     }
 
-    if(!streetNumberElement.value){
+    if(!streetNumberElement.value && document.getElementById("DELIVERY").checked){
       document.getElementById("streetNumberForm").classList.add("has-error");
       document.getElementById("streetNumberForm").getElementsByTagName("div")[0].removeAttribute("hidden");
       valid = false;
@@ -510,7 +510,7 @@ window.addEventListener('scroll', function() {
       document.getElementById("streetNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
     }
 
-    if(!cityElement.value){
+    if(!cityElement.value && document.getElementById("DELIVERY").checked){
       document.getElementById("cityForm").classList.add("has-error");
       document.getElementById("cityForm").getElementsByTagName("div")[0].removeAttribute("hidden");
       valid = false;
@@ -519,7 +519,7 @@ window.addEventListener('scroll', function() {
       document.getElementById("cityForm").getElementsByTagName("div")[0].setAttribute("hidden","");
     }
 
-    if(!apartmentNumberElement.value){
+    if(!apartmentNumberElement.value && document.getElementById("DELIVERY").checked){
       document.getElementById("apartmentNumberForm").classList.add("has-error");
       document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].removeAttribute("hidden");
       valid = false;
@@ -528,7 +528,7 @@ window.addEventListener('scroll', function() {
       document.getElementById("apartmentNumberForm").getElementsByTagName("div")[0].setAttribute("hidden","");
     }
 
-    if(!floorElement.value){
+    if(!floorElement.value && document.getElementById("DELIVERY").checked){
       document.getElementById("floorNumberForm").classList.add("has-error");
       document.getElementById("floorNumberForm").getElementsByTagName("div")[0].removeAttribute("hidden");
       valid = false;
@@ -582,7 +582,9 @@ window.addEventListener('scroll', function() {
 
 
   function submitFinalCheckOutOrder(){
-      validate();
+      if(validate()){
+        var formData = new FormData(document.getElementById("checkout-order-id"));
+      }
   }
 
 
