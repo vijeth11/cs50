@@ -109,6 +109,9 @@ window.addEventListener('scroll', function() {
         event.preventDefault();
         var inputFields = document.getElementById("formLoginRegister").getElementsByTagName("input");
         var token = inputFields[0];
+        if(Cookies.get('csrftoken')){
+          token.value = Cookies.get('csrftoken');
+        }
         backendcall('/register/',token.value,new FormData(document.getElementById("formLoginRegister")),event);
     } 
   }
@@ -287,7 +290,8 @@ window.addEventListener('scroll', function() {
           User.id = null;  
           EmptyCart.style.display ="block";
           OrderList.style.display = "none";
-        }
+          showToast("SuccessFull Register Please Login");
+        }        
     })
     .catch(err => {
         console.log(err);
@@ -295,6 +299,7 @@ window.addEventListener('scroll', function() {
             document.getElementById("errorMessage").style.display = "block";
             document.getElementById("errorMessage").textContent = err.response.data;
         }
+        showToast("Something went wrong please try again","error");
     })
   }
 
