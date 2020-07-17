@@ -21,34 +21,7 @@ function menuOnLoad(){
       {
         EmptyCart.style.display = "block";    
         OrderList.style.display = "none";
-          axios({
-              method: 'get',
-              url:'/orderItems/',
-          })
-          .then(data => {
-              if(data.data.orders.length > 0)
-              {
-                EmptyCart.style.display ="none";
-                OrderList.style.display = "block";
-                OrderList.getElementsByTagName("ul")[0].textContent="";              
-                document.getElementById("totalprice").textContent = data.data.total;
-                setupOrders(data.data.orders);              
-              }else{
-                EmptyCart.style.display ="block";
-                OrderList.style.display = "none";
-                document.getElementById("totalprice").textContent = 0;
-              }
-              orders = data.data.orders;
-              document.getElementById("signupModal").style.display = "none";
-              document.body.style.overflow = "visible";
-              document.getElementById("errorMessage").style.display = "none";
-              document.getElementById("Logout").style.display="block";
-              document.getElementById("Account").style.display = "none";              
-          })
-          .catch(err => {
-              console.log(err);
-              login();
-          });
+          getOrderDetails();
           if(document.getElementsByName("deliveryDate").length > 0){
             // var nextWeekDate = new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
             var today = new Date().toISOString().split('T')[0];
@@ -246,6 +219,36 @@ window.addEventListener('scroll', function() {
       })
   }
   
+  function getOrderDetails(){
+    axios({
+      method: 'get',
+      url:'/orderItems/',
+    })
+    .then(data => {
+        if(data.data.orders.length > 0)
+        {
+          EmptyCart.style.display ="none";
+          OrderList.style.display = "block";
+          OrderList.getElementsByTagName("ul")[0].textContent="";              
+          document.getElementById("totalprice").textContent = data.data.total;
+          setupOrders(data.data.orders);              
+        }else{
+          EmptyCart.style.display ="block";
+          OrderList.style.display = "none";
+          document.getElementById("totalprice").textContent = 0;
+        }
+        orders = data.data.orders;
+        document.getElementById("signupModal").style.display = "none";
+        document.body.style.overflow = "visible";
+        document.getElementById("errorMessage").style.display = "none";
+        document.getElementById("Logout").style.display="block";
+        document.getElementById("Account").style.display = "none";              
+    })
+    .catch(err => {
+        console.log(err);
+        login();
+    });
+  }
 
   function backendcall(url,token,formdata,event){
     if(event){
@@ -464,7 +467,7 @@ window.addEventListener('scroll', function() {
     if(document.getElementsByName("deliveryTime").length > 0){
       document.getElementsByName("deliveryTime")[0].style.display = "block";
       for(var ele of document.getElementsByName("deliveryTime")[0].getElementsByTagName("option")){
-          if(ele.hasAttribute("hidden") && event.currentTarget.value){
+          if(ele.hasAttribute("hidden") || event.currentTarget.value){
               ele.removeAttribute("hidden");
           }else if(!ele.hasAttribute("hidden")){
               ele.setAttribute("hidden","");
@@ -584,6 +587,23 @@ window.addEventListener('scroll', function() {
   function submitFinalCheckOutOrder(){
       if(validate()){
         var formData = new FormData(document.getElementById("checkout-order-id"));
+        axios({
+          headers: { "X-CSRFToken": Cookies.get('csrftoken')},
+          method: 'post',
+          url:'/orderComplete/',
+          data: formData
+      })
+      .then(data => {
+          showToast("Order has been success fully placed");
+          clearOrderForm();
+          getOrderDetails();
+          /*setTimeout(function() {
+              location.reload();
+          },4000);*/            
+      })
+      .catch(err => {
+          console.log(err);
+      })
       }
   }
 

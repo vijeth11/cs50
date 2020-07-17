@@ -467,7 +467,7 @@ window.addEventListener('scroll', function() {
     if(document.getElementsByName("deliveryTime").length > 0){
       document.getElementsByName("deliveryTime")[0].style.display = "block";
       for(var ele of document.getElementsByName("deliveryTime")[0].getElementsByTagName("option")){
-          if(ele.hasAttribute("hidden") || event.currentTarget.value){
+          if(ele.hasAttribute("hidden") && event.currentTarget.value){
               ele.removeAttribute("hidden");
           }else if(!ele.hasAttribute("hidden")){
               ele.setAttribute("hidden","");

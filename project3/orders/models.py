@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -66,6 +67,22 @@ class Orders(models.Model):
     totalprice = models.DecimalField(max_digits=10,decimal_places=2)
     status = models.CharField(max_length=1,choices=OrderStatuses)
     date = models.DateField()
+    paymentType = models.CharField(max_length = 6,blank = True)
+    deliveryType = models.CharField(max_length = 10,blank = True)
+    deliveryTimeType = models.CharField(max_length = 10,blank = True)
+    deliveryDate = models.DateField(default = timezone.datetime.now())
+    deliveryTime = models.TimeField(default = timezone.datetime.now())
+    street = models.CharField(max_length=100,blank = True)
+    streetNumber = models.CharField(max_length = 100,blank = True)
+    city = models.CharField(max_length = 100,blank = True)
+    apartmentNumber = models.CharField(max_length=100,blank = True)
+    floorNumber = models.IntegerField(default = 0)
+    firstName = models.CharField(max_length = 100,blank = True)
+    lastName = models.CharField(max_length = 100,blank = True)
+    phone = models.CharField(max_length = 14,blank = True)
+    checkoutEmail = models.CharField(max_length = 100,blank = True)
+    companyName = models.CharField(max_length = 100,blank = True)
+    comment = models.CharField(max_length = 1000,blank = True)
     person = models.ForeignKey(User, on_delete = models.CASCADE)
 
     def __str__(self):

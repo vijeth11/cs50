@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -158,6 +157,32 @@ def getOrderItems(user):
 
 @login_required
 def completeOrder(request):
-    if request.Method == 'POST':
-        return "Hello"
+    if request.method == 'POST':
+        try:
+            #orders = Orders.objects.all().filter(person = request.user).filter(status = 'N')
+            if request.POST["deliveryType"] == "DELIVERY":
+                Orders.objects.all().filter(person = request.user).filter(status = 'N').update(street = request.POST["street"]
+                ,streetNumber = request.POST["streetNumber"]
+                ,city = request.POST["city"]
+                ,apartmentNumber = request.POST["apartmentNumber"]
+                ,floorNumber = request.POST["floorNumber"])
+            if request.POST["deliveryTimeType"] == "FUTURE":
+               Orders.objects.all().filter(person = request.user).filter(status = 'N').update(deliveryDate = request.POST["deliveryDate"],deliveryTime = request.POST["deliveryTime"])
+            
+            Orders.objects.all().filter(person = request.user).filter(status = 'N').update(status = 'P'
+            ,paymentType = request.POST["paymentType"]
+            ,deliveryType = request.POST["deliveryType"]
+            ,deliveryTimeType = request.POST["deliveryTimeType"]
+            ,firstName = request.POST["firstName"]
+            ,lastName = request.POST["lastName"]
+            ,phone = request.POST["phone"]
+            ,checkoutEmail = request.POST["checkoutEmail"]
+            ,companyName = request.POST["companyName"]
+            ,comment = request.POST["comment"]
+            )
+            
+            #orders[0].save()
+            return HttpResponse("success",status=200)
+        except:
+            return HttpResponse("",status=500)
 
