@@ -1,3 +1,17 @@
 textarea {
     min-height: 400px;
 }
+.mails:hover{
+    cursor: pointer;
+}
+
+.mails{
+    border:1px solid black;
+    height:8vh;
+    padding :5px;
+}
+.archive-mails{
+    border:1px solid black;
+    height:8vh;
+    padding :5px;
+}

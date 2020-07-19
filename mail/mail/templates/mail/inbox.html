@@ -12,6 +12,15 @@
     <hr>
 
     <div id="emails-view">
+        <h3 id="selected-name"></h3>
+        <div id="inbox-view">
+        </div>
+
+        <div id="sent-view">
+        </div>
+
+        <div id = "archived-view">
+        </div>
     </div>
 
     <div id="compose-view">
@@ -31,14 +40,30 @@
         </form>
     </div>
 
-    <div id="inbox-view">
+    <div id="email-view">
+        <div>
+            <label style="font-weight: bold">Form: </label>
+            <span id="email-from">test@test.com</span>
+        </div>
+        <div>
+            <label style="font-weight: bold;">To: </label>
+            <span id="email-to">test1@test.com</span>
+        </div>
+        <div>
+            <label style="font-weight: bold;">Subject: </label>
+            <span id="email-subject">test</span>
+        </div>
+        <div>
+            <label style="font-weight: bold;">TimeStamp: </label>
+            <span id="email-timestamp">Mon 08 2020</span>
+        </div>
+        <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
+        <hr>
+        <div id="email-body">
+                body
+        </div>
     </div>
-
-    <div id="sent-view">
-    </div>
-
-    <div id = "archived-view">
-    </div>
+    
 {% endblock %}
 
 {% block script %}
