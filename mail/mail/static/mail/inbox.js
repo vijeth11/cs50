@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   load_mailbox('inbox');
 });
 
-function compose_email(recipient = '',subject = '',body='') {
+function compose_email(event='',recipient = '',subject = '',body='') {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
@@ -83,7 +83,7 @@ function load_email_view(emailid){
         subject = "Re: "+subject;
       }
       let body = "On "+document.querySelector('#email-timestamp').innerHTML+" "+reciever+" wrote: \r"+document.querySelector('#email-body').innerHTML;
-      compose_email(reciever,subject,body);
+      compose_email('',reciever,subject,body);
   });
 }
 
@@ -128,9 +128,9 @@ function getInbox(){
         element.appendChild(span);
         element.id = email['id'];
         if(email['read']){
-          element.style.backgroundColor = 'white';
-        }else{
           element.style.backgroundColor = 'grey';
+        }else{
+          element.style.backgroundColor = 'white';
         }
         element.appendChild(button);        
         document.querySelector('#inbox-view').appendChild(element);
@@ -150,9 +150,9 @@ function getSentEmails(){
         element.setAttribute('class','mails');
         element.id = email['id'];
         if(email['read']){
-          element.style.backgroundColor = 'white';
-        }else{
           element.style.backgroundColor = 'grey';
+        }else{
+          element.style.backgroundColor = 'white';
         }
         element.addEventListener('click', function(event) {
             load_email_view(event.currentTarget.id);
@@ -179,9 +179,9 @@ function getArchivedEmails(){
         element.setAttribute('class','archive-mails');
         element.id = email['id'];
         if(email['read']){
-          element.style.backgroundColor = 'white';
-        }else{
           element.style.backgroundColor = 'grey';
+        }else{
+          element.style.backgroundColor = 'white';
         }
         element.appendChild(button);
         document.querySelector('#archived-view').appendChild(element);
