@@ -149,6 +149,11 @@ function getSentEmails(){
         element.style.padding = "5px";
         element.setAttribute('class','mails');
         element.id = email['id'];
+        if(email['read']){
+          element.style.backgroundColor = 'white';
+        }else{
+          element.style.backgroundColor = 'grey';
+        }
         element.addEventListener('click', function(event) {
             load_email_view(event.currentTarget.id);
         });
