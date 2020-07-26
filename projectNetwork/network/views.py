@@ -29,6 +29,7 @@ def userprofile(request,username):
         posts = pages.get_page(1)
     return render(request,"network/index.html",{"posts":posts,"profile":posts[0].user})
 
+@login_required
 def followingposts(request):
     usernames =  list(User.objects.get(username= request.user.username).following.split(","))
     userslist = list(User.objects.filter(username__in = usernames).all())
@@ -47,28 +48,16 @@ def followers(request):
         data = json.loads(request.body)
         follower = request.user
         following = User.objects.get(username = data.get("following"))
-        if data.get("action") == "follow":
-            if(follower.countOfFollowing() > 0 ):
-                follower.following += ","+following.username
-            else:
-                follower.following = following.username
-            if(following.countOfFollowers() > 0 ):
-                following.followers += ","+follower.username
-            else:
-                following.followers = follower.username
+        if data.get("action") == "follow":            
+            follower.following += following.username + ","  
+            following.followers += follower.username + ","            
             follower.save()
             following.save()
         else:
-            if(follower.username in following.followers):
-                if(following.countOfFollowers() > 1 ):
-                    following.followers = following.followers.replace(","+follower.username, "")
-                else:
-                    following.followers = following.followers.replace(follower.username, "")
-            if(following.username in follower.following):
-                if(follower.countOfFollowing() > 1 ):
-                    follower.following = follower.following.replace(","+following.username , "")
-                else:
-                    follower.following = follower.following.replace(following.username , "")
+            if(follower.username in following.followers):                
+                following.followers = following.followers.replace(follower.username + ",", "")                
+            if(following.username in follower.following):                
+                follower.following = follower.following.replace(following.username + "," , "")
             follower.save()
             following.save()
         return HttpResponse("success")
@@ -85,7 +74,7 @@ def new_post(request,id = None):
         else:
             post = Post(text=data.get("post"),createdDate = datetime.now(),likes=0,user=request.user)
         post.save()
-        return HttpResponse("success")
+        return JsonResponse({"result":"success"})
     else:
         return render(request, "network/new_post.html")
 
