@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import User,Post
 from django.core.paginator import Paginator
 
-
+@csrf_exempt
 def index(request):
     pages = Paginator(Post.objects.order_by("-createdDate").all(),10)
     pageno = request.GET.get('page')    

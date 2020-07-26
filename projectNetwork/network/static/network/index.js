@@ -20,7 +20,7 @@ function submitNewPost(id=0){
             document.querySelector("#display"+id).innerHTML = document.querySelector("#newpost"+id).value;
             document.querySelector("#editpost"+id).style.display = "none"; 
         }else{
-        window.location = "/";
+            window.location = window.location.origin;
         }
     })
 }
