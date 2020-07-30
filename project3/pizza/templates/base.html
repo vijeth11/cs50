@@ -1,6 +1,8 @@
 <html>
   <head>
      {% load static %}
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
      <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -29,6 +31,7 @@
           position: absolute;
           left: 8vw;
           z-index: 5;
+          top:0;
         }
         a {
             margin-top:4px;
@@ -49,36 +52,47 @@
         body::-webkit-scrollbar{
           display:none;
         }
+        @media (max-width: 800px) {
+          .logo-position {
+            position: unset;
+            text-align: center;
+            width: 100%; /* The width is 100%, when the viewport is 800px or smaller */      
+          }          
+  }
      </style>
   </head>
   <body data-spy="scroll" data-target="#menu-items" data-offset="80">
-    <header>
-    <div class="logo-position">
-       <img src="{% static 'logo.png' %}" height = "200" width = "200">
-    </div>
+    <header>    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ml-auto">           
-            <a class="nav-item nav-link" href="{% url 'index' %}">HOME</a>  
-            {% if pageType is not None and pageType == "home"%}
-            <a class="nav-item nav-link" href="#about">ABOUT US</a>
-            {% else %}
-            <a class="nav-item nav-link" href="{% url 'index' %}#about">ABOUT US</a>
-            {% endif %}                     
-            <a class="nav-item nav-link" href="{% url 'gallery' %}">GALLERY</a>
-            <a class="nav-item nav-link" href="{% url 'booktable' %}">TABLE BOOKING</a>
-            <a class="nav-item nav-link" href="{% url 'menu' %}">MENU / ORDER ONLINE</a> 
-            <a class="nav-item nav-link" href="#">CONTACT</a>            
+          <div class="mx-auto order-0">
+            <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">           
+              <a class="nav-item nav-link" href="{% url 'index' %}">HOME</a>  
+              {% if pageType is not None and pageType == "home"%}
+              <a class="nav-item nav-link" href="#about">ABOUT US</a>
+              {% else %}
+              <a class="nav-item nav-link" href="{% url 'index' %}#about">ABOUT US</a>
+              {% endif %}                     
+              <a class="nav-item nav-link" href="{% url 'gallery' %}">GALLERY</a>
+              <a class="nav-item nav-link" href="{% url 'booktable' %}">TABLE BOOKING</a>
+              <a class="nav-item nav-link" href="{% url 'menu' %}">MENU / ORDER ONLINE</a> 
+              <a class="nav-item nav-link" href="#">CONTACT</a>            
+            </div>
           </div>
         </div>
-        </div>
       </nav>
+      <div class="logo-position">
+       <img src="{% static 'logo.png' %}" height = "200" width = "200">
+      </div>
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="{% static 'background-pizza.jpg' %}" style="height:100%!important;margin-top:-40vh;"alt="First slide">
+                <img class="d-block w-100" src="{% static 'background-pizza.jpg' %}" style="height:100%!important;margin-top:-40vh;width:100%;"alt="First slide">
             </div>
       </div>
 </div>
