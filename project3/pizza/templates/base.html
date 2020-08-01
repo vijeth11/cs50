@@ -80,8 +80,12 @@
               {% endif %}                     
               <a class="nav-item nav-link" href="{% url 'gallery' %}">GALLERY</a>
               <a class="nav-item nav-link" href="{% url 'booktable' %}">TABLE BOOKING</a>
-              <a class="nav-item nav-link" href="{% url 'menu' %}">MENU / ORDER ONLINE</a> 
-              <a class="nav-item nav-link" href="#">CONTACT</a>            
+              <a class="nav-item nav-link" href="{% url 'menu' %}">MENU / ORDER ONLINE</a>
+              {% if pageType is not None and pageType == "home"%}
+              <a class="nav-item nav-link" href="#contact">CONTACT</a> 
+              {% else %}
+              <a class="nav-item nav-link" href="{% url 'index' %}#contact">CONTACT</a>
+              {% endif %}                            
             </div>
           </div>
         </div>

@@ -111,3 +111,13 @@ class BookingTable(models.Model):
 
     def __str__(self):
         return self.firstName + "booking"
+
+class MessageTable(models.Model):
+    contact = models.CharField(max_length = 100)
+    email = models.CharField(max_length=100)
+    phone = models.CharField(max_length=12)
+    subject = models.CharField(max_length=100)
+    message = models.CharField(max_length = 5000)
+
+    def __str__(self):
+        return self.contact+":"+self.subject

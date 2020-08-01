@@ -16,5 +16,6 @@ urlpatterns = [
     path("logout/",views.logout, name= "logout"),
     path("orderComplete/",views.completeOrder,name="ordercomplete"),
     path("orderItems/",views.getOrderData, name= "orderitems"),
+    path("send-message/",views.recieveMessage, name="recievemessage"),
     path("",lambda request: redirect('menu-order/', permanent=False))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

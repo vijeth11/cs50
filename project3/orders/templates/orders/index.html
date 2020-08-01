@@ -17,4 +17,93 @@
    <div>
      <img src = "{% static 'displayImage.jpg' %}" style="width:100%;height:300px;object-fit:cover">
    </div>
+   <div id="contact">
+      <div class="container theme-content theme-content-padding-lg">
+         <div class="col-md-12">
+            <div class="col-md-6">
+                <h1>Contact</h1>
+            </div>            
+        </div>
+      </div>
+      <div class="container theme-content-no-padding ">
+         <div class="mapouter">
+            <div class="gmap_canvas">
+               <iframe width="" height="310" id="gmap_canvas" src="https://maps.google.com/maps?q=Pinocchio's%20Pizza%20%26%20Subs%2074%20Winthrop%20Street%20Harvard%20Square&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:83vw"></iframe>               
+            </div>
+            <style>
+               .mapouter{
+                  position:relative;
+                  text-align:right;
+                  height:310px;
+                  width:83vw;
+                  }
+               .gmap_canvas {
+                  overflow:hidden;
+                  background:none!important;
+                  height:310px;
+                  width:83vw;
+                  }
+            </style>
+         </div>
+      </div>
+      <div class="container theme-content theme-content-padding-lg">
+         <div class="row">            
+            <div class="col-md-6">
+                  <form name="f" action="#" method="POST" id="formSendMessage">
+                  {% csrf_token %}
+                     <div class="form-group">
+   	 	               <input type="text" placeholder="Name *" name="contact" class="form-control">
+                     </div>
+                     <div class="form-group">
+                         <input type="text" placeholder="E-mail *" name="email" class="form-control">
+                     </div>
+                     <div class="form-group">
+                         <input type="text" placeholder="Phone" name="phone" class="form-control">
+                     </div>
+                     <div class="form-group">
+                     	<input type="text" placeholder="Subject *" name="title" class="form-control">
+                     </div>
+                     <div class="form-group">
+                     	<textarea placeholder="Message *" name="message" class="form-control"></textarea>   
+                     </div>
+                     <div class="form-group">
+                     	<button type="button" class="btn btn-upmenu" id="_contact-form-submit" onclick="submitMessage()">Send message</button>
+                     </div>
+                  </form>
+            </div>
+            <div class="col-md-5 col-md-offset-1"> 
+                  <div class="row">
+                     <div class="col-md-12">
+                        <h3 class="theme-paragraph-with-icon" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                           <i class="fa fa-map-marker"></i>
+                           <span itemprop="streetAddress" style="padding-left: 1vw;">74 Winthrop Street</span>, <br>
+                           <span itemprop="addressLocality" style="padding-left: 2.3vw;">Harvard Square</span>
+                           <span itemprop="addressLocality">Cambridge,</span><br>
+                           <span itemprop="postalCode" style="padding-left: 2.3vw;">MA 02138</span>
+                        </h3>
+                        <h3 class="theme-paragraph-with-icon">
+                           <i class="fa fa-phone"></i>
+                           <a href="tel:" itemprop="telephone"></a>
+                           <br>
+                           <a href="tel:+1 617 876 4897" itemprop="telephone" style="padding-left: 2.3vw;color:black">+1 617-876-4897</a>
+                        </h3>
+                        <h3 class="theme-paragraph-with-icon">
+                           <i class="fa fa-clock-o"></i>
+                           <div class="theme-hours">
+                              <div>
+			                        <span class="theme-day">Mon - Sun </span>
+                                 <span class="theme-hour">10:00 - 22:00</span>
+                              </div>
+                           </div>
+                        </h3>                                
+                     </div>
+                  </div>
+            </div>            
+         </div>
+      <div>
+   </div>
+   <footer class="theme-footer ">
+      <div class="container text-center theme-footer-inner">
+      </div>
+   </footer>
 {% endblock  %}

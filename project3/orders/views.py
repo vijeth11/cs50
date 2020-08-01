@@ -186,3 +186,9 @@ def completeOrder(request):
         except:
             return HttpResponse("",status=500)
 
+def recieveMessage(request):
+    if request.method == 'POST':
+        newmessage =  MessageTable(contact = request.POST["contact"], email = request.POST["email"], 
+        phone = request.POST["phone"],subject = request.POST["title"],message = request.POST["message"])
+        newmessage.save()
+        return HttpResponse("Success")
