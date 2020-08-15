@@ -1,0 +1,46 @@
+.bg-green {
+    background: #82ae46 !important;
+}
+
+.py-1 {
+    padding-bottom: 0.25rem !important;
+}
+
+.toptext .text {
+    width: calc(100% - 30px);
+    color: white;
+}
+
+.co-navbar-light {
+    background: transparent !important;
+    z-index: 3;
+    padding: 0;
+}
+
+.co-navbar-light .navbar-brand {
+    color: #82ae46;
+}
+
+.co-navbar-light .navbar-nav > .nav-item.active > a {
+    color: #000000;
+}
+
+.co-navbar-light .navbar-nav > .nav-item > .nav-link {
+    font-size: 11px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 400;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 1 !important;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
