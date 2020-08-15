@@ -38,6 +38,16 @@
     opacity: 1 !important;
 }
 
+.slider-text h1 {
+    font-size: 8vw;
+    color: #fff;
+    line-height: 1.3;
+    font-weight: 400;
+    font-family: "Amatic SC", cursive;
+    position: absolute;
+    z-index: 10;
+}
+
 .navbar-brand {
     font-weight: 800;
     font-size: 20px;
