@@ -246,6 +246,7 @@ a {
 .product {
     display: block;
     width: 100%;
+    height:320px;
     margin-bottom: 30px;
     position: relative;
     -moz-transition: all 0.3s ease;
@@ -278,6 +279,36 @@ a {
 .img-fluid {
     max-width: 100%;
     height: auto;
+    padding-top: 2vh;
+    margin-bottom: -1vh;
+}
+
+.product:hover .img-prod .wishlist{
+    visibility: visible;
+}
+
+.wishlist:hover .fa-heart{
+   visibility: visible !important;
+}
+
+.wishlist:hover .fa-heart-o{
+   visibility: hidden;
+}
+
+.wishlist{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0px 10px;
+    color:#82ae46;    
+    font-size: 20px;
+    visibility: hidden;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    z-index: 10;
 }
 
 .product .img-prod span.status {
@@ -288,7 +319,7 @@ a {
     color: #fff;
     font-weight: 300;
     background: #82ae46;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .product:hover {
@@ -298,14 +329,22 @@ a {
 }
 
 .product .text h3 {
-    font-size: 14px;
+    font-size: 17px;
     margin-bottom: 5px;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: "Poppins", Arial, sans-serif;
+    -moz-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    -webkit-transition: all 0s ease;
+    -ms-transition: all s ease;
+    transition: all 0s ease;
 }
 
+.product:hover .text h3 {
+    font-size: 15px;
+}
 .product .img-prod .overlay {
     position: absolute;
     top: 0;
@@ -335,6 +374,10 @@ a {
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
+}
+
+.product:hover .text .pricing .price-dc {
+    visibility: hidden;
 }
 
 .product .text p.price {
@@ -375,4 +418,11 @@ a {
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+.product .text .bottom-area a {
+    color: #fff;
+    width: 100%;
+    background: #82ae46;    
+    margin-right: 7vh !important;
 }
