@@ -243,6 +243,14 @@ a {
     color: #82ae46;
 }
 
+.heading-section h2 {
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
 .product {
     display: block;
     width: 100%;
@@ -425,4 +433,42 @@ a {
     width: 100%;
     background: #82ae46;    
     margin-right: 7vh !important;
+}
+
+.deal-of-the-day h3 {
+    font-size: 30px;
+    font-family: "Lora", Georgia, serif;
+    font-style: italic;
+}
+
+.deal-of-the-day h3 a {
+    color: #82ae46;
+}
+
+.deal-of-the-day .price {
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#timer {
+    width: 80%;
+}
+
+#timer .time:first-child{
+    border-left: transparent;
+}
+#timer .time{
+    width:25%;
+    font-size:40px;
+    font-weight:500;
+    border-left:1px solid rgba(0, 0, 0, 0.5);
+    color: #82ae46;
+}
+
+#timer .time span {
+    font-size: 12px;
+    display: block;
+    color: #000000;
+    text-transform: uppercase; 
 }
