@@ -534,10 +534,6 @@ a {
     transition: all 0.3s ease;
 }
 
-.owl-carousel .owl-dots {
-    text-align: center;
-}
-
 .testimony-section .owl-dots {
     text-align: center;
 }
@@ -556,12 +552,5 @@ a {
     margin: 5px;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.2);
-}
-.owl-carousel .owl-dots .owl-dot {
-    width: 10px;
-    height: 10px;
-    margin: 5px;
-    border-radius: 50%;
-    background: #e6e6e6;
     position: relative;
 }
