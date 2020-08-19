@@ -472,3 +472,96 @@ a {
     color: #000000;
     text-transform: uppercase; 
 }
+
+.testimony-section {
+    position: relative;
+}
+
+.testimony-section .owl-nav {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}
+
+.testimony-section .owl-nav .owl-prev {
+    left: 50%;
+    margin-left: -80px;
+}
+
+.testimony-section .owl-nav .owl-next {
+    right: 50%;
+    margin-right: -80px;
+}
+
+.testimony-section .owl-nav:hover{
+    opacity: 1;
+}
+
+.testimony-section .owl-nav{
+    opacity: 0;
+}
+
+.testimony-section .owl-nav .owl-prev, .testimony-section .owl-nav .owl-next {
+    position: absolute;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-top: -19px;
+    outline: none !important;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.testimony-section .owl-nav .owl-prev span:hover, .testimony-section .owl-nav .owl-next span:hover{         
+    color: black;
+}
+
+.testimony-section .owl-nav .owl-prev span, .testimony-section .owl-nav .owl-next span{        
+    font-size: 60px;
+    font-weight: 300;
+    color: grey;
+}
+
+.testimony-section .owl-nav .owl-prev span:before, .testimony-section .owl-nav .owl-next span:before {
+    color: rgba(0, 0, 0, 0.2);
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.owl-carousel .owl-dots {
+    text-align: center;
+}
+
+.testimony-section .owl-dots {
+    text-align: center;
+}
+
+.owl-carousel .owl-dots .owl-dot {
+    background: #b3b3b3;
+}
+
+.testimony-section .owl-dots .owl-dot.active {
+    background: #82ae46;
+}
+
+.testimony-section .owl-dots .owl-dot {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+}
+.owl-carousel .owl-dots .owl-dot {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    background: #e6e6e6;
+    position: relative;
+}
