@@ -21,10 +21,7 @@ a {
     z-index: 10;
 }
 
-.co-section{
-    padding: 6em 0;
-    position: relative;
-}
+
 
 .no-gutters {
     margin-right: 0;
@@ -154,9 +151,6 @@ a {
     }
 }
 
-.co-no-pt {
-    padding-top: 0 !important;
-}
 
 .align-items-stretch {
     -webkit-box-align: stretch !important;
@@ -553,4 +547,29 @@ a {
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.2);
     position: relative;
+}
+
+.testimony-wrap {
+    display: block;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.testimony-wrap .line {
+    position: relative;
+    border-left: 1px solid #e6e6e6;
+}
+
+.testimony-wrap .line:after {
+    position: absolute;
+    top: 50%;
+    left: -2px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    content: '';
+    width: 3px;
+    height: 30px;
+    background: #82ae46;
 }
