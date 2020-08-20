@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!--<script src="{% static 'js/jquery.js' %}"></script>-->    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
         <title>VegeFoods</title>
     </head>
     <body>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light co-navbar-light" id="ftco-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light co-navbar-light" id="co-navbar">
             <div class="container">
                 <a class="navbar-brand" href="index.html">Vegefoods</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,8 +54,8 @@
                         <li class = "nav-item dropdown">
                             <a class="nav-link dropdown-toggle"  href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="shop.html">Shop</a>
-                                <a class="dropdown-item" href="wishlist.html">Wishlist</a>
+                                <a class="dropdown-item" href="{% url 'shop' %}">Shop</a>
+                                <a class="dropdown-item" href="{% url 'wishlist' %}">Wishlist</a>
                                 <a class="dropdown-item" href="cart.html">Cart</a>
                                 <a class="dropdown-item" href="checkout.html">Checkout</a>
                             </div>
@@ -101,7 +101,7 @@
             <div class = "container">
                 <div class = "row">
                     <div class = "mouse">
-                        <a href="#" class="mouse-icon">
+                        <a href="#co-navbar" class="mouse-icon">
                             <div class="mouse-wheel">
                                <i class="fa fa-angle-up" style="color:white" aria-hidden="true"></i>
                             </div>
@@ -137,10 +137,10 @@
                             <h2 class="co-heading-2">Menu</h2>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="#" class="py-2 d-block">Home</a>
+                                    <a href="{% url 'index' %}" class="py-2 d-block">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="py-2 d-block">Shop</a>
+                                    <a href="{% url 'shop'%}" class="py-2 d-block">Shop</a>
                                 </li>
                                 <li>
                                     <a href="#" class="py-2 d-block">About</a>
@@ -181,5 +181,6 @@
         </footer>
     </body>
     <script src="{% static 'js/index.js' %}"></script>
-     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/shop.js' %}"></script>
 </html>
