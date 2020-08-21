@@ -9,3 +9,6 @@ def shop(request):
 
 def wishlist(request):
     return render(request,'orderitems/wishlist.html')
+
+def cart(request):
+    return render(request,'orderitems/cart.html')
