@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/shop.css' %}">
     <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
     <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
@@ -42,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light co-navbar-light" id="co-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light co-navbar-light navbar-fixed-top" id="co-navbar">
             <div class="container">
                 <a class="navbar-brand" href="index.html">Vegefoods</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +60,7 @@
                                 <a class="dropdown-item" href="{% url 'shop' %}">Shop</a>
                                 <a class="dropdown-item" href="{% url 'wishlist' %}">Wishlist</a>
                                 <a class="dropdown-item" href="{% url 'cart' %}">Cart</a>
-                                <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                <a class="dropdown-item" href="{% url 'checkout' %}">Checkout</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -182,7 +183,8 @@
             </div>
         </footer>
     </body>
-    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>    
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/shop.js' %}"></script>
 </html>
