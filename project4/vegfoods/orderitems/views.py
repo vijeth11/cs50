@@ -3,7 +3,7 @@ from .models import *
 # Create your views here.
 def index(request):
     featured  =  items.objects.filter(offer__gt = 0).all()
-    return render(request,'orderitems/index.html')
+    return render(request,'orderitems/index.html',{'featured':featured})
 
 def shop(request):
     return render(request,'orderitems/shop.html')

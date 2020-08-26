@@ -17,4 +17,8 @@ class items(models.Model):
     offer = models.IntegerField()
     image = models.ImageField(upload_to = "items",blank=True)
     dealOfTheDay = models.BooleanField()
+    description  = models.CharField(max_length=1000,default="")
 
+    def saleprice(self):
+        if self.offer > 0:
+            return self.price - (self.price * (self.offer / 100))
