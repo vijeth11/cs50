@@ -6,7 +6,8 @@ def index(request):
     return render(request,'orderitems/index.html',{'featured':featured})
 
 def shop(request):
-    return render(request,'orderitems/shop.html')
+    fooditems = items.objects.all()
+    return render(request,'orderitems/shop.html',{'fooditems':fooditems})
 
 def wishlist(request):
     return render(request,'orderitems/wishlist.html')
