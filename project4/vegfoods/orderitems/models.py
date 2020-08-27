@@ -22,3 +22,8 @@ class items(models.Model):
     def saleprice(self):
         if self.offer > 0:
             return self.price - (self.price * (self.offer / 100))
+
+    def ItemTypeName(self):
+        for item in ItemTypes:
+            if item[0] == self.typeOf:
+                return item[1].replace(" ","")

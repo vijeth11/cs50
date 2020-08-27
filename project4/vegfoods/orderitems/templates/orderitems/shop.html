@@ -15,17 +15,17 @@
         <div class = "row justify-content-center">
             <div class = "col-md-10 mb-5 text-center">
                 <ul class="product-category">
-                    <li><a href="!#" class="active">All</a></li>
-                    <li><a href="!#">Vegetables</a></li>
-                    <li><a href="!#">Fruits</a></li>
-                    <li><a href="!#">Juice</a></li>
-                    <li><a href="!#">Dried</a></li>
+                    <li><a href="!#" onclick = "itemsFilter(event,'All')" class="active">All</a></li>
+                    <li><a href="!#" onclick = "itemsFilter(event,'Vegetables')" >Vegetables</a></li>
+                    <li><a href="!#" onclick = "itemsFilter(event,'Fruits')" >Fruits</a></li>
+                    <li><a href="!#" onclick = "itemsFilter(event,'Juice')" >Juice</a></li>
+                    <li><a href="!#" onclick = "itemsFilter(event,'DriedFruits')" >Dried</a></li>
                 </ul>
             </div>
         </div>
         <div class="row">
             {% for item in fooditems %} 
-                <div class="col-md-6 col-lg-3 fadeInUp co-animated">
+                <div class="col-md-6 col-lg-3 fadeInUp co-animated shopItems {{item.ItemTypeName}}">
                     <div class="product">
                         <a href="#" class="img-prod">
                             <img class="img-fluid" src="{{ item.image.url }}" alt="Colorlib Template">
