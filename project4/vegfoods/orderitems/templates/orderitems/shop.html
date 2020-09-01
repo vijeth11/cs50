@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block base %}
 {% load static %}
+{% csrf_token %}
 <div class="hero-wrap hero-bread" style="background-image: url('{% static 'media/bg_1.jpg' %}');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -51,7 +52,7 @@
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">                                    
                                     <a href="#" class="btn btn-primary d-flex justify-content-center align-items-center mx-1">
-                                        <span onclick="addOrRemoveItemToCart(event,'{{item.name}}','Add')">Add <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                        <span onclick="addOrRemoveItemToCart(event,'{{item.name}}','Add',1)">Add <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                                     </a>                                   
                                 </div>
                             </div>

@@ -4,3 +4,4 @@ from .models import *
 
 
 admin.site.register(items)
+admin.site.register(coupon)

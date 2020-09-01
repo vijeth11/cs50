@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block base %}
+{% load mathfilters %}
 {% load static %}
 <div class="hero-wrap hero-bread" style="background-image: url('{% static 'media/bg_1.jpg' %}');">
     <div class="container">
@@ -28,26 +29,26 @@
                         </thead>
                         <tbody>
                         {% for item in cartitems %} 
-                            <tr class = "text-center" id = "{{item.id}}">
+                            <tr class = "text-center" id = "{{item.item.id}}">
                                 <td class = "product-remove">
-                                    <a href="#" onclick ="addOrRemoveItemToCart(event,'{{item.name}}','Remove')">
+                                    <a href="#" onclick ="addOrRemoveItemToCart(event,'{{item.item.name}}','Remove',Number(document.getElementById('quantity_{{item.item.id}}').value))">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </a>
                                 </td>
                                 <td class="image-prod">
-                                    <div class="img" style="background-image:url({{item.image.url}});"></div>
+                                    <div class="img" style="background-image:url({{item.item.image.url}});"></div>
                                 </td>
                                 <td class="product-name">
-                                    <h3>{{item.name}}</h3>
-                                    <p>{{item.description}}</p>
+                                    <h3>{{item.item.name}}</h3>
+                                    <p>{{item.item.description}}</p>
                                 </td>
-                                <td class="price">${{item.price}}</td>
+                                <td class="price">${{item.item.price}}</td>
                                 <td class="quantity">
                                     <div class="input-group mb-3">
-                                        <input onchange="quantityChanged(event,{{item.id}},{{item.price}})"type="text" name="quantity" class="quantity form-control input-number text-center" value="1" min="1" max="100">
+                                        <input id="quantity_{{item.item.id}}" onchange="quantityChanged(event,{{item.item.id}},'{{item.item.name}}',{{item.item.price}})"type="text" name="quantity" class="quantity form-control input-number text-center" value="{{item.quantity}}" min="1" max="100">
                                     </div>
                                 </td>
-                                <td class="total">${{item.price}}</td>
+                                <td class="total">${{item.totalcost}}</td>
                             </tr>
                         {% endfor %}
                              <!--<tr class = "text-center">
@@ -84,31 +85,31 @@
                     <form action="#" class="info">
                         <div class="form-group">
                             <label for="">Coupon code</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
+                            <input id="CouponCode" type="text"  class="form-control text-left px-3" placeholder="">
                         </div>
                     </form>
                 </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+                <p><a href="!#" onclick="validateEnteredCoupon(event)"class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
             </div>
             <div class="col-lg-4 mt-5 cart-wrap fadeInUp co-animated">
                 <div class="cart-total mb-3">
                     <h3>Cart Totals</h3>
                     <p class="d-flex">
                         <span>Subtotal</span>
-                        <span>$20.60</span>
+                        <span id="Subtotal">${{subtotal}}</span>
                     </p>
                     <p class="d-flex">
                         <span>Delivery</span>
-                        <span>$0.00</span>
+                        <span id="Delivery">${{delivery}}</span>
                     </p>
                     <p class="d-flex">
                         <span>Discount</span>
-                        <span>$3.00</span>
+                        <span id="Discount">${{discount}}</span>
                     </p>
                     <hr>
                     <p class="d-flex total-price">
                         <span>Total</span>
-                        <span>$17.60</span>
+                        <span id="Finaltotal">${{subtotal|add:10}}</span>
                     </p>
                 </div>
                 <p>

@@ -27,3 +27,12 @@ class items(models.Model):
         for item in ItemTypes:
             if item[0] == self.typeOf:
                 return item[1].replace(" ","")
+
+
+class coupon(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=100)
+    discountpercent = models.IntegerField(default=0)
+    discountamount = models.FloatField(default=0.0)
+    createdDate = models.DateField(default=timezone.datetime.now())
+    endDate = models.DateField()

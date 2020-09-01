@@ -9,5 +9,6 @@ urlpatterns = [
     path('shop/',views.shop,name = "shop"),
     path('wishlist/',views.wishlist,name = "wishlist"),
     path('cart/',views.cart,name = 'cart'),
-    path('checkout/',views.checkout, name = 'checkout')
+    path('checkout/',views.checkout, name = 'checkout'),
+    path('coupon/<str:code>',views.applycouponcode,name = 'coupon')
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

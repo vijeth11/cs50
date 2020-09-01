@@ -9,11 +9,12 @@ function scrollFunction()
       }
 }
 
-function addOrRemoveItemToCart(event,itemName,action){
+function addOrRemoveItemToCart(event,itemName,action,quantity){
   event.preventDefault()
   var formData = new FormData();
   formData.append('itemname',itemName);
   formData.append('action',action);
+  formData.append('quantity',quantity);
   axios({
       headers: { "X-CSRFToken": Cookies.get('csrftoken')},
       method: 'post',
