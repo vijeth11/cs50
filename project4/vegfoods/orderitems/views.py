@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import redirect, render,HttpResponse
 from django.http import JsonResponse
 from django.core import serializers
 from .models import *
@@ -47,7 +47,13 @@ def cart(request):
 
 def checkout(request):
     if request.method == 'POST':
-        return  HttpResponse("success",status=200)
+        newOrder = orderPlaced(firstName = request.POST["firstname"],lastName = request.POST["lastname"],houseAddress = request.POST["housenumber"],appartmentNumber = request.POST["appartmentnumber"]
+        ,town = request.POST["Town"], zipcode = request.POST["Zip"], phone = request.POST["phone"],email = request.POST["email"],paymentType = request.POST["paymenttype"])
+        newOrder.save()
+        if request.POST["accountcreate"] == True:
+            #need to create account
+            i=1
+        return HttpResponse("success",200)
     else:
         cartItems = request.session.get('cartItems')
         subtotal= 0
@@ -57,9 +63,11 @@ def checkout(request):
             for item in cartItems:
                 for obj in serializers.deserialize('json',item["item"]):
                     subtotal += int(item["quantity"]) * obj.object.price
-        if request.session.get('discountamount') > 0:
+        if subtotal == 0:
+            return redirect('shop')
+        if request.session.get('discountamount') is not None and request.session.get('discountamount') > 0:
             discount = request.session.get('discountamount')
-        elif request.session.get('discountpercent') > 0:
+        elif request.session.get('discountpercent') is not None and request.session.get('discountpercent') > 0:
             discount = subtotal - (subtotal * (request.session.get('discountpercent') / 100))
         return render(request,'orderitems/checkout.html',{"subtotal":subtotal,'delivery':delivery,'discount':discount})
 

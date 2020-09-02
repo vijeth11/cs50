@@ -1,3 +1,7 @@
 .billing-heading {
     font-size: 24px;
 }
+
+.has-error{
+    border: 1px solid red;
+}

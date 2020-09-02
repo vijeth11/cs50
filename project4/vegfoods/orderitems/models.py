@@ -36,3 +36,22 @@ class coupon(models.Model):
     discountamount = models.FloatField(default=0.0)
     createdDate = models.DateField(default=timezone.datetime.now())
     endDate = models.DateField()
+
+class orderPlaced(models.Model):
+    firstName = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
+    houseAddress = models.CharField(max_length=100)
+    appartmentNumber = models.CharField(max_length=100)
+    town = models.CharField(max_length=100)
+    zipcode = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    paymentType = models.CharField(max_length=100)
+    subTotal = models.FloatField(default=0.0)
+    discount = models.FloatField(default=0.0)
+    totalPrice = models.FloatField(default=0.0)
+class cartItems(models.Model):
+    itemId = models.IntegerField()
+    quantitty = models.IntegerField()
+    totalPrice = models.FloatField()
+    order = models.ForeignKey(orderPlaced,on_delete=models.CASCADE,related_name='items')
