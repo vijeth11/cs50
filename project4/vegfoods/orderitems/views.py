@@ -8,6 +8,10 @@ def index(request):
     featured  =  items.objects.filter(offer__gt = 0).all()
     return render(request,'orderitems/index.html',{'featured':featured})
 
+def selecteditem(request,itemId):
+    item = items.objects.filter(id = itemId).first()
+    return render(request,'orderitems\singleProduct.html',{'item':item})
+    
 def shop(request):
     if not request.session.get('cartItems'):
         request.session['cartItems'] = []
@@ -47,9 +51,30 @@ def cart(request):
 
 def checkout(request):
     if request.method == 'POST':
+        subtotal = 0
+        delivery = 10
         newOrder = orderPlaced(firstName = request.POST["firstname"],lastName = request.POST["lastname"],houseAddress = request.POST["housenumber"],appartmentNumber = request.POST["appartmentnumber"]
         ,town = request.POST["Town"], zipcode = request.POST["Zip"], phone = request.POST["phone"],email = request.POST["email"],paymentType = request.POST["paymenttype"])
         newOrder.save()
+        cartItems = request.session.get('cartItems') 
+        if cartItems is not None:
+            for item in cartItems:
+                for obj in serializers.deserialize('json',item["item"]):
+                    totalPrice = int(item["quantity"]) * obj.object.price
+                    subtotal += totalPrice
+                    orderItem = orderItems(itemId = obj.object.id, quantity = int(item["quantity"]), totalPrice = totalPrice, order = newOrder)
+                    orderItem.save()
+        if request.session.get('discountamount') is not None and request.session.get('discountamount') > 0:
+            newOrder.discount = request.session.get('discountamount')
+        elif request.session.get('discountpercent') is not None and request.session.get('discountpercent') > 0:
+            newOrder.discount = subtotal - (subtotal * (request.session.get('discountpercent') / 100))       
+        else:
+            newOrder.discount = 0
+        newOrder.save()     
+        newOrder.subTotal = subtotal
+        newOrder.save()
+        newOrder.totalPrice = newOrder.subTotal - newOrder.discount + delivery
+        request.session.flush()
         if request.POST["accountcreate"] == True:
             #need to create account
             i=1

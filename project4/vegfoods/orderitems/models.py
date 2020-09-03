@@ -50,8 +50,9 @@ class orderPlaced(models.Model):
     subTotal = models.FloatField(default=0.0)
     discount = models.FloatField(default=0.0)
     totalPrice = models.FloatField(default=0.0)
-class cartItems(models.Model):
+
+class orderItems(models.Model):
     itemId = models.IntegerField()
-    quantitty = models.IntegerField()
+    quantity = models.IntegerField()
     totalPrice = models.FloatField()
     order = models.ForeignKey(orderPlaced,on_delete=models.CASCADE,related_name='items')
