@@ -5,3 +5,7 @@
 .has-error{
     border: 1px solid red;
 }
+
+textarea{
+    height: 10vh !important;
+}

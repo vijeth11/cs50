@@ -10,7 +10,8 @@ def index(request):
 
 def selecteditem(request,itemId):
     item = items.objects.filter(id = itemId).first()
-    return render(request,'orderitems\singleProduct.html',{'item':item})
+    relatedItems = items.objects.filter(typeOf = item.typeOf).all()[0:4]
+    return render(request,'orderitems\singleProduct.html',{'selecteditem':item,'fooditems':relatedItems})
     
 def shop(request):
     if not request.session.get('cartItems'):
