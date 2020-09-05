@@ -48,7 +48,10 @@ def cart(request):
                     totalPrice = int(item["quantity"]) * obj.object.price
                     subtotal += totalPrice
                     data.append({"item":obj.object,"quantity":item["quantity"],"totalcost":totalPrice})     
-        return render(request,'orderitems/cart.html',{'cartitems':data,'subtotal':subtotal,'delivery':delivery,'discount':discount})
+        if len(data) > 0:
+            return render(request,'orderitems/cart.html',{'cartitems':data,'subtotal':subtotal,'delivery':delivery,'discount':discount})
+        else:
+            return redirect('shop')
 
 def checkout(request):
     if request.method == 'POST':
