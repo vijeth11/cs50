@@ -36,7 +36,7 @@
 .btn.btn-black {
     background: #000000;
     border: 1px solid #000000;
-    color: #fff;
+    color: #fff !important;
     border-radius: 50px;
 }
 

@@ -9,9 +9,12 @@ def index(request):
     return render(request,'orderitems/index.html',{'featured':featured})
 
 def selecteditem(request,itemId):
+    if not request.session.get('cartItems'):
+        request.session['cartItems'] = []
+        request.session.set_expiry(0)
     item = items.objects.filter(id = itemId).first()
     relatedItems = items.objects.filter(typeOf = item.typeOf).all()[0:4]
-    return render(request,'orderitems\singleProduct.html',{'selecteditem':item,'fooditems':relatedItems})
+    return render(request,'orderitems/singleProduct.html',{'selecteditem':item,'fooditems':relatedItems})
     
 def shop(request):
     if not request.session.get('cartItems'):
