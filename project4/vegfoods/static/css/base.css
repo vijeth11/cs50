@@ -500,3 +500,9 @@ table .thead-primary {
     align-items: stretch;
     width: 100%;
 }
+
+.loginlink {
+    font-size: 11px;
+    text-transform: none;
+    color: darkgreen;
+}

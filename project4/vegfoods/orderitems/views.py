@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render,HttpResponse
 from django.http import JsonResponse
 from django.core import serializers
 from .models import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib import auth
 # Create your views here.
 
 def index(request):
@@ -9,7 +12,27 @@ def index(request):
     return render(request,'orderitems/index.html',{'featured':featured})
 
 def loginandregister(request):
-    return render(request,'orderitems/login_signup.html')
+    if request.method == 'POST':
+        if request.POST['action'] == 'login':
+            user = auth.authenticate(username = request.POST['email'],password = request.POST['password'])
+            if user is not None:
+                auth.login(request,user)
+                return redirect('wishlist')
+            else:
+                return HttpResponse('username or password is incorrect.',status = 400)
+        else:
+            if request.POST['password'] == request.POST['passwordConfirm']:
+                try:
+                    user = User.objects.get(username = request.POST['email'])
+                    return HttpResponse('Username has already been taken',status = 400)
+                except User.DoesNotExist:
+                    user = User.objects.create_user(request.POST['email'],password = request.POST['password'])
+                    auth.login(request,user)
+                    return redirect('wishlist')
+            else:
+                return HttpResponse("error password does not match",status = 400)
+    else:
+        return render(request,'orderitems/login_signup.html')
 
 def selecteditem(request,itemId):
     if not request.session.get('cartItems'):
@@ -26,6 +49,7 @@ def shop(request):
     fooditems = items.objects.all()
     return render(request,'orderitems/shop.html',{'fooditems':fooditems})
 
+@login_required(login_url='/loginandregister/')
 def wishlist(request):
     return render(request,'orderitems/wishlist.html')
 
