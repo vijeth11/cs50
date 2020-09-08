@@ -8,6 +8,9 @@ def index(request):
     featured  =  items.objects.filter(offer__gt = 0).all()
     return render(request,'orderitems/index.html',{'featured':featured})
 
+def loginandregister(request):
+    return render(request,'orderitems/login_signup.html')
+
 def selecteditem(request,itemId):
     if not request.session.get('cartItems'):
         request.session['cartItems'] = []
