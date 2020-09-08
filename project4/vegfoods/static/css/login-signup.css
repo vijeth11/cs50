@@ -2,3 +2,19 @@
     font-size: 24px;
     text-align: center;
 }
+
+.login-form p {
+    text-align: center;
+}
+
+.login-form p a {
+    width: 50%;
+}
+
+.register-form p {
+    text-align: center;
+}
+
+.register-form p a {
+    width: 50%;
+}
