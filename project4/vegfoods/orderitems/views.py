@@ -34,6 +34,12 @@ def loginandregister(request):
     else:
         return render(request,'orderitems/login_signup.html')
 
+@login_required()
+def signout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('index')
+
 def selecteditem(request,itemId):
     if not request.session.get('cartItems'):
         request.session['cartItems'] = []
@@ -51,7 +57,11 @@ def shop(request):
 
 @login_required(login_url='/loginandregister/')
 def wishlist(request):
-    return render(request,'orderitems/wishlist.html')
+    if request.method == 'POST':
+        wishlistitem = wishlist(itemId = request.POST['itemId'],user = request.user)
+        wishlistitem.save()
+    else:
+        return render(request,'orderitems/wishlist.html')
 
 def cart(request):
     cartItems = request.session.get('cartItems')  

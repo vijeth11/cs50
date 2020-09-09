@@ -506,3 +506,9 @@ table .thead-primary {
     text-transform: none;
     color: darkgreen;
 }
+
+.logoutlink {
+    font-size: 11px;
+    text-transform: none;
+    color: red;
+}

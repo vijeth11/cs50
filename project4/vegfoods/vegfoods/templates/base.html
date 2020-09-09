@@ -80,7 +80,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'loginandregister' %}" class="nav-link loginlink">SignIn/SignUp</a>
+                            {% if user.is_authenticated %}
+                                <a href="!#" onclick="signout(event)" class="nav-link logoutlink">Logout</a>                                
+                            {% else %}
+                                 <a href="{% url 'loginandregister' %}" class="nav-link loginlink">SignIn/SignUp</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>

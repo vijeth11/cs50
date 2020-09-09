@@ -56,3 +56,7 @@ class orderItems(models.Model):
     quantity = models.IntegerField()
     totalPrice = models.FloatField()
     order = models.ForeignKey(orderPlaced,on_delete=models.CASCADE,related_name='items')
+
+class wishlist(models.Model):
+    itemId = models.IntegerField()
+    user = models.ForeignKey(User, on_delete = models.CASCADE)

@@ -31,3 +31,18 @@ function addOrRemoveItemToCart(event,itemName,action,quantity){
       console.log(err);
   })
 }
+
+function signout(event){
+event.preventDefault();
+axios({
+  headers: { "X-CSRFToken": Cookies.get('csrftoken')},
+  method: 'post',
+  url:'/signout/'
+})
+.then(data => {
+  location.href = "/";
+})
+.catch(err => {
+  console.log(err);
+})
+}
