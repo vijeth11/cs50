@@ -58,10 +58,23 @@ def shop(request):
 @login_required(login_url='/loginandregister/')
 def wishlist(request):
     if request.method == 'POST':
-        wishlistitem = wishlist(itemId = request.POST['itemId'],user = request.user)
-        wishlistitem.save()
+        wishlistitem = userwishlist.objects.filter(itemId = request.POST['itemId']).first()
+        if request.POST['action'] == 'add':
+            if wishlistitem is None:
+                wishlistitem = userwishlist(itemId = request.POST['itemId'],user = request.user)
+                wishlistitem.save()
+            return HttpResponse('success',200)
+        elif request.POST['action'] == 'remove':
+            if wishlistitem is not None:
+                wishlistitem.delete()
+                return HttpResponse('success',200)
+            return HttpResponse('failure',500)
     else:
-        return render(request,'orderitems/wishlist.html')
+        wishlistitems = userwishlist.objects.filter(user = request.user).all()
+        data = []
+        for wishlistitem in wishlistitems:
+            data.append(items.objects.filter(id = wishlistitem.itemId).first())
+        return render(request,'orderitems/wishlist.html',{'wishlistitems':data})
 
 def cart(request):
     cartItems = request.session.get('cartItems')  

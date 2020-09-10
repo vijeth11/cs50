@@ -46,3 +46,25 @@ axios({
   console.log(err);
 })
 }
+
+function addOrRemoveToWishlist(event,id,action){
+  event.preventDefault();
+  var formdata = new FormData()
+  formdata.append('itemId',id)
+  formdata.append('action',action)
+  axios({
+      headers: { "X-CSRFToken": Cookies.get('csrftoken')},
+      method: 'post',
+      url:'/wishlist/',
+      data: formdata
+  })
+  .then(data => {
+      console.log(data);    
+      if(action == "remove"){
+        location.reload();
+      }       
+  })
+  .catch(err => {
+      console.log(err);
+  })
+}

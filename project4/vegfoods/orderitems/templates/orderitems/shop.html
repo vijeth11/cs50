@@ -32,13 +32,13 @@
                             <img class="img-fluid" src="{{ item.image.url }}" alt="Colorlib Template">
                             {% if item.offer > 0 %}
                             <span class="status">{{item.offer}}% OFF</span>
-                            {% endif %}                            
-                            <span class="wishlist">
-                                <i class="fa fa-heart" aria-hidden="true" style="visibility:hidden;position: absolute;padding-top: 5px;"></i>
-                                <i class="fa fa-heart-o" aria-hidden="true" ></i>
-                            </span>
+                            {% endif %}
                             <div class="overlay"></div>
                         </a>
+                        <span class="wishlist" onclick="addOrRemoveToWishlist(event,{{item.id}},'add')">
+                                <i class="fa fa-heart" aria-hidden="true" style="visibility:hidden;position: absolute;padding-top: 5px;"></i>
+                                <i class="fa fa-heart-o" aria-hidden="true" ></i>
+                        </span>
                         <div class="text py-3 pb-4 px-3 text-center">
                             <h3><a href="#">{{item.name}}</a></h3>
                             <div class="d-flex">

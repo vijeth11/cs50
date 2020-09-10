@@ -239,7 +239,7 @@ a {
     margin-bottom: -1vh;
 }
 
-.product:hover .img-prod .wishlist{
+.product:hover .wishlist{
     visibility: visible;
 }
 

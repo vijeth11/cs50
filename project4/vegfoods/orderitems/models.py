@@ -22,6 +22,8 @@ class items(models.Model):
     def saleprice(self):
         if self.offer > 0:
             return self.price - (self.price * (self.offer / 100))
+        else:
+            return self.price
 
     def ItemTypeName(self):
         for item in ItemTypes:
@@ -57,6 +59,6 @@ class orderItems(models.Model):
     totalPrice = models.FloatField()
     order = models.ForeignKey(orderPlaced,on_delete=models.CASCADE,related_name='items')
 
-class wishlist(models.Model):
+class userwishlist(models.Model):
     itemId = models.IntegerField()
     user = models.ForeignKey(User, on_delete = models.CASCADE)
