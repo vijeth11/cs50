@@ -1,3 +1,5 @@
+from django.db.models.deletion import CASCADE
+from django.template.defaultfilters import length
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
@@ -62,3 +64,14 @@ class orderItems(models.Model):
 class userwishlist(models.Model):
     itemId = models.IntegerField()
     user = models.ForeignKey(User, on_delete = models.CASCADE)
+
+class usercomments(models.Model):
+    comment = models.CharField(max_length = 1000)
+    user = models.ForeignKey(User, on_delete = CASCADE)
+
+class userMessage(models.Model):
+    name = models.CharField(max_length = 100)
+    email = models.CharField(max_length = 100)
+    subject = models.CharField(max_length = 100)
+    message = models.CharField(max_length = 1000)
+    

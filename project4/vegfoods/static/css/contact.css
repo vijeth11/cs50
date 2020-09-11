@@ -1,0 +1,15 @@
+.contact-section .info {
+    width: 100%;
+}
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.contact-section .contact-form {
+    width: 100%;
+}
+
+#map {
+    height: 100%;
+  }

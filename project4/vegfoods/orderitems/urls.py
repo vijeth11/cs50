@@ -14,5 +14,6 @@ urlpatterns = [
     path('shopitem/<int:itemId>',views.selecteditem,name = 'shopitem'),
     path('loginandregister/',views.loginandregister,name = 'loginandregister'),
     path('signout/',views.signout,name = 'signout'),
-    path('about/',views.about,name = 'about')
+    path('about/',views.about,name = 'about'),
+    path('contact/',views.contact,name = 'contact')
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

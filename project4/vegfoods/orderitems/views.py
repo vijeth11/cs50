@@ -132,6 +132,9 @@ def checkout(request):
         newOrder.save()
         newOrder.totalPrice = newOrder.subTotal - newOrder.discount + delivery
         request.session.flush()
+        if request.POST["comments"] is not None:
+            comment = usercomments(comment = request.POST["comments"],user  = request.user)
+            comment.save()
         if request.POST["accountcreate"] == True:
             #need to create account
             i=1
@@ -167,3 +170,11 @@ def applycouponcode(request,code):
 
 def about(request):
     return render(request,'orderitems/about.html')
+
+def contact(request):
+    if request.method == 'POST':
+        message = userMessage(name = request.POST['name'],email = request.POST['email'],subject = request.POST['subject'],message = request.POST['message'])
+        message.save()
+        return HttpResponse("success",200)
+    else:
+        return render(request,'orderitems/contact.html')
