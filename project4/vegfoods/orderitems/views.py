@@ -163,3 +163,7 @@ def applycouponcode(request,code):
         request.session['discountamount'] = 0
         request.session['discountpercent'] = 0
         return JsonResponse({"discountpercent":0,"discountamount":0},safe=False)
+
+
+def about(request):
+    return render(request,'orderitems/about.html')

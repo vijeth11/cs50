@@ -1,0 +1,11 @@
+.wrap-about .heading-section-bold h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.hero-wrap, .img, .blog-img, .user-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
