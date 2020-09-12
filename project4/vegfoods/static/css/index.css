@@ -234,7 +234,7 @@ a {
 
 .img-fluid {
     max-width: 100%;
-    height: auto;
+    height: 24vh;
     padding-top: 2vh;
     margin-bottom: -1vh;
 }
@@ -336,6 +336,15 @@ a {
     visibility: hidden;
 }
 
+.product:hover .pricing .price-sale.no-offer{
+    padding-left: 3vw !important;
+    padding-right: 0vw;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 .product .text p.price {
     margin-bottom: 0;
     color: #82ae46;
@@ -349,6 +358,12 @@ a {
 
 .product .text p.price span.price-sale {
     color: #82ae46;
+    padding-left: 1vw;
+}
+
+.product .pricing .price-sale.no-offer{
+    padding-left: 0vw !important;
+    padding-right: 1vw;
 }
 
 .product:hover .text .bottom-area {

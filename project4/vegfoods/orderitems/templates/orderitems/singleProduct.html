@@ -84,12 +84,16 @@
                             <div class="overlay"></div>
                         </a>
                         <div class="text py-3 pb-4 px-3 text-center">
-                            <h3><a href="#">{{item.name}}</a></h3>
+                            <h3><a href="{% url 'shopitem' item.id %}">{{item.name}}</a></h3>
                             <div class="d-flex">
                                 <div class="pricing">
                                     <p class="price">
+                                    {% if item.offer > 0 %}
                                         <span class="mr-2 price-dc">${{item.price}}</span>
                                         <span class="price-sale">${{item.saleprice}}</span>
+                                    {% else %}
+                                        <span class="price-sale no-offer">${{item.saleprice}}</span>
+                                    {% endif %}   
                                     </p>
                                 </div>
                             </div>

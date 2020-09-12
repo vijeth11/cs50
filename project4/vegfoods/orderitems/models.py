@@ -16,14 +16,14 @@ class items(models.Model):
     name = models.CharField(max_length=100)
     typeOf = models.CharField(max_length=1,choices=ItemTypes)
     price = models.IntegerField()
-    offer = models.IntegerField()
+    offer = models.IntegerField(default = 0)
     image = models.ImageField(upload_to = "items",blank=True)
     dealOfTheDay = models.BooleanField()
     description  = models.CharField(max_length=1000,default="")
 
     def __str__(self):
         return self.name
-        
+
     def saleprice(self):
         if self.offer > 0:
             return self.price - (self.price * (self.offer / 100))
