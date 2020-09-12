@@ -9,7 +9,8 @@ from django.contrib import auth
 
 def index(request):
     featured  =  items.objects.filter(offer__gt = 0).all()
-    return render(request,'orderitems/index.html',{'featured':featured})
+    comments = usercomments.objects.all()[0:6]
+    return render(request,'orderitems/index.html',{'featured':featured,'comments':comments})
 
 def loginandregister(request):
     if request.method == 'POST':
@@ -169,7 +170,8 @@ def applycouponcode(request,code):
 
 
 def about(request):
-    return render(request,'orderitems/about.html')
+    comments = usercomments.objects.all()
+    return render(request,'orderitems/about.html',{'comments':comments})
 
 def contact(request):
     if request.method == 'POST':

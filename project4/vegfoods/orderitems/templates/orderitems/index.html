@@ -232,14 +232,16 @@
             <div class = "row fadeInUp co-animated">
                 <div class = "col-md-12">
                     <div class = "owl-carousel owl-theme">   
+                    {% for comment in comments %}
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">                                            
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>                                                
+                                    <p class="mb-5 pl-4 line">{{comment.comment}}</p>                                                
                                 </div>
                             </div>
-                        </div>   
-                        <div class="item">
+                        </div> 
+                    {% endfor %}
+                        <!--<div class="item">
                             <div class="testimony-wrap p-4 pb-5">                                            
                                 <div class="text text-center">
                                     <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>                                                
@@ -259,7 +261,7 @@
                                     <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>                                                
                                 </div>
                             </div>
-                        </div>            
+                        </div> -->           
                     </div>
                 </div>
             </div>

@@ -24,8 +24,13 @@
                     </div>
                 </div>
                 <div class="pb-md-5">
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                    <p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+                    <p>Vegefoods.com (Innovative Retail Concepts Private Limited) is America’s largest online grocery store. With over 1,000 products and over a 10 brands in our catalogue you will find everything you are looking for. 
+                    Right from fresh Fruits and Vegetables, Beverages, Drie Fruits – we have it all.Choose from a wide range of options in every category, exclusively handpicked to help you find the best quality available at the lowest prices.
+                    </p>
+                    <p>
+                    Enter the details for delivery and your order will be delivered right to your doorstep, anywhere in America.You can pay online using  Paypal account / direct bank transfer or by bank check on delivery.
+                    We guarantee on time delivery, and the best quality!
+                    </p>
                     <p><a href="{% url 'shop' %}" class="btn btn-primary" >Shop now</a></p>
                 </div>
             </div>
@@ -43,15 +48,17 @@
             </div>
             <div class = "row fadeInUp co-animated">
                 <div class = "col-md-12">
-                    <div class = "owl-carousel owl-theme">   
+                    <div class = "owl-carousel owl-theme">  
+                    {% for comment in comments %} 
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">                                            
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>                                                
+                                    <p class="mb-5 pl-4 line">{{comment.comment}}</p>                                                
                                 </div>
                             </div>
-                        </div>   
-                        <div class="item">
+                        </div>
+                    {% endfor %}   
+                        <!--<div class="item">
                             <div class="testimony-wrap p-4 pb-5">                                            
                                 <div class="text text-center">
                                     <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>                                                
@@ -71,7 +78,7 @@
                                     <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>                                                
                                 </div>
                             </div>
-                        </div>            
+                        </div>-->            
                     </div>
                 </div>
             </div>
