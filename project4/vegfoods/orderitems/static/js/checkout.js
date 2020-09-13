@@ -2,7 +2,6 @@
 function placetheorder(event){
     event.preventDefault();
     var formdata = new FormData(document.getElementById("BillingDetails"));
-    formdata.append("accountcreate",document.getElementById("createaccount").checked);
     formdata.append("paymenttype",document.getElementById("banktransfer").checked ? "bank transfer":document.getElementById("bankcheck").checked ? "bank check" : document.getElementById("paypal").checked ? "paypal": "");
     if(validateBillingDetails()){
         axios({
