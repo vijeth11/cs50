@@ -512,3 +512,39 @@ table .thead-primary {
     text-transform: none;
     color: red;
 }
+
+#snackbar{
+    background-color: #82ae46;
+    color: white;
+    position: fixed;
+    top: 11vh;
+    right: 1vw;
+    padding: 15px;
+    opacity: 0;
+}
+
+#snackbar.show{
+    opacity: 1;
+    -webkit-animation: snackbarfadein 0.5s, snackbarfadeout 0.5s 2.5s;
+    animation:  snackbarfadein 0.5s, snackbarfadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes snackbarfadein {
+    0% {right: -10vw;}
+    100% {right: 1vw;}
+  }
+  
+  @keyframes snackbarfadein {
+    0% {right: -10vw;}
+    100% {right: 1vw;}
+  }
+  
+  @-webkit-keyframes snackbarfadeout {
+    0% {right: 1vw;}
+    100% {right: -10vw;}
+  }
+  
+  @keyframes snackbarfadeout {
+    0% {right: 1vw;}
+    100% {right: -10vw;}
+  }

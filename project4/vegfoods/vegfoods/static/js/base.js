@@ -22,9 +22,16 @@ function addOrRemoveItemToCart(event,itemName,action,quantity){
       data: formData
   })
   .then(data => {
-      console.log(data);
+      console.log(data);      
       if(action == "Remove"){
         location.reload();
+      }else{
+        var snackbar = document.getElementById("snackbar");
+      snackbar.className = "show";
+      document.getElementById("snackbar").getElementsByTagName("span")[0].innerHTML = data.data;
+      setTimeout(function(){
+        snackbar.className = snackbar.className.replace("show","");
+      },3000);
       }
   })
   .catch(err => {
@@ -47,7 +54,7 @@ axios({
 })
 }
 
-function addOrRemoveToWishlist(event,id,action){
+function addOrRemoveToWishlist(event,id,action,actionbasedon = null){
   event.preventDefault();
   var formdata = new FormData()
   formdata.append('itemId',id)
@@ -61,7 +68,25 @@ function addOrRemoveToWishlist(event,id,action){
   .then(data => {
       console.log(data);    
       if(action == "remove"){
-        location.reload();
+        if (actionbasedon && actionbasedon === "addtocart"){
+          setTimeout(function(){
+            location.reload();
+          },4000);        
+        }
+        else{
+          location.reload();
+        }
+      }else{
+        if(Number(data.headers["content-length"]) > 1000){
+          location.href = '/loginandregister/';
+        }else{
+            var snackbar = document.getElementById("snackbar");
+          snackbar.className = "show";
+          document.getElementById("snackbar").getElementsByTagName("span")[0].innerHTML = data.data;
+          setTimeout(function(){
+            snackbar.className = snackbar.className.replace("show","");
+          },3000);
+        }
       }       
   })
   .catch(err => {

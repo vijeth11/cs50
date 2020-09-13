@@ -64,11 +64,11 @@ def wishlist(request):
             if wishlistitem is None:
                 wishlistitem = userwishlist(itemId = request.POST['itemId'],user = request.user)
                 wishlistitem.save()
-            return HttpResponse('success',200)
+            return HttpResponse('Item successfully added to wishlist ...',200)
         elif request.POST['action'] == 'remove':
             if wishlistitem is not None:
                 wishlistitem.delete()
-                return HttpResponse('success',200)
+                return HttpResponse('Item successfully removed from wishlist ...',200)
             return HttpResponse('failure',500)
     else:
         wishlistitems = userwishlist.objects.filter(user = request.user).all()
@@ -90,7 +90,7 @@ def cart(request):
                     cartItems[i]["quantity"] = request.POST["quantity"]
                     break
         request.session['cartItems'] = cartItems
-        return HttpResponse("success",status=200)
+        return HttpResponse("Item added successfully to cart ...",status=200)
     else:
         data = []
         subtotal= 0
@@ -133,13 +133,13 @@ def checkout(request):
         newOrder.save()
         newOrder.totalPrice = newOrder.subTotal - newOrder.discount + delivery
         request.session.flush()
-        if request.POST["comments"] is not None:
+        if request.POST["comments"] is not None and len(request.POST["comments"]) > 0:
             comment = usercomments(comment = request.POST["comments"],user  = request.user)
             comment.save()
         if request.POST["accountcreate"] == True:
             #need to create account
             i=1
-        return HttpResponse("success",200)
+        return HttpResponse("Your Order is Successfully placed",200)
     else:
         cartItems = request.session.get('cartItems')
         subtotal= 0
@@ -177,6 +177,6 @@ def contact(request):
     if request.method == 'POST':
         message = userMessage(name = request.POST['name'],email = request.POST['email'],subject = request.POST['subject'],message = request.POST['message'])
         message.save()
-        return HttpResponse("success",200)
+        return HttpResponse("Message Successfully Submitted ...",200)
     else:
         return render(request,'orderitems/contact.html')
