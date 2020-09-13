@@ -544,3 +544,13 @@ a {
     height: 30px;
     background: #82ae46;
 }
+
+@media(max-width:996px){
+    .product .img-prod{
+        text-align: center;
+    }
+
+    .product .text p.price span.price-sale {
+        padding-left: 7vw;
+    }
+}

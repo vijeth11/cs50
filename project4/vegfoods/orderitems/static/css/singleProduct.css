@@ -45,3 +45,9 @@
     border: 1px solid #82ae46;
     color: #fff;
 }
+
+@media(max-width:996px){
+    .image-popup .img-fluid{        
+        height: 370px;
+    }
+  }

@@ -2,10 +2,27 @@ $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
     loop:true,
     margin:50,
-    nav:true,
-    dots:true,
-    dotsEach:true,
-    items:3
+    responsiveClass:true,
+    responsive:{
+        0:{
+          nav:true,
+          dots:true,
+          dotsEach:true,
+          items:1
+        },
+        600:{
+          nav:true,
+          dots:true,
+          dotsEach:true,
+          items:2
+        },
+        1000:{
+          nav:true,
+          dots:true,
+          dotsEach:true,
+          items:3
+        }
+    }    
     });
     
     var dealenddate =  document.getElementById("dealenddate") ? document.getElementById("dealenddate").value : null;

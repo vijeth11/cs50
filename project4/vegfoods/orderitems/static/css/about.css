@@ -9,3 +9,12 @@
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+
+@media(max-width:996px){
+    .aboutDetail{
+        height: 60vh;
+    }
+  }
+
+

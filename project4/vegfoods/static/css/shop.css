@@ -41,3 +41,9 @@
 .filteredCards {
     display: none;
 }
+
+@media(max-width:996px){
+    .product:hover .pricing .price-sale.no-offer {
+        padding-left: 15vw !important;
+    }
+}

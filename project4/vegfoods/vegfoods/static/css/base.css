@@ -357,7 +357,7 @@ a {
 .block-23 ul li, .block-23 ul li > a {
     display: table;
     line-height: 1.5;
-    margin-bottom: 15px;
+    margin-bottom: 15px !important;
 }
 
 .fadeInUp {
@@ -548,3 +548,13 @@ table .thead-primary {
     0% {right: 1vw;}
     100% {right: -10vw;}
   }
+
+
+  @media(max-width:996px){
+    .block-23 ul{
+        padding-left: 0px;
+    }
+  }
+
+ 
+  
