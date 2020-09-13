@@ -9,8 +9,9 @@ from django.contrib import auth
 
 def index(request):
     featured  =  items.objects.filter(offer__gt = 0).all()
+    dealoftheday = items.objects.filter(dealOfTheDay = True).first()
     comments = usercomments.objects.all()[0:6]
-    return render(request,'orderitems/index.html',{'featured':featured,'comments':comments})
+    return render(request,'orderitems/index.html',{'featured':featured,'comments':comments,'dealoftheday':dealoftheday})
 
 def loginandregister(request):
     if request.method == 'POST':

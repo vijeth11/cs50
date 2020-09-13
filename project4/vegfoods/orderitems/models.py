@@ -20,7 +20,8 @@ class items(models.Model):
     image = models.ImageField(upload_to = "items",blank=True)
     dealOfTheDay = models.BooleanField()
     description  = models.CharField(max_length=1000,default="")
-
+    dealenddate = models.DateTimeField(default=timezone.datetime.now())
+    
     def __str__(self):
         return self.name
 

@@ -200,20 +200,22 @@
             </div>
         </div>
     </section>
-    <section class = "co-section img" style = "background-image: url({% static 'media/bg_3.webp' %});">
+    {% if dealoftheday is not None %}
+    <section class = "co-section img" style = "background-image: url({{dealoftheday.image.url}});">
         <div class = "container">
             <div class = "row justify-content-end">
                 <div class="col-md-6 heading-section deal-of-the-day fadeInUp co-animated">
                     <span class="subheading">Best Price For You</span>
                     <h2 class="mb-4">Deal of the day</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                    <p>{{dealoftheday.description}}</p>
                     <h3>
-                        <a href="#">Spinach</a>
+                        <a href="#">{{dealoftheday.name}}</a>
                     </h3>
                     <span class="price">
-                        $10 
-                        <a href="#">now $5 only</a>
+                        ${{dealoftheday.price}} 
+                        <a href="#">now ${{dealoftheday.saleprice}} only</a>
                     </span>
+                    <input type="datetime" id="dealenddate" value = "{{dealoftheday.dealenddate |date:'Y-m-d H:m:s'}}" style="visibility:hidden">
                     <div id="timer" class="d-flex mt-5">
                         <div class="time" id="days">-241<span>Days</span></div>
                         <div class="time pl-3" id="hours">15<span>Hours</span></div>
@@ -224,6 +226,8 @@
             </div>
         </div>
     </section>
+    {% endif %}
+    
     <section class = "co-section testimony-section">
         <div class = "container">
             <div class = "row justify-content-center mb-5 pb-3">
