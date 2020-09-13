@@ -136,10 +136,7 @@ def checkout(request):
         request.session.flush()
         if request.POST["comments"] is not None and len(request.POST["comments"]) > 0:
             comment = usercomments(comment = request.POST["comments"],user  = request.user)
-            comment.save()
-        if request.POST["accountcreate"] == True:
-            #need to create account
-            i=1
+            comment.save()        
         return HttpResponse("Your Order is Successfully placed",200)
     else:
         cartItems = request.session.get('cartItems')

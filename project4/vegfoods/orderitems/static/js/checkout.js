@@ -36,8 +36,6 @@ function validateBillingDetails(){
     let zip = document.getElementById("Zip");
     let phone = document.getElementById("phone");
     let email = document.getElementById("email");
-    let createAccountCheck = document.getElementById("createaccount");
-    let shipAddressCheck = document.getElementById("shipaddress");
     let bankTransferRadio = document.getElementById("banktransfer");
     let bankCheckRadio = document.getElementById("bankcheck");
     let paypalRadio = document.getElementById("paypal");
@@ -89,13 +87,7 @@ function validateBillingDetails(){
         valid = false;
     }else{
         email.classList.remove("has-error");
-    }
-    if(!createAccountCheck.checked && !shipAddressCheck.checked){
-        document.getElementsByClassName("radio")[0].classList.add("has-error");
-        valid = false;
-    }else{
-        document.getElementsByClassName("radio")[0].classList.remove("has-error");
-    }
+    }    
     if(!bankTransferRadio.checked && !bankCheckRadio.checked && !paypalRadio.checked){
         document.getElementsByClassName("payment-details")[0].classList.add("has-error");
         valid = false;
