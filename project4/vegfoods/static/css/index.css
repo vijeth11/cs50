@@ -219,6 +219,7 @@ a {
     position: relative;
     display: block;
     overflow: hidden;
+    text-align: center;
 }
 
 .product .img-prod img {
@@ -339,7 +340,7 @@ a {
 }
 
 .product:hover .pricing .price-sale.no-offer{
-    padding-left: 3vw !important;
+    padding-left: 80px !important;
     padding-right: 0vw;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -360,7 +361,7 @@ a {
 
 .product .text p.price span.price-sale {
     color: #82ae46;
-    padding-left: 1vw;
+    padding-left: 40px;
 }
 
 .product .pricing .price-sale.no-offer{
