@@ -1,4 +1,4 @@
-django==3.0.7
+django==3.0.14
 Pillow
 gunicorn>=19.8,<19.9
 whitenoise
