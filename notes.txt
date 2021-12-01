@@ -1,5 +1,0 @@
-to create an admin python manage.py createsuperuser
-enter password and name use it to login as admin adding /admin/ in url
-to get id define the id in the path in url like path("<int:flightid>",views.flight) and use the same id name as argument in the function like flight(request,flightid)
-the name attribute in the path is used for routing within the html like <a href="{% url 'flight' flight.id%}">{{flight}}</a> in this example we are writing flight.id because we need pass an id to that url
-
