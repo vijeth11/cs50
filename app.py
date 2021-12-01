@@ -17,10 +17,13 @@ except ImportError:
 DATABASE_URL = 'books.db'
 conn = sqlite3.connect(DATABASE_URL)
 cur = conn.cursor()
-cur.execute("select * from books")
-test=cur.fetchall()
-cur.close()
-conn.close()
+test = None
+try:    
+    cur.execute("select * from books")
+    test=cur.fetchall()
+except:
+    cur.execute("create table books (isbn TEXT, author TEXT, title TEXT, year INTEGER)")
+
 if test==None:
     count=0
     with open('books.csv') as csvfile:
@@ -36,6 +39,8 @@ if test==None:
 else:
     print("data fetched "+str(len(test)))
 
+cur.close()
+conn.close()
 
 app = Flask(__name__)
 app.templates_auto_reload = True
@@ -49,7 +54,6 @@ uservisit = 0
 
 @app.route('/')
 def hello_world():
-    print(test[0])
     return redirect("/books")
 
 
