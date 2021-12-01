@@ -1,0 +1,9 @@
+django==3.0.7
+Pillow
+gunicorn>=19.8,<19.9
+whitenoise
+dj-database-url
+psycopg2-binary
+django-heroku
+pytz
+django-mathfilters
