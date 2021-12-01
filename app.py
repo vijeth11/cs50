@@ -3,34 +3,41 @@ import os
 try:
    from flask import Flask, render_template, redirect, request, abort, session, url_for
    import csv
-   import psycopg2
+   import sqlite3
    import requests
    import datetime
 except ImportError:
     os.system('pip install flask')
-    os.system('pip install django')
-    os.system('pip install psycopg2')
     os.system('pip install requests')
+    os.system('pip install sqlite3')
     from flask import Flask, render_template, redirect, request,abort,session,url_for
     import csv
-    import psycopg2
     import requests
 
-DATABASE_URL = "postgres://kvodqjxngtsgpt:3f8bc0ed76c932265edff00946122e5386ad95fc7553ba5a7cdeb19c453a65da@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d2e8i4j1a7bhqu"
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+DATABASE_URL = 'books.db'
+conn = sqlite3.connect(DATABASE_URL)
 cur = conn.cursor()
 cur.execute("select * from books")
 test=cur.fetchall()
 cur.close()
 conn.close()
 if test==None:
-    print("no data found")
+    count=0
+    with open('books.csv') as csvfile:
+        readCSV = csv.reader(csvfile)
+        for rows in readCSV:
+            if rows[0] != "isbn":
+                res = cur.execute("insert into books (isbn,author,title,year)values('" + str(rows[0]) + "','" + str(rows[1]).replace("'","\"") + "','" + str(rows[2]).replace("'","\"") + "'," + rows[3] + ");")
+                print(res)
+                count+=1
+                print(count)
+                conn.commit()
+    print("inserted")
 else:
     print("data fetched "+str(len(test)))
 
 
 app = Flask(__name__)
-app.secret_key = 'ytsfthjasidjusfhebksl'
 app.templates_auto_reload = True
 global uservisit
 uservisit = 0
@@ -64,7 +71,7 @@ def book_index(name=''):
         res = requests.get("https://www.goodreads.com/book/review_counts.json",
                         params={"key": "Yo1A6BgkiRzw3D3U1RFw", "isbns": str(value)})
         result=res.json()
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = sqlite3.connect(DATABASE_URL)
         cur = conn.cursor()
         cur.execute(" select count(*) from comments where userid =(select id from users where username='"+session['username']+"')and bookid = (select id from books where isbn = '"+value+"');")
         commentavailable = cur.fetchall()
@@ -75,7 +82,7 @@ def book_index(name=''):
         cur.execute("select u.username ,c.comments,c.rating, c.createddate from users as u , comments as c where c.bookid = (select id from books where isbn='"+value+"') and u.id = c.userid;")
         comments=cur.fetchall()
         cur.execute("select comments from comments where userid = (select id from users where username like '%"+session['username']+"%') and bookid = (select id from books where isbn= '"+value+"');")
-        usercomments =cur.fetchall();
+        usercomments =cur.fetchall()
         cur.close()
         conn.close()
         for t in test:
@@ -91,7 +98,7 @@ def register():
     print(request.form["username"])
     if request.form["username"]!="" and request.form['password']!="" and request.form["confirmpassword"]!="":
         try:
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            conn = sqlite3.connect(DATABASE_URL)
             cur = conn.cursor()
             cur.execute("insert into users (username,password) values ('"+request.form["username"]+"','"+request.form['password']+"');")
             conn.commit()
@@ -109,7 +116,7 @@ def signin():
     if request.form["username"]!="" and request.form['password']!="":
         try:
             print("select count(*) from users where username='"+request.form["username"]+"' and password='"+request.form['password']+"';")
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            conn = sqlite3.connect(DATABASE_URL)
             cur = conn.cursor()
             cur.execute("select count(*) from users where username='"+request.form["username"]+"' and password='"+request.form['password']+"';")
             data =cur.fetchall()
@@ -145,7 +152,7 @@ def apicall(isbn):
 @app.route('/books/comment',methods=["POST"])
 def comment():
     try:
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = sqlite3.connect(DATABASE_URL)
         cur = conn.cursor()
         cur.execute("select id from users where username='"+session['username']+"'and password='"+session['password']+"';")
         userid=cur.fetchall()
