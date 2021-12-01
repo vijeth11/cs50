@@ -25,7 +25,7 @@ SECRET_KEY = 'r*zbrg+%qwj*eoekgcq8!t9j&e!&ig*!3!(%zmi9l_fti0jy)u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vegfoods.herokuapp.com','127.0.0.1','0.0.0.0', 'localhost']
 
 
 # Application definition
