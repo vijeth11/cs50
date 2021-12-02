@@ -15,3 +15,6 @@ Created a website called bibilo etheca which is an online library where users ca
       |_ _ app.py //flask start file
       |_ _ import.py //inital file to insert all data from books.csv to database
       |_ _ books.csv //excel sheet with information about books
+
+## Heroku Release
+Connect through github link this branch and Procfile will handle 
